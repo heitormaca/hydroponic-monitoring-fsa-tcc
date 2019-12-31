@@ -11,7 +11,7 @@ export default {
     },
     {
       title: true,
-      name: 'Theme',
+      name: 'Cadastro',
       wrapper: {            // optional wrapper object
         element: '',        // required valid HTML5 element tag
         attributes: {}        // optional valid JS object with JS API naming ex: { className: "my-class", style: { fontFamily: "Verdana" }, id: "my-id"}
@@ -19,14 +19,14 @@ export default {
       class: ''             // optional class names space delimited list for title item ex: "text-center"
     },
     {
-      name: 'Colors',
-      url: '/theme/colors',
-      icon: 'icon-drop',
+      name: 'Estufa',
+      url: '/cadastroestufa',
+      icon: 'icon-home',
     },
     {
-      name: 'Typography',
+      name: 'Bancada',
       url: '/theme/typography',
-      icon: 'icon-pencil',
+      icon: 'icon-drop',
     },
     {
       title: true,
