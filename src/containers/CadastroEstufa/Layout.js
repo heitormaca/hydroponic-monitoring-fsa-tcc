@@ -74,28 +74,28 @@ class DefaultLayout extends Component {
                   <FormGroup row className="my-0">
                     <Col xs="12">
                       <Label htmlFor="nf-name">Nome</Label>
-                      <Input type="text" id="nf-name" name="nf-name" placeholder="Ex: Estufa 01" />
+                      <Input type="text" id="nf-name" name="nf-name" placeholder="Ex: Estufa-01" />
                       <FormText className="help-block">Insira o nome da estufa</FormText>
                     </Col>
                   </FormGroup>
-                  <FormGroup row className="my-0">
+                  <FormGroup row className="my-3">
                     <Col xs="6">
                       <FormGroup>
                         <Label>Temperatura Máxima (°C)</Label>
-                        <Input type="text" id="maxTemp" name="maxTemp" placeholder="Ex: 30" />
+                        <Input type="number" id="maxTemp" name="maxTemp" placeholder="Ex: 30" min="0" max="100" step="0.1"/>
                         <FormText className="help-block">Insira a temperatura máxima da estufa</FormText>  
                       </FormGroup>
                     </Col>
                     <Col xs="6">
                       <FormGroup>
                         <Label>Temperatura Mínima (°C)</Label>
-                        <Input type="text" id="minTemp" name="minTemp" placeholder="Ex: 15" />
+                        <Input type="number" id="minTemp" name="minTemp" placeholder="Ex: 15" min="0" max="100" step="0.1"/>
                         <FormText className="help-block">Insira a temperatura mínima da estufa</FormText>  
                       </FormGroup>
                     </Col>
                   </FormGroup>
                 </Form>
-                  <Button type="submit" size="sm" color="primary">Cadastrar</Button>
+                  <Button type="submit" size="sm" color="primary">CADASTRAR</Button>
                 </CardBody>
               </Card>
             </main>

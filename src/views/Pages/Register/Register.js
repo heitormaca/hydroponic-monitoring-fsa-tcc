@@ -43,7 +43,7 @@ class Register extends Component {
                       </InputGroupAddon>
                       <Input type="password" placeholder="Repita a senha" autoComplete="nova-senha" />
                     </InputGroup>
-                    <Button color="success" block>Criar Conta</Button>
+                    <Button color="success" block>Cadastrar</Button>
                   </Form>
                 </CardBody>
               </Card>
