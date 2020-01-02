@@ -6,15 +6,15 @@ import './App.scss';
 const loading = () => <div className="animated fadeIn pt-3 text-center">Loading...</div>;
 
 // Containers
-const DefaultLayout = React.lazy(() => import('./containers/DefaultLayout'));
-const CadastroEstufa = React.lazy(() => import('./containers/MainCadastroEstufa'));
-
+const DefaultLayout = React.lazy(() => import('./containers/Dashboard/Layout'));
+const CadastroEstufa = React.lazy(() => import('./containers/CadastroEstufa/Layout'));
+const CadastroBancada = React.lazy(() => import('./containers/CadastroBancada/Layout'));
 
 // Pages
-const Login = React.lazy(() => import('./views/Pages/Login'));
-const Register = React.lazy(() => import('./views/Pages/Register'));
-const Page404 = React.lazy(() => import('./views/Pages/Page404'));
-const Page500 = React.lazy(() => import('./views/Pages/Page500'));
+const Login = React.lazy(() => import('./views/Pages/Login/Login'));
+const Register = React.lazy(() => import('./views/Pages/Register/Register'));
+const Page404 = React.lazy(() => import('./views/Pages/Page404/Page404'));
+const Page500 = React.lazy(() => import('./views/Pages/Page500/Page500'));
 
 class App extends Component {
 
@@ -24,6 +24,7 @@ class App extends Component {
           <React.Suspense fallback={loading()}>
             <Switch>
               <Route exact path="/cadastroestufa" name="Cadastro Estufa" render={props => <CadastroEstufa {...props}/>} />
+              <Route exact path="/cadastrobancada" name="Cadastro Bancada" render={props => <CadastroBancada {...props}/>} />
               <Route exact path="/login" name="Login Page" render={props => <Login {...props}/>} />
               <Route exact path="/register" name="Register Page" render={props => <Register {...props}/>} />
               <Route exact path="/404" name="Page 404" render={props => <Page404 {...props}/>} />
