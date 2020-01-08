@@ -6,7 +6,6 @@ export default {
       icon: 'icon-speedometer',
       badge: {
         variant: 'info',
-        // text: 'NEW',
       },
     },
     {
@@ -39,7 +38,6 @@ export default {
           name: 'Cadastro',
           url: '/cadastrobancada',
           icon: 'icon-note',
-          // icon-drop
         },
       ],
     },
