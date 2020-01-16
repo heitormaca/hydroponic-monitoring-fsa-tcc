@@ -1,9 +1,7 @@
 import React, { Component, Suspense } from 'react';
-import { Redirect, Route, Switch } from 'react-router-dom';
 import * as router from 'react-router-dom';
 import { 
-  Conta, FormGroup, Forminer, 
-  // FormGroup,
+  FormGroup, 
   Col, 
   Card, 
   Input,
@@ -12,12 +10,10 @@ import {
   Form,
   Label,
   FormText,
-  CardFooter,
   Button,
 } from 'reactstrap';
 
 import {
-  AppAside,
   AppFooter,
   AppHeader,
   AppSidebar,
@@ -30,10 +26,7 @@ import {
 } from '@coreui/react';
 // sidebar nav config
 import navigation from '../../_nav';
-// routes config
-import routes from '../../routes';
 
-const DefaultAside = React.lazy(() => import('../Aside/DefaultAside'));
 const DefaultFooter = React.lazy(() => import('../Footer/DefaultFooter'));
 const DefaultHeader = React.lazy(() => import('../Header/DefaultHeader'));
 
@@ -99,11 +92,6 @@ class DefaultLayout extends Component {
                 </CardBody>
               </Card>
             </main>
-          <AppAside fixed>
-            <Suspense fallback={this.loading()}>
-              <DefaultAside />
-            </Suspense>
-          </AppAside>
         </div>
         <AppFooter>
           <Suspense fallback={this.loading()}>

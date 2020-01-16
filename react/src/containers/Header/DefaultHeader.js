@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
-import { Link, NavLink } from 'react-router-dom';
-import { Badge, UncontrolledDropdown, DropdownItem, DropdownMenu, DropdownToggle, Nav, NavItem } from 'reactstrap';
+import { UncontrolledDropdown, DropdownItem, DropdownMenu, DropdownToggle, Nav, NavItem } from 'reactstrap';
 import PropTypes from 'prop-types';
-
-import { AppAsideToggler, AppNavbarBrand, AppSidebarToggler } from '@coreui/react';
+import { AppNavbarBrand, AppSidebarToggler } from '@coreui/react';
 import logo from '../../assets/img/brand/logo.svg'
 import sygnet from '../../assets/img/brand/sygnet.svg'
+import { Link } from 'react-router-dom';
 
 const propTypes = {
   children: PropTypes.node,
@@ -34,8 +33,8 @@ class DefaultHeader extends Component {
             </DropdownToggle>
             <DropdownMenu right>
               <DropdownItem header tag="div" className="text-center"><strong>Conta</strong></DropdownItem>
-              <DropdownItem><i className="fa fa-user"></i> Perfil</DropdownItem>
-              <DropdownItem><i className="fa fa-lock"></i> Alterar Senha</DropdownItem>
+              <Link to={'/PerfilDeUsuario'}><DropdownItem><i className="fa fa-user"></i> Perfil</DropdownItem></Link>
+              <Link to={'/AlterarSenha'}><DropdownItem><i className="fa fa-lock"></i> Alterar Senha</DropdownItem></Link>
               <DropdownItem><i className="fa fa-power-off"></i> Sair</DropdownItem>
             </DropdownMenu>
           </UncontrolledDropdown>

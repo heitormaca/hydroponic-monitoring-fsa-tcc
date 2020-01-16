@@ -14,14 +14,13 @@ export default {
       children: [
         {
           name: 'Lista',
-          url: '/cadastroestufa',
+          url: '/listaestufa',
           icon: 'icon-list',
         },
         {
           name: 'Cadastro',
           url: '/cadastroestufa',
           icon: 'icon-note',
-          // icon-drop
         },
       ],
     },
@@ -31,7 +30,7 @@ export default {
       children: [
         {
           name: 'Lista',
-          url: '/cadastrobancada',
+          url: '/listabancada',
           icon: 'icon-list',
         },
         {

@@ -1,8 +1,8 @@
 import React, { Component, Suspense } from 'react';
 import * as router from 'react-router-dom';
 import { 
-  FormGroup, 
-  Col, 
+  FormGroup,
+  Col,
   Card, 
   Input,
   CardBody,
@@ -27,6 +27,7 @@ import {
 // sidebar nav config
 import navigation from '../../_nav';
 
+// const DefaultAside = React.lazy(() => import('../Aside/DefaultAside'));
 const DefaultFooter = React.lazy(() => import('../Footer/DefaultFooter'));
 const DefaultHeader = React.lazy(() => import('../Header/DefaultHeader'));
 

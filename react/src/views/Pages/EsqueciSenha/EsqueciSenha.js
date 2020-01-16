@@ -36,7 +36,7 @@ class Login extends Component {
                           <Button color="primary" className="px-4">Entrar</Button>
                         </Col>
                         <Col xs="6" className="text-right">
-                          <Link to={'/EsqueciSenha'}><Button color="link" className="px-0">Esqueceu a senha?</Button></Link>
+                          <Button color="link" className="px-0">Esqueceu a senha?</Button>
                         </Col>
                       </Row>
                     </Form>

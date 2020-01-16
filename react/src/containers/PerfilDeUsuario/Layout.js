@@ -2,7 +2,7 @@ import React, { Component, Suspense } from 'react';
 import * as router from 'react-router-dom';
 import { 
   FormGroup, 
-  Col, 
+  Col,
   Card, 
   Input,
   CardBody,

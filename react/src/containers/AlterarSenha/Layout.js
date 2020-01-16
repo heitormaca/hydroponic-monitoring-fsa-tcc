@@ -1,8 +1,8 @@
 import React, { Component, Suspense } from 'react';
 import * as router from 'react-router-dom';
 import { 
-  FormGroup, 
-  Col, 
+  FormGroup,
+  Col,
   Card, 
   Input,
   CardBody,
