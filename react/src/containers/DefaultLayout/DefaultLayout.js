@@ -19,8 +19,8 @@ import navigation from '../../_nav';
 // routes config
 import routes from '../../routes';
 
-const DefaultFooter = React.lazy(() => import('../Footer/DefaultFooter'));
-const DefaultHeader = React.lazy(() => import('../Header/DefaultHeader'));
+const DefaultFooter = React.lazy(() => import('../DefaultFooter/DefaultFooter'));
+const DefaultHeader = React.lazy(() => import('../DefaultHeader/DefaultHeader'));
 
 class DefaultLayout extends Component {
 
@@ -66,7 +66,7 @@ class DefaultLayout extends Component {
                         )} />
                     ) : (null);
                   })}
-                  <Redirect from="/" to="/dashboard" />
+                  <Redirect from="/" to="/Dashboard" />
                 </Switch>
               </Suspense>
             </Container>

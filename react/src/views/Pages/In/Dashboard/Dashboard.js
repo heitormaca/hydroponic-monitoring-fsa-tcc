@@ -1,4 +1,4 @@
-import React, { Component, lazy, Suspense } from 'react';
+import React, { Component } from 'react';
 import { Bar, Line } from 'react-chartjs-2';
 import {
   Badge,
@@ -479,6 +479,7 @@ class Dashboard extends Component {
   render() {
 
     return (
+      
       <div className="animated fadeIn">
         <Row>
           <Col xs="12" sm="6" lg="3">
@@ -505,7 +506,6 @@ class Dashboard extends Component {
               </div>
             </Card>
           </Col>
-
           <Col xs="12" sm="6" lg="3">
             <Card className="text-white bg-primary">
               <CardBody className="pb-0">
@@ -529,7 +529,6 @@ class Dashboard extends Component {
               </div>
             </Card>
           </Col>
-
           <Col xs="12" sm="6" lg="3">
             <Card className="text-white bg-warning">
               <CardBody className="pb-0">
@@ -553,7 +552,6 @@ class Dashboard extends Component {
               </div>
             </Card>
           </Col>
-
           <Col xs="12" sm="6" lg="3">
             <Card className="text-white bg-danger">
               <CardBody className="pb-0">

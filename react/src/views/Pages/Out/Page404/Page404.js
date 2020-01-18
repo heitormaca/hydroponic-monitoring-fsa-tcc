@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Col, Container, Row } from 'reactstrap';
+import { Col, Container, Row } from 'reactstrap';
 
 class Page404 extends Component {
   render() {
