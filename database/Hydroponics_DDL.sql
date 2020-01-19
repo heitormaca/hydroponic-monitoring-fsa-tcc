@@ -3,21 +3,13 @@ USE Hydroponics;
 CREATE TABLE Usuario(
 	id_usuario INT IDENTITY PRIMARY KEY NOT NULL,
 	nome VARCHAR(50) NOT NULL,
-	sobrenome VARCHAR(50) NOT NULL,
 	email VARCHAR(70) NOT NULL,
 	senha VARCHAR(20) NOT NULL,
 	imagem TEXT NOT NULL
 );
 CREATE TABLE Estufa(
 	id_estufa INT IDENTITY PRIMARY KEY NOT NULL,
-	nome VARCHAR(50) NOT NULL,
-	sensorTempExternMax FLOAT NOT NULL,
-	sensorTempExternMin FLOAT NOT NULL
-);
-CREATE TABLE EstufaSensores(
-	id_estufaSensores INT IDENTITY PRIMARY KEY NOT NULL,
-	sensorTempExterno FLOAT NOT NULL,
-	id_estufa INT FOREIGN KEY REFERENCES Estufa(id_estufa)
+	nome VARCHAR(50) NOT NULL
 );
 CREATE TABLE Bancada(
 	id_bancada INT IDENTITY PRIMARY KEY NOT NULL,
@@ -25,6 +17,7 @@ CREATE TABLE Bancada(
 	semeio VARCHAR(50) NOT NULL,
 	dataInicio DATETIME NOT NULL,
 	dataFim DATETIME NOT NULL,
+	statusBancada BIT DEFAULT(1),
 	sensorTempBancMax FLOAT NOT NULL,
 	sensorTempBancMin FLOAT NOT NULL,
 	sensorTempSolMax FLOAT NOT NULL,
@@ -40,6 +33,7 @@ CREATE TABLE BancadaSensores(
 	sensorTempBanc FLOAT NOT NULL,
 	sensorTempSol FLOAT NOT NULL,
 	sensorPh FLOAT NOT NULL,
+	sensorEc FLOAT NOT NULL,
 	id_bancada INT FOREIGN KEY REFERENCES Bancada(id_bancada)
 );
 	

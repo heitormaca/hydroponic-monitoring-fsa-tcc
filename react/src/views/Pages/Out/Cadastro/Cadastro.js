@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Button, Card, CardBody, Col, Container, Form, Input, InputGroup, InputGroupAddon, InputGroupText, Row } from 'reactstrap';
+import { Link } from 'react-router-dom';
 
 class Cadastro extends Component {
   render() {
@@ -43,7 +44,7 @@ class Cadastro extends Component {
                       </InputGroupAddon>
                       <Input type="password" placeholder="Repita a senha" autoComplete="nova-senha" />
                     </InputGroup>
-                    <Button color="success" block>Cadastrar</Button>
+                    <Link to={'/login'}><Button color="success" block>Cadastrar</Button></Link>
                   </Form>
                 </CardBody>
               </Card>

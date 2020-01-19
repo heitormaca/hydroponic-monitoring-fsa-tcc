@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Button, Card, CardBody, CardGroup, Col, Container, Form, Input, InputGroup, InputGroupAddon, InputGroupText, Row } from 'reactstrap';
+import { Link } from 'react-router-dom';
 
 class Login extends Component {
   render() {
@@ -24,7 +25,7 @@ class Login extends Component {
                       </InputGroup>
                       <Row>
                         <Col xs="6" className="center">
-                          <Button color="success" className="px-4">Enviar</Button>
+                          <Link to={'/login'}><Button color="success" className="px-4">Enviar</Button></Link>
                         </Col>
                       </Row>
                     </Form>

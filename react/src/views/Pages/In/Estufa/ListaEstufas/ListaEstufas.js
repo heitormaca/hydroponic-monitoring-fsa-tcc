@@ -20,7 +20,7 @@ class ListaEstufa extends Component {
                       <th>Número</th>
                       <th>Nome</th>
                       <th>Data de Criação</th>
-                      <th>Status</th>
+                      <th>Bancadas</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -28,41 +28,31 @@ class ListaEstufa extends Component {
                       <td>0001</td>
                       <td><Link to="/estufas/estufa">Estufa 01</Link></td>
                       <td>12/06/2019</td>
-                      <td>
-                        <Badge color="success">ATIVO</Badge>
-                      </td>
+                      <td>3</td>
                     </tr>
                     <tr>
                       <td>0002</td>
                       <td><Link to="#">Estufa 02</Link></td>
                       <td>12/06/2019</td>
-                      <td>
-                        <Badge color="danger">FECHADO</Badge>
-                      </td>
+                      <td>1</td>
                     </tr>
                     <tr>
                       <td>0003</td>
                       <td><Link to="#">Estufa 03</Link></td>
                       <td>14/06/2019</td>
-                      <td>
-                        <Badge color="secondary">INATIVO</Badge>
-                      </td>
+                      <td>1</td>
                     </tr>
                     <tr>
                       <td>0004</td>
                       <td><Link to="#">Estufa 04</Link></td>
                       <td>14/06/2019</td>
-                      <td>
-                        <Badge color="danger">FECHADO</Badge>
-                      </td>
+                      <td>0</td>
                     </tr>
                     <tr>
                       <td>0005</td>
                       <td><Link to="#">Estufa 05</Link></td>
                       <td>16/06/2019</td>
-                      <td>
-                        <Badge color="success">ATIVO</Badge>
-                      </td>
+                      <td>0</td>
                     </tr>
                   </tbody>
                 </Table>

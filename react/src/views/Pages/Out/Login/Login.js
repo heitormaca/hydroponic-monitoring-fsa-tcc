@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import { Button, Card, CardBody, CardGroup, Col, Container, Form, Input, InputGroup, InputGroupAddon, InputGroupText, Row } from 'reactstrap';
+import { Link } from 'react-router-dom';
 
 class Login extends Component {
   render() {
@@ -33,10 +33,10 @@ class Login extends Component {
                       </InputGroup>
                       <Row>
                         <Col xs="6">
-                          <Button color="primary" className="px-4">Entrar</Button>
+                          <Link to={'/dashboard'}><Button color="primary" className="px-4">Entrar</Button></Link>
                         </Col>
                         <Col xs="6" className="text-right">
-                          <Link to={'/EsqueciSenha'}><Button color="link" className="px-0">Esqueceu a senha?</Button></Link>
+                          <Link to={'/esquecisenha'}><Button color="link" className="px-0">Esqueceu a senha?</Button></Link>
                         </Col>
                       </Row>
                     </Form>
@@ -46,10 +46,9 @@ class Login extends Component {
                   <CardBody className="text-center">
                     <div>
                       <h2>Inscreva-se</h2>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
-                        labore et dolore magna aliqua.</p>
+                      <p>Seja bem vindo ao sitema de monitoramento de estufas hidroponicas. Se você é novo por aqui clique no botão a baixo e faça seu cadastro.</p>
                       <Link to="/register">
-                        <Button color="primary" className="mt-3" active tabIndex={-1}>Registre-se!</Button>
+                        <Link to={'/cadastro'}><Button color="primary" className="mt-3" active tabIndex={-1}>Cadastre-se!</Button></Link>
                       </Link>
                     </div>
                   </CardBody>
