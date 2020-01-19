@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Hydroponics.Models
@@ -14,6 +16,8 @@ namespace Hydroponics.Models
         public double SensorTempSol { get; set; }
         [Column("sensorPh")]
         public double SensorPh { get; set; }
+        [Column("sensorEc")]
+        public double SensorEc { get; set; }
         [Column("id_bancada")]
         public int? IdBancada { get; set; }
 

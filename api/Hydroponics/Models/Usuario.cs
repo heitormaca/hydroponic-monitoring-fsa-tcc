@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Hydroponics.Models
@@ -12,10 +14,6 @@ namespace Hydroponics.Models
         [Column("nome")]
         [StringLength(50)]
         public string Nome { get; set; }
-        [Required]
-        [Column("sobrenome")]
-        [StringLength(50)]
-        public string Sobrenome { get; set; }
         [Required]
         [Column("email")]
         [StringLength(70)]

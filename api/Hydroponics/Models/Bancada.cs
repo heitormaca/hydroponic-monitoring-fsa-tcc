@@ -27,6 +27,8 @@ namespace Hydroponics.Models
         public DateTime DataInicio { get; set; }
         [Column("dataFim", TypeName = "datetime")]
         public DateTime DataFim { get; set; }
+        [Column("statusBancada")]
+        public bool? StatusBancada { get; set; }
         [Column("sensorTempBancMax")]
         public double SensorTempBancMax { get; set; }
         [Column("sensorTempBancMin")]
