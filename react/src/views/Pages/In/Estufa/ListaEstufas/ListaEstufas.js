@@ -11,7 +11,7 @@ class ListaEstufa extends Component {
           <Col>
             <Card>
               <CardHeader>
-                <strong>Lista de estufa</strong>
+                <strong>Lista de estufas</strong>
               </CardHeader>
               <CardBody>
                 <Table hover bordered striped responsive size="sm">
@@ -26,7 +26,7 @@ class ListaEstufa extends Component {
                   <tbody>
                     <tr>
                       <td>0001</td>
-                      <Link to={'/estufa/estufa'}><td>Estufa 01</td></Link>
+                      <td><Link to="/estufas/estufa">Estufa 01</Link></td>
                       <td>12/06/2019</td>
                       <td>
                         <Badge color="success">ATIVO</Badge>
@@ -34,7 +34,7 @@ class ListaEstufa extends Component {
                     </tr>
                     <tr>
                       <td>0002</td>
-                      <td>Estufa 02</td>
+                      <td><Link to="#">Estufa 02</Link></td>
                       <td>12/06/2019</td>
                       <td>
                         <Badge color="danger">FECHADO</Badge>
@@ -42,7 +42,7 @@ class ListaEstufa extends Component {
                     </tr>
                     <tr>
                       <td>0003</td>
-                      <td>Estufa 03</td>
+                      <td><Link to="#">Estufa 03</Link></td>
                       <td>14/06/2019</td>
                       <td>
                         <Badge color="secondary">INATIVO</Badge>
@@ -50,7 +50,7 @@ class ListaEstufa extends Component {
                     </tr>
                     <tr>
                       <td>0004</td>
-                      <td>Estufa 04</td>
+                      <td><Link to="#">Estufa 04</Link></td>
                       <td>14/06/2019</td>
                       <td>
                         <Badge color="danger">FECHADO</Badge>
@@ -58,7 +58,7 @@ class ListaEstufa extends Component {
                     </tr>
                     <tr>
                       <td>0005</td>
-                      <td>Estufa 05</td>
+                      <td><Link to="#">Estufa 05</Link></td>
                       <td>16/06/2019</td>
                       <td>
                         <Badge color="success">ATIVO</Badge>

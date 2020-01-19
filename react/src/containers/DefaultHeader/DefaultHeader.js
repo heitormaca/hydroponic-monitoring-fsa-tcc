@@ -29,11 +29,11 @@ class DefaultHeader extends Component {
         <Nav className="ml-auto" navbar>
           <UncontrolledDropdown nav direction="down">
             <DropdownToggle nav>
-              <img src={'../../assets/img/avatars/6.jpg'} className="img-avatar" alt="admin@bootstrapmaster.com" />
+              <img src={'../../assets/img/users/fazendeiro.jpg'} className="img-avatar" alt="admin@bootstrapmaster.com" />
             </DropdownToggle>
             <DropdownMenu right>
               <DropdownItem header tag="div" className="text-center"><strong>Conta</strong></DropdownItem>
-              <Link to={'/conta/perfildousuario'}><DropdownItem><i className="fa fa-user"></i> Perfil</DropdownItem></Link>
+              <Link to={'/conta/perfil'}><DropdownItem><i className="fa fa-user"></i> Perfil</DropdownItem></Link>
               <Link to={'/conta/alterarsenha'}><DropdownItem><i className="fa fa-lock"></i> Alterar senha</DropdownItem></Link>
               <DropdownItem><i className="fa fa-power-off"></i> Sair</DropdownItem>
             </DropdownMenu>

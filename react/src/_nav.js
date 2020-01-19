@@ -10,34 +10,34 @@ export default {
     },
     {
       name: 'Estufa',
-      url: '/estufa',
+      url: '/estufas',
       icon: 'icon-home',
       children: [
         {
           name: 'Lista',
-          url: '/estufa/listaestufa',
+          url: '/estufas/listaestufas',
           icon: 'icon-list',
         },
         {
           name: 'Cadastro',
-          url: '/estufa/cadastroestufa',
+          url: '/estufas/cadastroestufa',
           icon: 'icon-note',
         },
       ],
     },
     {
       name: 'Bancada',
-      url: '/bancada',
+      url: '/bancadas',
       icon: 'icon-drop',
       children: [
         {
           name: 'Lista',
-          url: '/bancada/listabancada',
+          url: '/bancadas/listabancadas',
           icon: 'icon-list',
         },
         {
           name: 'Cadastro',
-          url: '/bancada/cadastrobancada',
+          url: '/bancadas/cadastrobancada',
           icon: 'icon-note',
         },
       ],

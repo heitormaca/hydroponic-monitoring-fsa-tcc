@@ -33,8 +33,6 @@ class AlterarSenha extends Component {
                     <FormText className="help-block">Insira a sua senha atual</FormText>
                   </FormGroup>
                 </Col>
-              </FormGroup>
-              <FormGroup row className="my-0">
                 <Col xs="4">
                   <FormGroup>
                     <Label htmlFor="nf-name">Nova senha</Label>
@@ -42,8 +40,6 @@ class AlterarSenha extends Component {
                     <FormText className="help-block">Insira a sua nova senha</FormText>
                   </FormGroup>
                 </Col>
-              </FormGroup>
-              <FormGroup row className="my-0">
                 <Col xs="4">
                   <FormGroup>
                     <Label htmlFor="nf-name">Confirmação de nova senha</Label>
@@ -53,7 +49,7 @@ class AlterarSenha extends Component {
                 </Col>
               </FormGroup>
             </Form>
-            <Button className="my-3" type="submit" size="sm" color="primary">ALTERAR</Button>
+            <Button type="submit" size="sm" color="primary">ALTERAR</Button>
           </CardBody>
         </Card>     
       </div>

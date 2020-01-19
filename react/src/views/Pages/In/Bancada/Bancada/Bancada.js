@@ -1,130 +1,419 @@
 import React, { Component } from 'react';
+import { Line } from 'react-chartjs-2';
 import { 
-  FormGroup,
-  Col,
+  Badge, 
   Card, 
-  Input,
-  CardBody,
-  CardHeader,
-  Form,
-  Label,
-  FormText,
+  CardBody, 
+  CardHeader, 
+  Col, 
+  Row, 
+  Table,
+  CardTitle,
   Button,
+  ButtonGroup,
+  ButtonToolbar, 
 } from 'reactstrap';
 
+import { CustomTooltips } from '@coreui/coreui-plugin-chartjs-custom-tooltips';
+import { getStyle, hexToRgba } from '@coreui/coreui/dist/js/coreui-utilities'
+
+const brandInfo = getStyle('--info')
+const brandDanger = getStyle('--danger')
+
+//Random Numbers
+function random(min, max) {
+  return Math.floor(Math.random() * (max - min + 1) + min);
+}
+
+var elements = 27;
+var data1 = [];
+var data2 = [];
+var data3 = [];
+var data4 = [];
+var data5 = [];
+var data6 = [];
+
+for (var i = 0; i <= elements; i++) {
+  data1.push(random(0, 70));
+  data2.push(12);
+  data3.push(42);
+  data4.push(random(0,14));
+  data5.push(4);
+  data6.push(9);
+
+}
+
+const TempBancada = {
+  labels: ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su'],
+  datasets: [
+    {
+      label: 'Temperatura máxima (°C)',
+      backgroundColor: 'transparent',
+      borderColor: brandDanger,
+      pointHoverBackgroundColor: '#fff',
+      borderWidth: 1,
+      borderDash: [8, 5],
+      data: data3,
+    },
+    {
+      label: 'Temperatura da bancada (°C)',
+      backgroundColor: hexToRgba(brandInfo, 10),
+      borderColor: brandInfo,
+      pointHoverBackgroundColor: '#fff',
+      borderWidth: 2,
+      data: data1,
+    },
+    {
+      label: 'Temperatura mínima (°C)',
+      backgroundColor: 'transparent',
+      borderColor: brandDanger,
+      pointHoverBackgroundColor: '#fff',
+      borderWidth: 1,
+      borderDash: [8, 5],
+      data: data2,
+    },
+  ],
+};
+
+const TempSolucao = {
+  labels: ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su'],
+  datasets: [
+    {
+      label: 'Temperatura máxima (°C)',
+      backgroundColor: 'transparent',
+      borderColor: brandDanger,
+      pointHoverBackgroundColor: '#fff',
+      borderWidth: 1,
+      borderDash: [8, 5],
+      data: data3,
+    },
+    {
+      label: 'Temperatura da solução (°C)',
+      backgroundColor: hexToRgba(brandInfo, 10),
+      borderColor: brandInfo,
+      pointHoverBackgroundColor: '#fff',
+      borderWidth: 2,
+      data: data1,
+    },
+    {
+      label: 'Temperatura mínima (°C)',
+      backgroundColor: 'transparent',
+      borderColor: brandDanger,
+      pointHoverBackgroundColor: '#fff',
+      borderWidth: 1,
+      borderDash: [8, 5],
+      data: data2,
+    },
+  ],
+};
+
+const MedicaoPH = {
+  labels: ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su'],
+  datasets: [
+    {
+      label: 'PH máximo',
+      backgroundColor: 'transparent',
+      borderColor: brandDanger,
+      pointHoverBackgroundColor: '#fff',
+      borderWidth: 1,
+      borderDash: [8, 5],
+      data: data6,
+    },
+    {
+      label: 'Medição de PH',
+      backgroundColor: hexToRgba(brandInfo, 10),
+      borderColor: brandInfo,
+      pointHoverBackgroundColor: '#fff',
+      borderWidth: 2,
+      data: data4,
+    },
+    {
+      label: 'PH mínimo',
+      backgroundColor: 'transparent',
+      borderColor: brandDanger,
+      pointHoverBackgroundColor: '#fff',
+      borderWidth: 1,
+      borderDash: [8, 5],
+      data: data5,
+    },
+  ],
+};
+
+const MedicaoEC = {
+  labels: ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su'],
+  datasets: [
+    {
+      label: 'EC máximo',
+      backgroundColor: 'transparent',
+      borderColor: brandDanger,
+      pointHoverBackgroundColor: '#fff',
+      borderWidth: 1,
+      borderDash: [8, 5],
+      data: data3,
+    },
+    {
+      label: 'Medição de EC',
+      backgroundColor: hexToRgba(brandInfo, 10),
+      borderColor: brandInfo,
+      pointHoverBackgroundColor: '#fff',
+      borderWidth: 2,
+      data: data1,
+    },
+    {
+      label: 'EC mínimo',
+      backgroundColor: 'transparent',
+      borderColor: brandDanger,
+      pointHoverBackgroundColor: '#fff',
+      borderWidth: 1,
+      borderDash: [8, 5],
+      data: data2,
+    },
+  ],
+};
+
+const mainChartOpts = {
+  tooltips: {
+    enabled: false,
+    custom: CustomTooltips,
+    intersect: true,
+    mode: 'index',
+    position: 'nearest',
+    callbacks: {
+      labelColor: function(tooltipItem, chart) {
+        return { backgroundColor: chart.data.datasets[tooltipItem.datasetIndex].borderColor }
+      }
+    }
+  },
+  maintainAspectRatio: false,
+  legend: {
+    display: false,
+  },
+  scales: {
+    xAxes: [
+      {
+        gridLines: {
+          drawOnChartArea: false,
+        },
+      }],
+    yAxes: [
+      {
+        ticks: {
+          beginAtZero: true,
+          maxTicksLimit: 5,
+          stepSize: Math.ceil(250 / 5),
+          max: 70,
+        },
+      }],
+  },
+  elements: {
+    point: {
+      radius: 0,
+      hitRadius: 10,
+      hoverRadius: 4,
+      hoverBorderWidth: 3,
+    },
+  },
+};
+
+const mainChartOpts1 = {
+  tooltips: {
+    enabled: false,
+    custom: CustomTooltips,
+    intersect: true,
+    mode: 'index',
+    position: 'nearest',
+    callbacks: {
+      labelColor: function(tooltipItem, chart) {
+        return { backgroundColor: chart.data.datasets[tooltipItem.datasetIndex].borderColor }
+      }
+    }
+  },
+  maintainAspectRatio: false,
+  legend: {
+    display: false,
+  },
+  scales: {
+    xAxes: [
+      {
+        gridLines: {
+          drawOnChartArea: false,
+        },
+      }],
+    yAxes: [
+      {
+        ticks: {
+          beginAtZero: true,
+          maxTicksLimit: 5,
+          stepSize: Math.ceil(250 / 5),
+          max: 14,
+        },
+      }],
+  },
+  elements: {
+    point: {
+      radius: 0,
+      hitRadius: 10,
+      hoverRadius: 4,
+      hoverBorderWidth: 3,
+    },
+  },
+};
+
 class Bancada extends Component {
+
+  constructor(props) {
+    super(props);
+
+    this.toggle = this.toggle.bind(this);
+    this.onRadioBtnClick = this.onRadioBtnClick.bind(this);
+
+    this.state = {
+      dropdownOpen: false,
+      radioSelected: 2,
+    };
+  }
+
+  toggle() {
+    this.setState({
+      dropdownOpen: !this.state.dropdownOpen,
+    });
+  }
+
+  onRadioBtnClick(radioSelected) {
+    this.setState({
+      radioSelected: radioSelected,
+    });
+  }
+
+  loading = () => <div className="animated fadeIn pt-1 text-center">Loading...</div>
 
   render() {
     return (
       <div>
-        <Card>
-          <CardHeader>
-            <strong>CADASTRO DE BANCADA</strong>
-          </CardHeader>
-          <CardBody>
-            <Form action="" method="post">
-              <FormGroup row className="my-0">
-                <Col xs="6">
-                  <FormGroup>
-                    <Label>Nome da Bancada</Label>
-                    <Input type="text" id="nf-name" name="nf-name" placeholder="Ex: Bancada-01" />
-                    <FormText className="help-block">Insira o nome da bancada</FormText>  
-                  </FormGroup>
-                </Col>
-                <Col xs="6">
-                  <FormGroup>
-                    <Label>Tipo de Semeio</Label>
-                    <Input type="text" id="type-sem" placeholder="Ex: Alface" />
-                    <FormText className="help-block">Insira o tipo de semeio</FormText>  
-                  </FormGroup>
-                </Col>
-              </FormGroup>
-              <FormGroup row className="my-0">
-                <Col xs="6">
-                  <FormGroup>
-                    <Label htmlFor="date-input">Date de Inicio</Label>
-                    <Input type="date" id="date-input-i" name="date-input-i" placeholder="date" />
-                    <FormText className="help-block">Insira a data de inicio da bancada</FormText>  
-                  </FormGroup>
-                </Col>
-                <Col xs="6">
-                  <FormGroup>
-                    <Label htmlFor="date-input">Date de Fim</Label>
-                    <Input type="date" id="date-input-f" name="date-input-f" placeholder="date" />
-                    <FormText className="help-block">Insira a data de fim da bancada</FormText>  
-                  </FormGroup>
-                </Col>
-              </FormGroup>
-              <FormGroup row className="my-0">
-                <Col xs="6">
-                  <FormGroup>
-                    <Label>Valor Máximo de PH</Label>
-                    <Input type="number" id="maxPH" name="maxPH" placeholder="Ex: 5" min="0" max="14" step="0.1" />
-                    <FormText className="help-block">Insira o valor máximo de PH da solução</FormText>  
-                  </FormGroup>
-                </Col>
-                <Col xs="6">
-                  <FormGroup>
-                    <Label>Valor Mínimo de PH</Label>
-                    <Input type="number" id="minPH" name="minPH" placeholder="Ex: 3" min="0" max="14" step="0.1" />
-                    <FormText className="help-block">Insira o valor mínimo de PH da solução</FormText>  
-                  </FormGroup>
-                </Col>
-              </FormGroup>
-              <FormGroup row className="my-0">
-                <Col xs="6">
-                  <FormGroup>
-                    <Label>Valor Máximo de EC</Label>
-                    <Input type="number" id="maxEC" name="maxEC" placeholder="Ex: 10" min="0" max="100" step="0.1" />
-                    <FormText className="help-block">Insira o valor máximo de EC da solução</FormText>  
-                  </FormGroup>
-                </Col>
-                <Col xs="6">
-                  <FormGroup>
-                    <Label>Valor Mínimo de EC</Label>
-                    <Input type="number" id="minEC" name="minEC"placeholder="Ex: 5" min="0" max="100" step="0.1" />
-                    <FormText className="help-block">Insira o valor mínimo de EC da solução</FormText>  
-                  </FormGroup>
-                </Col>
-              </FormGroup>
-              <FormGroup row className="my-0">
-                <Col xs="6">
-                  <FormGroup>
-                    <Label>Temperatura Máxima (°C)</Label>
-                    <Input type="number" id="maxTemp" name="maxTemp" placeholder="Ex: 30" min="0" max="100" step="0.1"/>
-                    <FormText className="help-block">Insira a temperatura máxima da bancada</FormText>   
-                  </FormGroup>
-                </Col>
-                <Col xs="6">
-                  <FormGroup>
-                    <Label>Temperatura Mínima (°C)</Label>
-                    <Input type="number" id="minTemp" name="minTemp" placeholder="Ex: 15" min="0" max="100" step="0.1"/>
-                    <FormText className="help-block">Insira a temperatura mínima da bancada</FormText>  
-                  </FormGroup>
-                </Col>
-              </FormGroup>
-              <FormGroup row className="my-0">
-                <Col xs="6">
-                  <FormGroup>
-                    <Label>Temperatura Máxima (°C)</Label>
-                    <Input type="number" id="maxTemp" name="maxTemp" placeholder="Ex: 30" min="0" max="100" step="0.1"/>
-                    <FormText className="help-block">Insira a temperatura máxima da solução</FormText>   
-                  </FormGroup>
-                </Col>
-                <Col xs="6">
-                  <FormGroup>
-                    <Label>Temperatura Mínima (°C)</Label>
-                    <Input type="number" id="minTemp" name="minTemp" placeholder="Ex: 15" min="0" max="100" step="0.1"/>
-                    <FormText className="help-block">Insira a temperatura mínima da solução</FormText>  
-                  </FormGroup>
-                </Col>
-              </FormGroup>
-            </Form>
-            <Button type="submit" size="sm" color="primary">CADASTRAR</Button>
-          </CardBody>
-        </Card>
+        <Row>
+          <Col xs="12">
+            <Card>
+              <CardHeader>
+                <strong>Bancada</strong>
+              </CardHeader>
+              <CardBody>
+              <Table hover bordered striped responsive size="sm">
+                  <thead>
+                    <tr>
+                      <th>Número</th>
+                      <th>Nome</th>
+                      <th>Tipo de semeio</th>
+                      <th>Data de Criação</th>
+                      <th>Estufa</th>
+                      <th>Status</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>0001</td>
+                      <td>Bancada 01</td>
+                      <td>Alface</td>
+                      <td>12/06/2019</td>
+                      <td>Estufa 01</td>
+                      <td>
+                        <Badge color="success">ATIVO</Badge>
+                      </td>
+                    </tr>
+                  </tbody>
+                </Table>
+              </CardBody>
+            </Card>
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            <Card>
+              <CardHeader>
+                <strong>Sensores</strong>
+              </CardHeader>
+              <CardBody>
+                <Row>
+                  <Col sm="5">
+                    <CardTitle><h4>Temperatura da bancada (°C)</h4></CardTitle>
+                  </Col>
+                  <Col sm="7" className="d-none d-sm-inline-block">
+                    <ButtonToolbar className="float-right" aria-label="Toolbar with button groups">
+                      <ButtonGroup className="mr-3" aria-label="First group">
+                        <Button color="outline-secondary" onClick={() => this.onRadioBtnClick(1)} active={this.state.radioSelected === 1}>Day</Button>
+                        <Button color="outline-secondary" onClick={() => this.onRadioBtnClick(2)} active={this.state.radioSelected === 2}>Month</Button>
+                        <Button color="outline-secondary" onClick={() => this.onRadioBtnClick(3)} active={this.state.radioSelected === 3}>Year</Button>
+                      </ButtonGroup>
+                    </ButtonToolbar>
+                  </Col>
+                </Row>
+                <div className="chart-wrapper" style={{ height: 300 + 'px', marginTop: 40 + 'px' }}>
+                  <Line data={TempBancada} options={mainChartOpts} height={300} />
+                </div>
+              </CardBody>
+              <hr></hr>
+              <CardBody>
+                <Row>
+                  <Col sm="5">
+                    <CardTitle><h4>Temperatura da solução (°C)</h4></CardTitle>
+                  </Col>
+                  <Col sm="7" className="d-none d-sm-inline-block">
+                    <ButtonToolbar className="float-right" aria-label="Toolbar with button groups">
+                      <ButtonGroup className="mr-3" aria-label="First group">
+                        <Button color="outline-secondary" onClick={() => this.onRadioBtnClick(1)} active={this.state.radioSelected === 1}>Day</Button>
+                        <Button color="outline-secondary" onClick={() => this.onRadioBtnClick(2)} active={this.state.radioSelected === 2}>Month</Button>
+                        <Button color="outline-secondary" onClick={() => this.onRadioBtnClick(3)} active={this.state.radioSelected === 3}>Year</Button>
+                      </ButtonGroup>
+                    </ButtonToolbar>
+                  </Col>
+                </Row>
+                <div className="chart-wrapper" style={{ height: 300 + 'px', marginTop: 40 + 'px' }}>
+                  <Line data={TempSolucao} options={mainChartOpts} height={300} />
+                </div>
+              </CardBody>
+              <hr></hr>
+              <CardBody>
+                <Row>
+                  <Col sm="5">
+                    <CardTitle><h4>Medição de PH</h4></CardTitle>
+                  </Col>
+                  <Col sm="7" className="d-none d-sm-inline-block">
+                    <ButtonToolbar className="float-right" aria-label="Toolbar with button groups">
+                      <ButtonGroup className="mr-3" aria-label="First group">
+                        <Button color="outline-secondary" onClick={() => this.onRadioBtnClick(1)} active={this.state.radioSelected === 1}>Day</Button>
+                        <Button color="outline-secondary" onClick={() => this.onRadioBtnClick(2)} active={this.state.radioSelected === 2}>Month</Button>
+                        <Button color="outline-secondary" onClick={() => this.onRadioBtnClick(3)} active={this.state.radioSelected === 3}>Year</Button>
+                      </ButtonGroup>
+                    </ButtonToolbar>
+                  </Col>
+                </Row>
+                <div className="chart-wrapper" style={{ height: 300 + 'px', marginTop: 40 + 'px' }}>
+                  <Line data={MedicaoPH} options={mainChartOpts1} height={300} />
+                </div>
+              </CardBody>
+              <hr></hr>
+              <CardBody>
+                <Row>
+                  <Col sm="5">
+                    <CardTitle><h4>Medição de EC</h4></CardTitle>
+                  </Col>
+                  <Col sm="7" className="d-none d-sm-inline-block">               
+                    <ButtonToolbar className="float-right" aria-label="Toolbar with button groups">
+                      <ButtonGroup className="mr-3" aria-label="First group">
+                        <Button color="outline-secondary" onClick={() => this.onRadioBtnClick(1)} active={this.state.radioSelected === 1}>Day</Button>
+                        <Button color="outline-secondary" onClick={() => this.onRadioBtnClick(2)} active={this.state.radioSelected === 2}>Month</Button>
+                        <Button color="outline-secondary" onClick={() => this.onRadioBtnClick(3)} active={this.state.radioSelected === 3}>Year</Button>
+                      </ButtonGroup>
+                    </ButtonToolbar>
+                  </Col>
+                </Row>
+                <div className="chart-wrapper" style={{ height: 300 + 'px', marginTop: 40 + 'px' }}>
+                  <Line data={MedicaoEC} options={mainChartOpts} height={300} />
+                </div>
+              </CardBody>
+            </Card>
+          </Col>
+        </Row>
       </div>
-           
     );
   }
 }
