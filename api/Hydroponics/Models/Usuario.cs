@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Hydroponics.Models
@@ -22,7 +20,6 @@ namespace Hydroponics.Models
         [Column("senha")]
         [StringLength(20)]
         public string Senha { get; set; }
-        [Required]
         [Column("imagem", TypeName = "text")]
         public string Imagem { get; set; }
     }

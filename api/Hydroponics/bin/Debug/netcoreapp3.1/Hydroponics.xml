@@ -4,5 +4,19 @@
         <name>Hydroponics</name>
     </assembly>
     <members>
+        <member name="M:Hydroponics.Controllers.LoginController.PostLogin(Hydroponics.ViewModel.LoginViewModel)">
+            <summary>
+            Método para logar no sistema.
+            </summary>
+            <param name="login">Envia o email e a senha.</param>
+            <returns>Retorna o token de acesso.</returns>
+        </member>
+        <member name="M:Hydroponics.Controllers.UsuarioController.Post(Hydroponics.Models.Usuario)">
+            <summary>
+            Método para cadastrar usuário comum ou administrador no sistema.
+            </summary>
+            <param name="usuario">Envia nome completo, nome de usuário, email e senha.</param>
+            <returns>Retorna os dados do usuário recém cadastrado.</returns>
+        </member>
     </members>
 </doc>
