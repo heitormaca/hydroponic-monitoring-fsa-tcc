@@ -4,6 +4,7 @@ using Hydroponics.Repositorios;
 using Hydroponics.Useful;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Http;
 
 namespace Hydroponics.Controllers
 {
@@ -29,9 +30,9 @@ namespace Hydroponics.Controllers
                 usuario.Senha = senhaEncrypt;
                 await repositorio.Post(usuario);
             }
-            catch (System.Exception e)
+            catch (System.Exception e) 
             {
-                return StatusCode (500, e);
+                return StatusCode(500, e);
             }
             return Ok(usuario);
         }   

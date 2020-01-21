@@ -12,7 +12,6 @@ namespace Hydroponics.Repositorios
             await context.Usuario.AddAsync(usuario);
             await context.SaveChangesAsync();
             return usuario;
-            
         }
     }
 }
