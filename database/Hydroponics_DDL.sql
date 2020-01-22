@@ -2,9 +2,9 @@ CREATE DATABASE Hydroponics;
 USE Hydroponics;
 CREATE TABLE Usuario(
 	id_usuario INT IDENTITY PRIMARY KEY NOT NULL,
-	nome VARCHAR(50) NOT NULL,
+	nome VARCHAR(70) NOT NULL,
 	email VARCHAR(70) NOT NULL,
-	senha VARCHAR(20) NOT NULL,
+	senha VARCHAR(255) NOT NULL,
 	imagem TEXT
 );
 CREATE TABLE Estufa(

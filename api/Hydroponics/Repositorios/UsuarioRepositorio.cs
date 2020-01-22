@@ -1,6 +1,9 @@
+using System.Linq;
 using System.Threading.Tasks;
 using Hydroponics.Interfaces;
 using Hydroponics.Models;
+using Hydroponics.ViewModel;
+using Microsoft.EntityFrameworkCore;
 
 namespace Hydroponics.Repositorios
 {
@@ -13,5 +16,21 @@ namespace Hydroponics.Repositorios
             await context.SaveChangesAsync();
             return usuario;
         }
+        public Usuario VerificacaoEmail(ForgotPasswordViewModel verificacao)
+        {
+            Usuario usuario = context.Usuario.FirstOrDefault (u => u.Email == verificacao.Email);
+            return usuario;
+        }
+        public async Task<Usuario> Put(Usuario usuario) 
+        {
+            context.Entry (usuario).State = EntityState.Modified;
+            await context.SaveChangesAsync ();
+            return usuario;
+        }
+        public async Task<Usuario> GetById(int id) 
+        {
+            return await context.Usuario.FirstOrDefaultAsync(a => a.IdUsuario == id);
+        }
+
     }
 }

@@ -21,7 +21,7 @@ namespace Hydroponics.Models
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
-            {   
+            {
                 optionsBuilder.UseSqlServer("Server=.\\SQLEXPRESS;Database=Hydroponics;Integrated Security=True;");
             }
         }
@@ -31,7 +31,7 @@ namespace Hydroponics.Models
             modelBuilder.Entity<Bancada>(entity =>
             {
                 entity.HasKey(e => e.IdBancada)
-                    .HasName("PK__Bancada__028BFB5B24F7E4BA");
+                    .HasName("PK__Bancada__028BFB5BA6373FDE");
 
                 entity.Property(e => e.Nome).IsUnicode(false);
 
@@ -48,7 +48,7 @@ namespace Hydroponics.Models
             modelBuilder.Entity<BancadaSensores>(entity =>
             {
                 entity.HasKey(e => e.IdBancadaSensores)
-                    .HasName("PK__BancadaS__609AC5D62BF10B9B");
+                    .HasName("PK__BancadaS__609AC5D667E17628");
 
                 entity.HasOne(d => d.IdBancadaNavigation)
                     .WithMany(p => p.BancadaSensores)
@@ -59,7 +59,7 @@ namespace Hydroponics.Models
             modelBuilder.Entity<Estufa>(entity =>
             {
                 entity.HasKey(e => e.IdEstufa)
-                    .HasName("PK__Estufa__58AD6956C3FA0699");
+                    .HasName("PK__Estufa__58AD695616B3A23D");
 
                 entity.Property(e => e.Nome).IsUnicode(false);
             });
@@ -67,7 +67,7 @@ namespace Hydroponics.Models
             modelBuilder.Entity<Usuario>(entity =>
             {
                 entity.HasKey(e => e.IdUsuario)
-                    .HasName("PK__Usuario__4E3E04AD219E3737");
+                    .HasName("PK__Usuario__4E3E04AD69E53E7B");
 
                 entity.Property(e => e.Email).IsUnicode(false);
 

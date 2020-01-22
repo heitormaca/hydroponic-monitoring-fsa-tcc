@@ -24,10 +24,26 @@ class CadastroBancada extends Component {
           <CardBody>
             <Form action="" method="post">
               <FormGroup row className="my-0">
+                <Col xs="12">
+                  <FormGroup>
+                    <Label htmlFor="select">Estufa</Label>
+                    <Input type="select" name="select" id="select">
+                      <option value="0">Selecione uma opção</option>
+                      <option value="1">Estufa 01</option>
+                      <option value="2">Estufa 02</option>
+                      <option value="3">Estufa 03</option>
+                      <option value="3">Estufa 04</option>
+                      <option value="3">Estufa 05</option>
+                    </Input>
+                    <FormText className="help-block">Escolha a estufa que deseja vincular à bancada</FormText> 
+                  </FormGroup>
+                </Col>
+              </FormGroup>
+              <FormGroup row className="my-0">
                 <Col xs="6">
                   <FormGroup>
                     <Label>Nome da bancada</Label>
-                    <Input type="text" id="nf-name" name="nf-name" placeholder="Ex: Bancada-01" />
+                    <Input type="text" id="nf-name" name="nf-name" placeholder="Ex: Bancada-01"/>
                     <FormText className="help-block">Insira o nome da bancada</FormText>  
                   </FormGroup>
                 </Col>

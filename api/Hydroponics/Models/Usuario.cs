@@ -10,7 +10,7 @@ namespace Hydroponics.Models
         public int IdUsuario { get; set; }
         [Required]
         [Column("nome")]
-        [StringLength(50)]
+        [StringLength(70)]
         public string Nome { get; set; }
         [Required]
         [Column("email")]
@@ -18,7 +18,7 @@ namespace Hydroponics.Models
         public string Email { get; set; }
         [Required]
         [Column("senha")]
-        [StringLength(20)]
+        [StringLength(255)]
         public string Senha { get; set; }
         [Column("imagem", TypeName = "text")]
         public string Imagem { get; set; }

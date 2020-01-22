@@ -28,13 +28,6 @@ class AlterarSenha extends Component {
               <FormGroup row className="my-0">
                 <Col xs="4">
                   <FormGroup>
-                    <Label htmlFor="nf-name">Senha atual</Label>
-                    <Input type="password" id="nf-current-password" name="nf-current-password" />
-                    <FormText className="help-block">Insira a sua senha atual</FormText>
-                  </FormGroup>
-                </Col>
-                <Col xs="4">
-                  <FormGroup>
                     <Label htmlFor="nf-name">Nova senha</Label>
                     <Input type="password" id="nf-new-password" name="nf-new-password" />
                     <FormText className="help-block">Insira a sua nova senha</FormText>

@@ -18,5 +18,19 @@
             <param name="usuario">Envia nome completo, nome de usuário, email e senha.</param>
             <returns>Retorna os dados do usuário recém cadastrado.</returns>
         </member>
+        <member name="M:Hydroponics.Controllers.UsuarioController.ChangePassword(Hydroponics.ViewModel.updatePasswordViewModel)">
+            <summary>
+            Método para atualizar a senha do usuário.
+            </summary>
+            <param name="model">Envia a senha que seja ser atualizada.</param>
+            <returns>Retorna a senha do usuário atualizada.</returns>
+        </member>
+        <member name="M:Hydroponics.Controllers.UsuarioController.PostForgotPassword(Hydroponics.ViewModel.ForgotPasswordViewModel)">
+            <summary>
+            Método para enviar um email com uma nova senha para o usuário que à esqueceu.
+            </summary>
+            <param name="verificacao">Envia o nome completo e o email do usuário.</param>
+            <returns>Retorna os dados do usuário com uma nova senha.</returns>
+        </member>
     </members>
 </doc>

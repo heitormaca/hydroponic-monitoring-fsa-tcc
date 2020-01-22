@@ -49,7 +49,6 @@ namespace Hydroponics.Controllers
             Usuario usuario = loginRepositorio.Login(login);
             return usuario;
         }
-
         /// <summary>
         /// Método para logar no sistema.
         /// </summary>
