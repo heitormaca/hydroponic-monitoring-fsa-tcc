@@ -24,7 +24,7 @@ namespace Hydroponics.Models
         [StringLength(50)]
         public string Semeio { get; set; }
         [Column("dataInicio", TypeName = "datetime")]
-        public DateTime DataInicio { get; set; }
+        public DateTime? DataInicio { get; set; }
         [Column("dataFim", TypeName = "datetime")]
         public DateTime DataFim { get; set; }
         [Column("statusBancada")]

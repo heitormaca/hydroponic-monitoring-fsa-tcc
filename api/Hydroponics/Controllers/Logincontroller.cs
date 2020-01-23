@@ -31,7 +31,8 @@ namespace Hydroponics.Controllers
         {
             var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuracao["Jwt:key"]));
             var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
-            var claims = new[] {
+            var claims = new[] 
+            {
                 new Claim (JwtRegisteredClaimNames.Email, userInfo.Email),
                 new Claim (JwtRegisteredClaimNames.Jti, Guid.NewGuid ().ToString ()),
                 new Claim ("id", userInfo.IdUsuario.ToString ())
@@ -52,13 +53,15 @@ namespace Hydroponics.Controllers
         /// <summary>
         /// Método para logar no sistema.
         /// </summary>
-        /// <param name="login">Envia o email e a senha.</param>
+        /// <param name="login">Envia um email e uma senha.</param>
         /// <returns>Retorna o token de acesso.</returns>
         [AllowAnonymous]
         [HttpPost]
         public IActionResult PostLogin([FromBody] LoginViewModel login)
         {
-            IActionResult response = Unauthorized("Usuário ou senha incorreto.");
+            try
+            {
+                IActionResult response = Unauthorized("Usuário ou senha incorreto.");
             var user = Autenticacao(login);
             if (user != null)
             {
@@ -66,6 +69,11 @@ namespace Hydroponics.Controllers
                 response = Ok(new { token = tokenString });
             }
             return response;
+            }
+            catch (System.Exception e)
+            {
+                return StatusCode(500, e);
+            }
         }
     }
 }

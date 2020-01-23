@@ -18,13 +18,13 @@ namespace Hydroponics.Repositorios
         }
         public Usuario VerificacaoEmail(ForgotPasswordViewModel verificacao)
         {
-            Usuario usuario = context.Usuario.FirstOrDefault (u => u.Email == verificacao.Email);
+            Usuario usuario = context.Usuario.FirstOrDefault(u => u.Email == verificacao.Email);
             return usuario;
         }
         public async Task<Usuario> Put(Usuario usuario) 
         {
             context.Entry (usuario).State = EntityState.Modified;
-            await context.SaveChangesAsync ();
+            await context.SaveChangesAsync();
             return usuario;
         }
         public async Task<Usuario> GetById(int id) 

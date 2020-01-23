@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Hydroponics.Models
@@ -8,6 +9,8 @@ namespace Hydroponics.Models
         [Key]
         [Column("id_bancadaSensores")]
         public int IdBancadaSensores { get; set; }
+        [Column("dataAtual", TypeName = "datetime")]
+        public DateTime? DataAtual { get; set; }
         [Column("sensorTempBanc")]
         public double SensorTempBanc { get; set; }
         [Column("sensorTempSol")]

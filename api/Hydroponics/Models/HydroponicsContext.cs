@@ -31,7 +31,9 @@ namespace Hydroponics.Models
             modelBuilder.Entity<Bancada>(entity =>
             {
                 entity.HasKey(e => e.IdBancada)
-                    .HasName("PK__Bancada__028BFB5BA6373FDE");
+                    .HasName("PK__Bancada__028BFB5B9CDA8DBC");
+
+                entity.Property(e => e.DataInicio).HasDefaultValueSql("(getdate())");
 
                 entity.Property(e => e.Nome).IsUnicode(false);
 
@@ -42,24 +44,28 @@ namespace Hydroponics.Models
                 entity.HasOne(d => d.IdEstufaNavigation)
                     .WithMany(p => p.Bancada)
                     .HasForeignKey(d => d.IdEstufa)
-                    .HasConstraintName("FK__Bancada__id_estu__4E88ABD4");
+                    .HasConstraintName("FK__Bancada__id_estu__5070F446");
             });
 
             modelBuilder.Entity<BancadaSensores>(entity =>
             {
                 entity.HasKey(e => e.IdBancadaSensores)
-                    .HasName("PK__BancadaS__609AC5D667E17628");
+                    .HasName("PK__BancadaS__609AC5D6682B5785");
+
+                entity.Property(e => e.DataAtual).HasDefaultValueSql("(getdate())");
 
                 entity.HasOne(d => d.IdBancadaNavigation)
                     .WithMany(p => p.BancadaSensores)
                     .HasForeignKey(d => d.IdBancada)
-                    .HasConstraintName("FK__BancadaSe__id_ba__5165187F");
+                    .HasConstraintName("FK__BancadaSe__id_ba__5441852A");
             });
 
             modelBuilder.Entity<Estufa>(entity =>
             {
                 entity.HasKey(e => e.IdEstufa)
-                    .HasName("PK__Estufa__58AD695616B3A23D");
+                    .HasName("PK__Estufa__58AD6956DDA5CB1C");
+
+                entity.Property(e => e.DataInicio).HasDefaultValueSql("(getdate())");
 
                 entity.Property(e => e.Nome).IsUnicode(false);
             });
@@ -67,7 +73,7 @@ namespace Hydroponics.Models
             modelBuilder.Entity<Usuario>(entity =>
             {
                 entity.HasKey(e => e.IdUsuario)
-                    .HasName("PK__Usuario__4E3E04AD69E53E7B");
+                    .HasName("PK__Usuario__4E3E04AD3CF9B712");
 
                 entity.Property(e => e.Email).IsUnicode(false);
 

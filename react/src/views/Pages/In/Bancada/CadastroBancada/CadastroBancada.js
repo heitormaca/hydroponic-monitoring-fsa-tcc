@@ -24,7 +24,7 @@ class CadastroBancada extends Component {
           <CardBody>
             <Form action="" method="post">
               <FormGroup row className="my-0">
-                <Col xs="12">
+              <Col xs="6">
                   <FormGroup>
                     <Label htmlFor="select">Estufa</Label>
                     <Input type="select" name="select" id="select">
@@ -38,8 +38,6 @@ class CadastroBancada extends Component {
                     <FormText className="help-block">Escolha a estufa que deseja vincular à bancada</FormText> 
                   </FormGroup>
                 </Col>
-              </FormGroup>
-              <FormGroup row className="my-0">
                 <Col xs="6">
                   <FormGroup>
                     <Label>Nome da bancada</Label>
@@ -47,27 +45,20 @@ class CadastroBancada extends Component {
                     <FormText className="help-block">Insira o nome da bancada</FormText>  
                   </FormGroup>
                 </Col>
-                <Col xs="6">
+              </FormGroup>
+              <FormGroup row className="my-0">
+              <Col xs="6">
                   <FormGroup>
                     <Label>Tipo de semeio</Label>
                     <Input type="text" id="type-sem" placeholder="Ex: Alface" />
                     <FormText className="help-block">Insira o tipo de semeio</FormText>  
                   </FormGroup>
                 </Col>
-              </FormGroup>
-              <FormGroup row className="my-0">
                 <Col xs="6">
                   <FormGroup>
-                    <Label htmlFor="date-input">Date de inicio</Label>
-                    <Input type="date" id="date-input-i" name="date-input-i" placeholder="date" />
-                    <FormText className="help-block">Insira a data de inicio da bancada</FormText>  
-                  </FormGroup>
-                </Col>
-                <Col xs="6">
-                  <FormGroup>
-                    <Label htmlFor="date-input">Data de fim</Label>
+                    <Label htmlFor="date-input">Data de finalização</Label>
                     <Input type="date" id="date-input-f" name="date-input-f" placeholder="date" />
-                    <FormText className="help-block">Insira a data de fim da bancada</FormText>  
+                    <FormText className="help-block">Insira a data prevista para a finalização da bancada</FormText>  
                   </FormGroup>
                 </Col>
               </FormGroup>
