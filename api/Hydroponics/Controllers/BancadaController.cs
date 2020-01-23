@@ -16,7 +16,7 @@ namespace Hydroponics.Controllers
         /// <summary>
         /// Método para cadastrar uma bancada.
         /// </summary>
-        /// <param name="bancada">Envia um nome, semeio, dataFim, sensorTempBancMax, sensorTempBancMin, sensorTempSolMax, sensorTempSolMin, sensorTempPhMAx, sensorTempPhMin, sensorTempEcMax, sensorTempEcMin e estufa.</param>
+        /// <param name="bancada">Envia um nome, semeio, dataFim, sensorTempBancMax, sensorTempBancMin, sensorTempSolMax, sensorTempSolMin, sensorTempPhMAx, sensorTempPhMin, sensorTempEcMax, sensorTempEcMin e id_estufa.</param>
         /// <returns>Retorna a bancada cadastrada.</returns>
         [Authorize]
         [HttpPost]

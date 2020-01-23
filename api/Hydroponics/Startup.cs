@@ -87,6 +87,7 @@ namespace Hydroponics
             app.UseSwaggerUI(c =>
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "API V1");
+                // https://localhost:5001/swagger/index.html
             });
         }
     }

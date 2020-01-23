@@ -8,7 +8,7 @@
             <summary>
             Método para cadastrar uma bancada.
             </summary>
-            <param name="bancada">Envia um nome, semeio, dataFim, sensorTempBancMax, sensorTempBancMin, sensorTempSolMax, sensorTempSolMin, sensorTempPhMAx, sensorTempPhMin, sensorTempEcMax, sensorTempEcMin e estufa.</param>
+            <param name="bancada">Envia um nome, semeio, dataFim, sensorTempBancMax, sensorTempBancMin, sensorTempSolMax, sensorTempSolMin, sensorTempPhMAx, sensorTempPhMin, sensorTempEcMax, sensorTempEcMin e id_estufa.</param>
             <returns>Retorna a bancada cadastrada.</returns>
         </member>
         <member name="M:Hydroponics.Controllers.BancadaController.GetList">
@@ -28,6 +28,13 @@
             Método para buscar uma bancada especifica.
             </summary>
             <returns>Retorna uma bancada específica ou erro 500.</returns>
+        </member>
+        <member name="M:Hydroponics.Controllers.BancadaSensoresController.Post(Hydroponics.Models.BancadaSensores)">
+            <summary>
+            Método para cadastrar um conjunto de dados dos sensores.
+            </summary>
+            <param name="bancadaSensores">Envia um sensorTempBanc, sensorTempSol, sensorPh, sensorEc e id_bancada.</param>
+            <returns>Retorna a estufa cadastrada ou erro 500.</returns>
         </member>
         <member name="M:Hydroponics.Controllers.EstufaController.Post(Hydroponics.Models.Estufa)">
             <summary>
