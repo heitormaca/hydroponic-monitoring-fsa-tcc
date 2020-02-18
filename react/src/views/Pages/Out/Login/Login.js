@@ -1,41 +1,38 @@
 import React, { Component } from 'react';
-import { parseJwt } from '../../../../services/auth'
 import Axios from 'axios';
 import { Button, Card, CardBody, CardGroup, Col, Container, Form, Input, InputGroup, InputGroupAddon, InputGroupText, Row } from 'reactstrap';
 import { Link } from 'react-router-dom';
 
 class Login extends Component {
+  state = {
+    email: '',
+    senha: '',
+    erroMensagem: '',
+    isLoading: false
+  }
 
-  constructor(props){
-    super(props);
-    this.state = {
-      email : '',
-      senha : '',
-      erroMensagem : '',
-      isLoading : false
-    }
-  }
-  efetuaLogin(event){
+  efetuaLogin = async (event) => {
     event.preventDefault();
-    this.setState({erroMensagem : ''})
-    this.setState({isLoading : true });
-    Axios.post(
-      'https://localhost:5001/api/Login',
-      {  email : this.state.email, senha : this.state.senha })
-    .then(data => {     
-      if (data.status === 200){
-      localStorage.setItem('autenticarlogin', data.data.token)
-      this.setState({isLoading : false});
-      var base64 = localStorage.getItem('autenticarlogin').split('.')[1];
-      this.props.history.push('/home')
-    }})
-    .catch(erro => {
-      this.setState({erroMensagem : 'E-mail ou senha inválidos!'})
-      this.setState({isLoading : false});
-    });
+    await this.setState({ erroMensagem: '' });
+    await this.setState({ isLoading: true });
+
+    const body = { email: this.state.email, senha: this.state.senha };
+
+    Axios.post('http://localhost:5000/api/Login', body)
+      .then(async (data) => {
+        if (data.status === 200) {
+          localStorage.setItem('autenticarlogin', data.data.token)
+          await this.setState({ isLoading: false });
+          this.props.history.push('/dashboard')
+        }
+      })
+      .catch(erro => {
+        this.setState({ erroMensagem: 'E-mail ou senha inválidos!'})
+        this.setState({ isLoading: false });
+      });
   }
-  atualizaStateCampo(event){
-    this.setState({ [event.target.name] : event.target.value })
+  atualizaStateCampo(event) {
+    this.setState({ [event.target.name]: event.target.value })
     this.setState()
   }
   render() {
@@ -47,19 +44,19 @@ class Login extends Component {
               <CardGroup>
                 <Card className="p-4">
                   <CardBody>
-                    <Form action="" method="post">
+                    <Form onSubmit={this.efetuaLogin}>
                       <h1>Login</h1>
                       <p className="text-muted">Entre com a sua conta</p>
                       <InputGroup className="mb-3">
                         <InputGroupAddon addonType="prepend">
                           <InputGroupText>
-                            <i className="icon-user"></i>
+                            <i className="icon-envelope"></i>
                           </InputGroupText>
                         </InputGroupAddon>
-                        <Input 
-                          type="text" 
-                          placeholder="E-mail" 
-                          autoComplete="email" 
+                        <Input
+                          type="text"
+                          placeholder="E-mail"
+                          autoComplete="email"
                           name="email"
                           value={this.state.email}
                           onChange={this.atualizaStateCampo.bind(this)}
@@ -71,30 +68,33 @@ class Login extends Component {
                             <i className="icon-lock"></i>
                           </InputGroupText>
                         </InputGroupAddon>
-                        <Input 
-                          type="password" 
-                          placeholder="Senha" 
+                        <Input
+                          type="password"
+                          placeholder="Senha"
                           autoComplete="senha-atual"
                           name="senha"
                           value={this.state.senha}
-                          onChange={this.atualizaStateCampo.bind(this)} 
+                          onChange={this.atualizaStateCampo.bind(this)}
                         />
                       </InputGroup>
                       <Row>
+                        <Col xs="12">
+                          <p style={{ color : 'red' }}>{this.state.erroMensagem}</p>
+                        </Col>
                         <Col xs="6">
-                          <p color="alert">{this.state.erroMensagem}</p>
                           {
                             this.state.isLoading === false &&
                             <Button color="primary" className="px-4">Entrar</Button>
                           }
                           {
                             this.state.isLoading === true &&
-                            <Button type="submit" disabled>Carregando...</Button>   
+                            <Button type="submit" disabled>Carregando...</Button>
                           }
                         </Col>
                         <Col xs="6" className="text-right">
                           <Link to={'/esquecisenha'}><Button color="link" className="px-0">Esqueceu a senha?</Button></Link>
                         </Col>
+                          
                       </Row>
                     </Form>
                   </CardBody>
@@ -104,8 +104,10 @@ class Login extends Component {
                     <div>
                       <h2>Inscreva-se</h2>
                       <p>Seja bem vindo ao sitema de monitoramento de estufas hidroponicas. Se você é novo por aqui clique no botão a baixo e faça seu cadastro.</p>
-                      <Link to="/register">
-                        <Link to={'/cadastro'}><Button color="primary" className="mt-3" active tabIndex={-1}>Cadastre-se!</Button></Link>
+                      <Link to={'/cadastro'}>
+                        <Button color="primary" className="mt-3" active tabIndex={-1}>
+                          Cadastre-se!
+                          </Button>
                       </Link>
                     </div>
                   </CardBody>

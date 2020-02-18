@@ -50,6 +50,14 @@ namespace Hydroponics.Controllers
         {  
             try
             {
+                var listUser = await repositorio.GetList();
+                foreach (var item in listUser)
+                {
+                    if (usuario.Email == item.Email)
+                    {
+                        return BadRequest("Este email já possui um cadastro.");
+                    }
+                }
                 var senhaEncrypt = encrypt.Encrypt(usuario.Senha);
                 usuario.Senha = senhaEncrypt;
                 return Ok(await repositorio.Post(usuario));

@@ -2,7 +2,9 @@ import React, { Component, Suspense } from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
 import * as router from 'react-router-dom';
 import { Container } from 'reactstrap';
-
+import navigation from '../../_nav';
+import routes from '../../routes';
+import { usuarioAutenticado } from '../../services/auth';
 import {
   AppFooter,
   AppHeader,
@@ -14,16 +16,20 @@ import {
   AppBreadcrumb2 as AppBreadcrumb,
   AppSidebarNav2 as AppSidebarNav,
 } from '@coreui/react';
-// sidebar nav config
-import navigation from '../../_nav';
-// routes config
-import routes from '../../routes';
 
 const DefaultFooter = React.lazy(() => import('../DefaultFooter/DefaultFooter'));
 const DefaultHeader = React.lazy(() => import('../DefaultHeader/DefaultHeader'));
 
 class DefaultLayout extends Component {
 
+
+  componentDidMount() {
+    // TODO: realizar requisição de validação do token
+    // api.testarToken(localStorage.getItem('autenticarlogin'))
+    // Axios.post('endereco_api/testarToken')
+    // .then(r => r.code === 200 ? deubom : deu ruim da redirect)
+  }
+  
   loading = () => <div className="animated fadeIn pt-1 text-center">Loading...</div>
 
   signOut(e) {
@@ -32,6 +38,8 @@ class DefaultLayout extends Component {
   }
 
   render() {
+    if (!usuarioAutenticado()) return <Redirect to="/login" />
+
     return (
       <div className="app">
         <AppHeader fixed>
@@ -66,7 +74,7 @@ class DefaultLayout extends Component {
                         )} />
                     ) : (null);
                   })}
-                  <Redirect from="/" to="/Login" />
+                  <Redirect from="/" to="/login" />
                 </Switch>
               </Suspense>
             </Container>

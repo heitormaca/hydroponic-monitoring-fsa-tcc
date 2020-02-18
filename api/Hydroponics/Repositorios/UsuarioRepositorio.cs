@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Hydroponics.Interfaces;
@@ -32,5 +33,9 @@ namespace Hydroponics.Repositorios
             return await context.Usuario.FirstOrDefaultAsync(a => a.IdUsuario == id);
         }
 
+        public async Task<List<Usuario>> GetList()
+        {
+            return await context.Usuario.ToListAsync();
+        }
     }
 }

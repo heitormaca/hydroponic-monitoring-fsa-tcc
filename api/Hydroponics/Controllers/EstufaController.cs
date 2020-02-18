@@ -19,7 +19,7 @@ namespace Hydroponics.Controllers
         /// </summary>
         /// <param name="estufa">Envia um nome.</param>
         /// <returns>Retorna a estufa cadastrada ou erro 500.</returns>
-        [Authorize]
+        // [Authorize]
         [HttpPost]
         public async Task<IActionResult> Post(Estufa estufa)
         {
