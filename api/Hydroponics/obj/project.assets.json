@@ -5619,19 +5619,21 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\heito\\Desktop\\fsa-tcc\\api\\Hydroponics\\Hydroponics.csproj",
+      "projectUniqueName": "C:\\Users\\heito\\Desktop\\Projetos\\hydroponic-monitoring-fsa-tcc\\api\\Hydroponics\\Hydroponics.csproj",
       "projectName": "Hydroponics",
-      "projectPath": "C:\\Users\\heito\\Desktop\\fsa-tcc\\api\\Hydroponics\\Hydroponics.csproj",
+      "projectPath": "C:\\Users\\heito\\Desktop\\Projetos\\hydroponic-monitoring-fsa-tcc\\api\\Hydroponics\\Hydroponics.csproj",
       "packagesPath": "C:\\Users\\heito\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\heito\\Desktop\\fsa-tcc\\api\\Hydroponics\\obj\\",
+      "outputPath": "C:\\Users\\heito\\Desktop\\Projetos\\hydroponic-monitoring-fsa-tcc\\api\\Hydroponics\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\heito\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\heito\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.1"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -5695,7 +5697,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.100\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
       }
     }
   }
