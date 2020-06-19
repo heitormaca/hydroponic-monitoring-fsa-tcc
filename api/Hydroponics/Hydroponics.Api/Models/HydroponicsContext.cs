@@ -24,7 +24,6 @@ namespace Hydroponics.Models
             {
                 // optionsBuilder.UseSqlServer("Server=.\\SQLEXPRESS;Database=Hydroponics;Integrated Security=True;");
                 optionsBuilder.UseSqlServer("Data Source=den1.mssql8.gear.host; User ID=hydroponics;Password=Fo4j0_OiN?17; Connect Timeout=30; Encrypt=False; TrustServerCertificate=False; ApplicationIntent=ReadWrite; MultiSubnetFailover=False");
-
             }
         }
 
