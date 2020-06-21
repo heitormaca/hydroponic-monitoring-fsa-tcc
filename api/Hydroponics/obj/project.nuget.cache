@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "wONO8kqsmK7RdAG14CIk8oDy+j8dgyQRP951olzx74lceIfxpk4tjHmCRrJweey6pnXgVCdstTKKNTsm/5UvnA==",
+  "dgSpecHash": "yqo0OS9hJ+Lb331XejF5O0pGpMw6WL9JdtQylMqyLhOcUqNcKatXM/3ibgtgVK3ni1ubQ23FaTEx/6v8o7Y+Ag==",
   "success": true,
-  "projectFilePath": "C:\\Users\\heito\\Desktop\\Projetos\\hydroponic-monitoring-fsa-tcc\\api\\Hydroponics\\Hydroponics.csproj",
+  "projectFilePath": "C:\\Users\\heito\\Desktop\\hydroponic-monitoring-fsa-tcc\\api\\Hydroponics\\Hydroponics.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\heito\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\3.1.1\\microsoft.aspnetcore.authentication.jwtbearer.3.1.1.nupkg.sha512",
     "C:\\Users\\heito\\.nuget\\packages\\microsoft.aspnetcore.jsonpatch\\3.1.1\\microsoft.aspnetcore.jsonpatch.3.1.1.nupkg.sha512",

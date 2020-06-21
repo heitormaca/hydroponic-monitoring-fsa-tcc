@@ -5619,11 +5619,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\heito\\Desktop\\Projetos\\hydroponic-monitoring-fsa-tcc\\api\\Hydroponics\\Hydroponics.csproj",
+      "projectUniqueName": "C:\\Users\\heito\\Desktop\\hydroponic-monitoring-fsa-tcc\\api\\Hydroponics\\Hydroponics.csproj",
       "projectName": "Hydroponics",
-      "projectPath": "C:\\Users\\heito\\Desktop\\Projetos\\hydroponic-monitoring-fsa-tcc\\api\\Hydroponics\\Hydroponics.csproj",
+      "projectPath": "C:\\Users\\heito\\Desktop\\hydroponic-monitoring-fsa-tcc\\api\\Hydroponics\\Hydroponics.csproj",
       "packagesPath": "C:\\Users\\heito\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\heito\\Desktop\\Projetos\\hydroponic-monitoring-fsa-tcc\\api\\Hydroponics\\obj\\",
+      "outputPath": "C:\\Users\\heito\\Desktop\\hydroponic-monitoring-fsa-tcc\\api\\Hydroponics\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\heito\\AppData\\Roaming\\NuGet\\NuGet.Config",
