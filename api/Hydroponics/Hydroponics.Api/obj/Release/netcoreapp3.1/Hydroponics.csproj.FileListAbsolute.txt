@@ -125,9 +125,6 @@ C:\Users\heito\Desktop\hydroponic-monitoring-fsa-tcc\api\Hydroponics\Hydroponics
 C:\Users\heito\Desktop\hydroponic-monitoring-fsa-tcc\api\Hydroponics\Hydroponics.Api\bin\Release\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Runtime.Caching.dll
 C:\Users\heito\Desktop\hydroponic-monitoring-fsa-tcc\api\Hydroponics\Hydroponics.Api\bin\Release\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\heito\Desktop\hydroponic-monitoring-fsa-tcc\api\Hydroponics\Hydroponics.Api\obj\Release\netcoreapp3.1\Hydroponics.csprojAssemblyReference.cache
-C:\Users\heito\Desktop\hydroponic-monitoring-fsa-tcc\api\Hydroponics\Hydroponics.Api\obj\Release\netcoreapp3.1\Hydroponics.csproj.CoreCompileInputs.cache
-C:\Users\heito\Desktop\hydroponic-monitoring-fsa-tcc\api\Hydroponics\Hydroponics.Api\obj\Release\netcoreapp3.1\Hydroponics.MvcApplicationPartsAssemblyInfo.cs
-C:\Users\heito\Desktop\hydroponic-monitoring-fsa-tcc\api\Hydroponics\Hydroponics.Api\obj\Release\netcoreapp3.1\Hydroponics.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\heito\Desktop\hydroponic-monitoring-fsa-tcc\api\Hydroponics\Hydroponics.Api\obj\Release\netcoreapp3.1\Hydroponics.AssemblyInfoInputs.cache
 C:\Users\heito\Desktop\hydroponic-monitoring-fsa-tcc\api\Hydroponics\Hydroponics.Api\obj\Release\netcoreapp3.1\Hydroponics.AssemblyInfo.cs
 C:\Users\heito\Desktop\hydroponic-monitoring-fsa-tcc\api\Hydroponics\Hydroponics.Api\obj\Release\netcoreapp3.1\Hydroponics.RazorTargetAssemblyInfo.cache
@@ -138,3 +135,6 @@ C:\Users\heito\Desktop\hydroponic-monitoring-fsa-tcc\api\Hydroponics\Hydroponics
 C:\Users\heito\Desktop\hydroponic-monitoring-fsa-tcc\api\Hydroponics\Hydroponics.Api\obj\Release\netcoreapp3.1\Hydroponics.xml
 C:\Users\heito\Desktop\hydroponic-monitoring-fsa-tcc\api\Hydroponics\Hydroponics.Api\obj\Release\netcoreapp3.1\Hydroponics.pdb
 C:\Users\heito\Desktop\hydroponic-monitoring-fsa-tcc\api\Hydroponics\Hydroponics.Api\obj\Release\netcoreapp3.1\Hydroponics.genruntimeconfig.cache
+C:\Users\heito\Desktop\hydroponic-monitoring-fsa-tcc\api\Hydroponics\Hydroponics.Api\obj\Release\netcoreapp3.1\Hydroponics.csproj.CoreCompileInputs.cache
+C:\Users\heito\Desktop\hydroponic-monitoring-fsa-tcc\api\Hydroponics\Hydroponics.Api\obj\Release\netcoreapp3.1\Hydroponics.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\heito\Desktop\hydroponic-monitoring-fsa-tcc\api\Hydroponics\Hydroponics.Api\obj\Release\netcoreapp3.1\Hydroponics.MvcApplicationPartsAssemblyInfo.cache
