@@ -5,6 +5,6 @@
   </PropertyGroup>
   <PropertyGroup>
     <ActiveDebugProfile>Hydroponics</ActiveDebugProfile>
-    <NameOfLastUsedPublishProfile>hydroponics-tcc - Web Deploy</NameOfLastUsedPublishProfile>
+    <NameOfLastUsedPublishProfile>hydroponics-api - Web Deploy</NameOfLastUsedPublishProfile>
   </PropertyGroup>
 </Project>
