@@ -1,5 +1,5 @@
 CREATE DATABASE Hydroponics;
-USE Hydroponics;
+USE hydroponics;
 CREATE TABLE Usuario(
 	id_usuario INT IDENTITY PRIMARY KEY NOT NULL,
 	nome VARCHAR(70) NOT NULL,
@@ -10,7 +10,8 @@ CREATE TABLE Usuario(
 CREATE TABLE Estufa(
 	id_estufa INT IDENTITY PRIMARY KEY NOT NULL,
 	nome VARCHAR(50) NOT NULL,
-	dataInicio DATETIME DEFAULT GETDATE()
+	dataInicio DATETIME DEFAULT GETDATE(),
+	id_usuario INT FOREIGN KEY REFERENCES Usuario(id_usuario)
 );
 CREATE TABLE Bancada(
 	id_bancada INT IDENTITY PRIMARY KEY NOT NULL,
@@ -38,3 +39,10 @@ CREATE TABLE BancadaSensores(
 	sensorEc FLOAT NOT NULL,
 	id_bancada INT FOREIGN KEY REFERENCES Bancada(id_bancada)
 );
+
+drop table BancadaSensores;
+drop table Bancada;
+drop table Estufa;
+drop table Usuario;
+
+select * from Estufa;

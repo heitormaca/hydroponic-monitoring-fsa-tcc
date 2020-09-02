@@ -18,7 +18,8 @@ class Login extends Component {
 
     const body = { email: this.state.email, senha: this.state.senha };
 
-    Axios.post('https://hydroponics-tcc.azurewebsites.net/api/Login', body)
+    Axios.post('http://hydroponics-api.azurewebsites.net/api/Login', body)
+    // Axios.post('https://localhost:5001/api/Login', body)
       .then(async (data) => {
         if (data.status === 200) {
           localStorage.setItem('autenticarlogin', data.data.token)

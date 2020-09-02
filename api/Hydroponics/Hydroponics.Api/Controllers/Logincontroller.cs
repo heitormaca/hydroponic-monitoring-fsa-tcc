@@ -47,8 +47,8 @@ namespace Hydroponics.Controllers
         {
             var senhaEncrypt = encrypt.Encrypt(login.Senha);
             login.Senha = senhaEncrypt;
-            Usuario usuario = loginRepositorio.Login(login);
-            return usuario;
+            Usuario user = loginRepositorio.Login(login);
+            return user;
         }
         /// <summary>
         /// Método para logar no sistema.
