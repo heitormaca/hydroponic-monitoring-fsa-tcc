@@ -1,12 +1,19 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Hydroponics.Models
 {
     public partial class Usuario
     {
+        public Usuario()
+        {
+            Estufa = new HashSet<Estufa>();
+        }
+
         [Key]
-        [Column("id_usuario")]
+        [Column("idUsuario")]
         public int IdUsuario { get; set; }
         [Required]
         [Column("nome")]
@@ -22,5 +29,8 @@ namespace Hydroponics.Models
         public string Senha { get; set; }
         [Column("imagem", TypeName = "text")]
         public string Imagem { get; set; }
+
+        [InverseProperty("IdUsuarioNavigation")]
+        public virtual ICollection<Estufa> Estufa { get; set; }
     }
 }

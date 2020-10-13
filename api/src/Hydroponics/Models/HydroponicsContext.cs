@@ -1,41 +1,61 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace Hydroponics.Models
 {
-    public partial class HydroponicsContext : DbContext
+    public partial class hydroponicsContext : DbContext
     {
-        public HydroponicsContext()
+        public hydroponicsContext()
         {
         }
 
-        public HydroponicsContext(DbContextOptions<HydroponicsContext> options)
+        public hydroponicsContext(DbContextOptions<hydroponicsContext> options)
             : base(options)
         {
         }
 
-        public virtual DbSet<Bancada> Bancada { get; set; }
-        public virtual DbSet<BancadaSensores> BancadaSensores { get; set; }
+        public virtual DbSet<BancadaFisica> BancadaFisica { get; set; }
+        public virtual DbSet<BancadaVirtual> BancadaVirtual { get; set; }
         public virtual DbSet<Estufa> Estufa { get; set; }
+        public virtual DbSet<Medicao> Medicao { get; set; }
         public virtual DbSet<Usuario> Usuario { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
             {
-                // optionsBuilder.UseSqlServer("Server=.\\SQLEXPRESS;Database=Hydroponics;Integrated Security=True;");
-                optionsBuilder.UseSqlServer("Data Source=den1.mssql8.gear.host; User ID=hydroponics;Password=Fo4j0_OiN?17; Connect Timeout=30; Encrypt=False; TrustServerCertificate=False; ApplicationIntent=ReadWrite; MultiSubnetFailover=False");
-
+                optionsBuilder.UseSqlServer("Server=den1.mssql7.gear.host;Database=hydroponics;uid=hydroponics;Password=C6}Ew5S!IONna3;Trusted_Connection=False;");
             }
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Bancada>(entity =>
+            modelBuilder.Entity<BancadaFisica>(entity =>
             {
-                entity.HasKey(e => e.IdBancada)
-                    .HasName("PK__Bancada__028BFB5B9CDA8DBC");
+                entity.HasKey(e => e.IdBancadaFisica)
+                    .HasName("PK__BancadaF__302F22F96ABE9196");
 
                 entity.Property(e => e.DataInicio).HasDefaultValueSql("(getdate())");
+
+                entity.Property(e => e.Localizacao).IsUnicode(false);
+
+                entity.Property(e => e.Nome).IsUnicode(false);
+
+                entity.HasOne(d => d.IdEstufaNavigation)
+                    .WithMany(p => p.BancadaFisica)
+                    .HasForeignKey(d => d.IdEstufa)
+                    .HasConstraintName("FK__BancadaFi__idEst__7A672E12");
+            });
+
+            modelBuilder.Entity<BancadaVirtual>(entity =>
+            {
+                entity.HasKey(e => e.IdBancadaVirtual)
+                    .HasName("PK__BancadaV__53E8FBF5C8808B45");
+
+                entity.Property(e => e.DataInicio).HasDefaultValueSql("(getdate())");
+
+                entity.Property(e => e.Dispositivo).IsUnicode(false);
 
                 entity.Property(e => e.Nome).IsUnicode(false);
 
@@ -43,39 +63,38 @@ namespace Hydroponics.Models
 
                 entity.Property(e => e.StatusBancada).HasDefaultValueSql("((1))");
 
-                entity.HasOne(d => d.IdEstufaNavigation)
-                    .WithMany(p => p.Bancada)
-                    .HasForeignKey(d => d.IdEstufa)
-                    .HasConstraintName("FK__Bancada__id_estu__5070F446");
-            });
-
-            modelBuilder.Entity<BancadaSensores>(entity =>
-            {
-                entity.HasKey(e => e.IdBancadaSensores)
-                    .HasName("PK__BancadaS__609AC5D6682B5785");
-
-                entity.Property(e => e.DataAtual).HasDefaultValueSql("(getdate())");
-
-                entity.HasOne(d => d.IdBancadaNavigation)
-                    .WithMany(p => p.BancadaSensores)
-                    .HasForeignKey(d => d.IdBancada)
-                    .HasConstraintName("FK__BancadaSe__id_ba__5441852A");
+                entity.HasOne(d => d.IdBancadaFisicaNavigation)
+                    .WithMany(p => p.BancadaVirtual)
+                    .HasForeignKey(d => d.IdBancadaFisica)
+                    .HasConstraintName("FK__BancadaVi__idBan__7F2BE32F");
             });
 
             modelBuilder.Entity<Estufa>(entity =>
             {
                 entity.HasKey(e => e.IdEstufa)
-                    .HasName("PK__Estufa__58AD6956DDA5CB1C");
+                    .HasName("PK__Estufa__99E11D6B25D85581");
 
                 entity.Property(e => e.DataInicio).HasDefaultValueSql("(getdate())");
 
                 entity.Property(e => e.Nome).IsUnicode(false);
+
+                entity.HasOne(d => d.IdUsuarioNavigation)
+                    .WithMany(p => p.Estufa)
+                    .HasForeignKey(d => d.IdUsuario)
+                    .HasConstraintName("FK__Estufa__idUsuari__76969D2E");
+            });
+
+            modelBuilder.Entity<Medicao>(entity =>
+            {
+                entity.Property(e => e.DataMedicao).HasDefaultValueSql("(getdate())");
+
+                entity.Property(e => e.Dispositivo).IsUnicode(false);
             });
 
             modelBuilder.Entity<Usuario>(entity =>
             {
                 entity.HasKey(e => e.IdUsuario)
-                    .HasName("PK__Usuario__4E3E04AD3CF9B712");
+                    .HasName("PK__Usuario__645723A618AD12DD");
 
                 entity.Property(e => e.Email).IsUnicode(false);
 

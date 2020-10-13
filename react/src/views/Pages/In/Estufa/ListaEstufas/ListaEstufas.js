@@ -27,8 +27,8 @@ class ListaEstufa extends Component {
                     <tr>
                       <td>0001</td>
                       <td><Link to="/estufas/estufa">Estufa 01</Link></td>
-                      <td>12/06/2019</td>
-                      <td>3</td>
+                      <td>01/10/2020</td>
+                      <td>0</td>
                     </tr>
                     <tr>
                       <td>0002</td>

@@ -365,7 +365,7 @@ class Bancada extends Component {
                       <td>0001</td>
                       <td>Bancada 01</td>
                       <td>Alface</td>
-                      <td>12/06/2019</td>
+                      <td>01/10/2020</td>
                       <td>Estufa 01</td>
                       <td>
                         <Badge color="success">ATIVO</Badge>

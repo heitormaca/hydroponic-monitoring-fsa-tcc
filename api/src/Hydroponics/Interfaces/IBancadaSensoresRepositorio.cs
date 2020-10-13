@@ -1,10 +1,10 @@
-using System.Threading.Tasks;
-using Hydroponics.Models;
+//using System.Threading.Tasks;
+//using Hydroponics.Models;
 
-namespace Hydroponics.Interfaces
-{
-    public interface IBancadaSensoresRepositorio
-    {
-        Task<BancadaSensores> Post(BancadaSensores bancadaSensores);
-    }
-}
+//namespace Hydroponics.Interfaces
+//{
+//    public interface IBancadaSensoresRepositorio
+//    {
+//        Task<BancadaSensores> Post(BancadaSensores bancadaSensores);
+//    }
+//}

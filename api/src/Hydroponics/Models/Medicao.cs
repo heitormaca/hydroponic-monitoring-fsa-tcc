@@ -1,16 +1,21 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Hydroponics.Models
 {
-    public partial class BancadaSensores
+    public partial class Medicao
     {
         [Key]
-        [Column("id_bancadaSensores")]
-        public int IdBancadaSensores { get; set; }
-        [Column("dataAtual", TypeName = "datetime")]
-        public DateTime? DataAtual { get; set; }
+        [Column("id")]
+        public int Id { get; set; }
+        [Required]
+        [Column("dispositivo")]
+        [StringLength(50)]
+        public string Dispositivo { get; set; }
+        [Column("dataMedicao", TypeName = "datetime")]
+        public DateTime? DataMedicao { get; set; }
         [Column("sensorTempBanc")]
         public double SensorTempBanc { get; set; }
         [Column("sensorTempSol")]
@@ -19,11 +24,5 @@ namespace Hydroponics.Models
         public double SensorPh { get; set; }
         [Column("sensorEc")]
         public double SensorEc { get; set; }
-        [Column("id_bancada")]
-        public int? IdBancada { get; set; }
-
-        [ForeignKey(nameof(IdBancada))]
-        [InverseProperty(nameof(Bancada.BancadaSensores))]
-        public virtual Bancada IdBancadaNavigation { get; set; }
     }
 }

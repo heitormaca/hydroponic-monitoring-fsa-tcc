@@ -1,40 +1,48 @@
-CREATE DATABASE Hydroponics;
 USE Hydroponics;
 CREATE TABLE Usuario(
-	id_usuario INT IDENTITY PRIMARY KEY NOT NULL,
+	idUsuario INT IDENTITY PRIMARY KEY NOT NULL,
 	nome VARCHAR(70) NOT NULL,
 	email VARCHAR(70) NOT NULL,
 	senha VARCHAR(255) NOT NULL,
 	imagem TEXT
 );
 CREATE TABLE Estufa(
-	id_estufa INT IDENTITY PRIMARY KEY NOT NULL,
+	idEstufa INT IDENTITY PRIMARY KEY NOT NULL,
 	nome VARCHAR(50) NOT NULL,
-	dataInicio DATETIME DEFAULT GETDATE()
+	dataInicio DATETIME DEFAULT GETDATE(),
+	idUsuario INT FOREIGN KEY REFERENCES Usuario(idUsuario)
 );
-CREATE TABLE Bancada(
-	id_bancada INT IDENTITY PRIMARY KEY NOT NULL,
+CREATE TABLE BancadaFisica(
+	idBancadaFisica INT IDENTITY PRIMARY KEY NOT NULL,
+	nome VARCHAR(50) NOT NULL,
+	dataInicio DATETIME DEFAULT GETDATE(),
+	localizacao VARCHAR(50),
+	idEstufa INT FOREIGN KEY REFERENCES Estufa(idEstufa)
+);
+CREATE TABLE BancadaVirtual(
+	idBancadaVirtual INT IDENTITY PRIMARY KEY NOT NULL,
 	nome VARCHAR(50) NOT NULL,
 	semeio VARCHAR(50) NOT NULL,
 	dataInicio DATETIME DEFAULT GETDATE(),
 	dataFim DATETIME NOT NULL,
 	statusBancada BIT DEFAULT(1),
-	sensorTempBancMax FLOAT NOT NULL,
-	sensorTempBancMin FLOAT NOT NULL,
-	sensorTempSolMax FLOAT NOT NULL,
-	sensorTempSolMin FLOAT NOT NULL,
-	sensorPhMax FLOAT NOT NULL,
-	sensorPhMin FLOAT NOT NULL,
-	sensorEcMax FLOAT NOT NULL,
-	sensorEcMin FLOAT NOT NULL,
-	id_estufa INT FOREIGN KEY REFERENCES Estufa(id_estufa)
+	TempBancMax FLOAT NOT NULL,
+	TempBancMin FLOAT NOT NULL,
+	TempSolMax FLOAT NOT NULL,
+	TempSolMin FLOAT NOT NULL,
+	PhMax FLOAT NOT NULL,
+	PhMin FLOAT NOT NULL,
+	EcMax FLOAT NOT NULL,
+	EcMin FLOAT NOT NULL,
+	dispositivo VARCHAR(50) NOT NULL,
+	idBancadaFisica INT FOREIGN KEY REFERENCES BancadaFisica(idBancadaFisica)
 );
-CREATE TABLE BancadaSensores(
-	id_bancadaSensores INT IDENTITY PRIMARY KEY NOT NULL,
-	dataAtual DATETIME DEFAULT GETDATE(),
+CREATE TABLE Medicao(
+	id INT IDENTITY PRIMARY KEY NOT NULL,
+	dispositivo VARCHAR(50) NOT NULL,
+	dataMedicao DATETIME DEFAULT GETDATE(),
 	sensorTempBanc FLOAT NOT NULL,
 	sensorTempSol FLOAT NOT NULL,
 	sensorPh FLOAT NOT NULL,
-	sensorEc FLOAT NOT NULL,
-	id_bancada INT FOREIGN KEY REFERENCES Bancada(id_bancada)
+	sensorEc FLOAT NOT NULL
 );
