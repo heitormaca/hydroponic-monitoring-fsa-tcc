@@ -1,4 +1,5 @@
-USE Hydroponics;
+USE Hydroponics
+go
 CREATE TABLE Produtor(
 	idProdutor INT IDENTITY PRIMARY KEY NOT NULL,
 	nome VARCHAR(70) NOT NULL,
@@ -13,13 +14,11 @@ CREATE TABLE Estufa(
 	localizacao VARCHAR(50),
 	idProdutor INT FOREIGN KEY REFERENCES Produtor(idProdutor)
 );
-
 CREATE TABLE Dispositivo(
 	idDispositivo INT IDENTITY PRIMARY KEY NOT NULL,
 	nome VARCHAR(50) NOT NULL,
 	endMac VARCHAR(50) NOT NULL
 );
-
 CREATE TABLE Medicao(
 	idMedicao INT IDENTITY PRIMARY KEY NOT NULL,
 	dataMedicao DATETIME DEFAULT SYSDATETIME(),
@@ -35,8 +34,7 @@ CREATE TABLE Bancada(
 	dataInicio DATETIME DEFAULT GETDATE(),
 	localizacao VARCHAR(50),
 	idEstufa INT FOREIGN KEY REFERENCES Estufa(idEstufa),
-	idMedicao INT FOREIGN KEY REFERENCES Medicao(idMedicao)
-	
+	idDispositivo INT FOREIGN KEY REFERENCES Dispositivo(idDispositivo)
 );
 CREATE TABLE Plantacao(
 	idPlantacao INT IDENTITY PRIMARY KEY NOT NULL,
@@ -54,3 +52,4 @@ CREATE TABLE Plantacao(
 	EcMin FLOAT NOT NULL,
 	idBancada INT FOREIGN KEY REFERENCES Bancada(idBancada)
 );
+
