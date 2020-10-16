@@ -1,24 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\heito\\Desktop\\hydroponic-monitoring-fsa-tcc\\api\\src\\Hydroponics\\Hydroponics.csproj": {}
+    "C:\\Users\\Heitor\\Desktop\\hydroponic-monitoring-fsa-tcc\\api\\src\\Hydroponics\\Hydroponics.csproj": {}
   },
   "projects": {
-    "C:\\Users\\heito\\Desktop\\hydroponic-monitoring-fsa-tcc\\api\\src\\Hydroponics\\Hydroponics.csproj": {
+    "C:\\Users\\Heitor\\Desktop\\hydroponic-monitoring-fsa-tcc\\api\\src\\Hydroponics\\Hydroponics.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\heito\\Desktop\\hydroponic-monitoring-fsa-tcc\\api\\src\\Hydroponics\\Hydroponics.csproj",
+        "projectUniqueName": "C:\\Users\\Heitor\\Desktop\\hydroponic-monitoring-fsa-tcc\\api\\src\\Hydroponics\\Hydroponics.csproj",
         "projectName": "Hydroponics",
-        "projectPath": "C:\\Users\\heito\\Desktop\\hydroponic-monitoring-fsa-tcc\\api\\src\\Hydroponics\\Hydroponics.csproj",
-        "packagesPath": "C:\\Users\\heito\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\heito\\Desktop\\hydroponic-monitoring-fsa-tcc\\api\\src\\Hydroponics\\obj\\",
+        "projectPath": "C:\\Users\\Heitor\\Desktop\\hydroponic-monitoring-fsa-tcc\\api\\src\\Hydroponics\\Hydroponics.csproj",
+        "packagesPath": "C:\\Users\\Heitor\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Heitor\\Desktop\\hydroponic-monitoring-fsa-tcc\\api\\src\\Hydroponics\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+          "C:\\Microsoft\\Xamarin\\NuGet\\"
         ],
         "configFilePaths": [
-          "C:\\Users\\heito\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\Heitor\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"

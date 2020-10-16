@@ -1,6 +1,6 @@
 USE Hydroponics;
-CREATE TABLE Usuario(
-	idUsuario INT IDENTITY PRIMARY KEY NOT NULL,
+CREATE TABLE Produtor(
+	idProdutor INT IDENTITY PRIMARY KEY NOT NULL,
 	nome VARCHAR(70) NOT NULL,
 	email VARCHAR(70) NOT NULL,
 	senha VARCHAR(255) NOT NULL,
@@ -10,22 +10,40 @@ CREATE TABLE Estufa(
 	idEstufa INT IDENTITY PRIMARY KEY NOT NULL,
 	nome VARCHAR(50) NOT NULL,
 	dataInicio DATETIME DEFAULT GETDATE(),
-	idUsuario INT FOREIGN KEY REFERENCES Usuario(idUsuario)
+	localizacao VARCHAR(50),
+	idProdutor INT FOREIGN KEY REFERENCES Produtor(idProdutor)
 );
-CREATE TABLE BancadaFisica(
-	idBancadaFisica INT IDENTITY PRIMARY KEY NOT NULL,
+
+CREATE TABLE Dispositivo(
+	idDispositivo INT IDENTITY PRIMARY KEY NOT NULL,
+	nome VARCHAR(50) NOT NULL,
+	endMac VARCHAR(50) NOT NULL
+);
+
+CREATE TABLE Medicao(
+	idMedicao INT IDENTITY PRIMARY KEY NOT NULL,
+	dataMedicao DATETIME DEFAULT SYSDATETIME(),
+	sensorTempBanc FLOAT NOT NULL,
+	sensorTempSol FLOAT NOT NULL,
+	sensorPh FLOAT NOT NULL,
+	sensorEc FLOAT NOT NULL,
+	idDispositivo INT FOREIGN KEY REFERENCES Dispositivo(idDispositivo)
+);
+CREATE TABLE Bancada(
+	idBancada INT IDENTITY PRIMARY KEY NOT NULL,
 	nome VARCHAR(50) NOT NULL,
 	dataInicio DATETIME DEFAULT GETDATE(),
 	localizacao VARCHAR(50),
-	idEstufa INT FOREIGN KEY REFERENCES Estufa(idEstufa)
+	idEstufa INT FOREIGN KEY REFERENCES Estufa(idEstufa),
+	idMedicao INT FOREIGN KEY REFERENCES Medicao(idMedicao)
+	
 );
-CREATE TABLE BancadaVirtual(
-	idBancadaVirtual INT IDENTITY PRIMARY KEY NOT NULL,
-	nome VARCHAR(50) NOT NULL,
+CREATE TABLE Plantacao(
+	idPlantacao INT IDENTITY PRIMARY KEY NOT NULL,
+	observacoes Text,
 	semeio VARCHAR(50) NOT NULL,
 	dataInicio DATETIME DEFAULT GETDATE(),
 	dataFim DATETIME NOT NULL,
-	statusBancada BIT DEFAULT(1),
 	TempBancMax FLOAT NOT NULL,
 	TempBancMin FLOAT NOT NULL,
 	TempSolMax FLOAT NOT NULL,
@@ -34,15 +52,5 @@ CREATE TABLE BancadaVirtual(
 	PhMin FLOAT NOT NULL,
 	EcMax FLOAT NOT NULL,
 	EcMin FLOAT NOT NULL,
-	dispositivo VARCHAR(50) NOT NULL,
-	idBancadaFisica INT FOREIGN KEY REFERENCES BancadaFisica(idBancadaFisica)
-);
-CREATE TABLE Medicao(
-	id INT IDENTITY PRIMARY KEY NOT NULL,
-	dispositivo VARCHAR(50) NOT NULL,
-	dataMedicao DATETIME DEFAULT GETDATE(),
-	sensorTempBanc FLOAT NOT NULL,
-	sensorTempSol FLOAT NOT NULL,
-	sensorPh FLOAT NOT NULL,
-	sensorEc FLOAT NOT NULL
+	idBancada INT FOREIGN KEY REFERENCES Bancada(idBancada)
 );
