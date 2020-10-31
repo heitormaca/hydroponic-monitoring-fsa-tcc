@@ -22,14 +22,14 @@
 //        [HttpPost]
 //        public async Task<IActionResult> Post(Bancada bancada)
 //        {
-//           try
-//           {
-//               return Ok(await repositorio.Post(bancada));
-//           }
-//           catch (System.Exception e)
-//           {
-//               return StatusCode(500, e);
-//           } 
+//            try
+//            {
+//                return Ok(await repositorio.Post(bancada));
+//            }
+//            catch (System.Exception e)
+//            {
+//                return StatusCode(500, e);
+//            }
 //        }
 
 //        /// <summary>
