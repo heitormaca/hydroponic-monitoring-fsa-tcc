@@ -10,7 +10,11 @@ namespace Hydroponics.Repositories
 {
     public class ProdutorRepository : IProdutorRepository
     {
-        hydroponicsContext context = new hydroponicsContext();
+        public ProdutorRepository(hydroponicsContext context)
+        {
+            this.context = context;
+        }
+        private readonly hydroponicsContext context;
         public async Task<Produtor> Post(Produtor produtor)
         {
             await context.Produtor.AddAsync(produtor);
@@ -32,7 +36,6 @@ namespace Hydroponics.Repositories
         {
             return await context.Produtor.FirstOrDefaultAsync(a => a.IdProdutor == id);
         }
-
         public async Task<List<Produtor>> GetList()
         {
             return await context.Produtor.ToListAsync();

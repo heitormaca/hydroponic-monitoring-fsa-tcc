@@ -6,7 +6,7 @@ namespace Hydroponics.Useful
 {
     public class Email
     {
-        public bool EnvioEmail(string email, string titulo, string body)
+        public bool SendEmail(string email, string titulo, string body)
         {
             try
             {

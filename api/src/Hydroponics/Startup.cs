@@ -2,11 +2,16 @@ using System;
 using System.IO;
 using System.Reflection;
 using System.Text;
+using Hydroponics.Models;
+using Hydroponics.Repositories;
+using Hydroponics.Useful;
+using Hydroponics.ViewModel;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http.Features;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -18,14 +23,23 @@ namespace Hydroponics
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        public Startup(IConfiguration config)
         {
-            Configuration = configuration;
+            this.config = config;
         }
+        private readonly IConfiguration config;
         readonly string PermissaoEntreOrigens = "_PermissaoEntreOrigens";
-        public IConfiguration Configuration { get; }
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddSingleton<LoginRepository>();
+            services.AddSingleton<ProdutorRepository>();
+            services.AddSingleton<Cryptography>();
+            services.AddSingleton<Email>();
+            services.AddSingleton<UploadImage>();
+            services.AddSingleton<ForgotPasswordViewModel>();
+            services.AddDbContext<hydroponicsContext>(options =>
+                options.UseSqlServer(config.GetConnectionString("Default"))
+            );
             services.AddControllersWithViews().AddNewtonsoftJson(options =>
             {
                 options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
@@ -44,9 +58,9 @@ namespace Hydroponics
                     ValidateAudience = true,  
                     ValidateLifetime = true,  
                     ValidateIssuerSigningKey = true,  
-                    ValidIssuer = Configuration["Jwt:Issuer"],  
-                    ValidAudience = Configuration["Jwt:Issuer"],  
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["Jwt:Key"]))  
+                    ValidIssuer = config["Jwt:Issuer"],  
+                    ValidAudience = config["Jwt:Issuer"],  
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(config["Jwt:Key"]))  
                 };  
             });
             services.AddCors (options => {

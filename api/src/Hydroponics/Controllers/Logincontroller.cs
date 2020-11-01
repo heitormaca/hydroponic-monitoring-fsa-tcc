@@ -20,16 +20,19 @@ namespace Hydroponics.Controllers
 
     public class LoginController : ControllerBase
     {
-        LoginRepositorio loginRepositorio = new LoginRepositorio();
-        Cryptography encrypt = new Cryptography();
-        private IConfiguration configuration;
-        public LoginController(IConfiguration config)
+        public LoginController(LoginRepository repository, Cryptography encrypt, IConfiguration config)
         {
-            configuration = config;
+            this.repository = repository;
+            this.encrypt = encrypt;
+            this.config = config;
         }
+        private readonly IConfiguration config;
+        private readonly LoginRepository repository;
+        private readonly Cryptography encrypt;
+
         private string GenerateJSONWebToken(Produtor produtorInfo)
         {
-            var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["Jwt:key"]));
+            var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(config["Jwt:key"]));
             var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
             var claims = new[]
             {
@@ -37,8 +40,8 @@ namespace Hydroponics.Controllers
                 new Claim (JwtRegisteredClaimNames.Jti, Guid.NewGuid ().ToString ()),
                 new Claim ("id", produtorInfo.IdProdutor.ToString())
             };
-            var token = new JwtSecurityToken(configuration["Jwt:Issuer"],
-                configuration["Jwt:Issuer"], claims,
+            var token = new JwtSecurityToken(config["Jwt:Issuer"],
+                config["Jwt:Issuer"], claims,
                 expires: DateTime.Now.AddMinutes(120),
                 signingCredentials: credentials);
             return new JwtSecurityTokenHandler().WriteToken(token);
@@ -47,7 +50,7 @@ namespace Hydroponics.Controllers
         {
             var senhaEncrypt = encrypt.Encrypt(login.Senha);
             login.Senha = senhaEncrypt;
-            Produtor produtor = loginRepositorio.Login(login);
+            Produtor produtor = repository.Login(login);
             return produtor;
         }
         /// <summary>

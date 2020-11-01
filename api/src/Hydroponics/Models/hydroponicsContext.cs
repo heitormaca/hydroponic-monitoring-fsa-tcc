@@ -22,14 +22,6 @@ namespace Hydroponics.Models
         public virtual DbSet<Plantacao> Plantacao { get; set; }
         public virtual DbSet<Produtor> Produtor { get; set; }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            if (!optionsBuilder.IsConfigured)
-            {
-                optionsBuilder.UseSqlServer("Server=den1.mssql7.gear.host;Database=hydroponics;uid=hydroponics;Password=C6}Ew5S!IONna3;Trusted_Connection=False;");
-            }
-        }
-
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Bancada>(entity =>

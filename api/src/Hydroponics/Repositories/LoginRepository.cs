@@ -5,9 +5,13 @@ using Hydroponics.ViewModel;
 
 namespace Hydroponics.Repositories
 {
-    public class LoginRepositorio : ILoginRepository
+    public class LoginRepository : ILoginRepository
     {
-        hydroponicsContext context = new hydroponicsContext();
+        public LoginRepository(hydroponicsContext context)
+        {
+            this.context = context;
+        }
+        private readonly hydroponicsContext context;
         public Produtor Login(LoginViewModel login)
         {
             Produtor produtor = context.Produtor.FirstOrDefault(u => u.Email == login.Email && u.Senha == login.Senha);
