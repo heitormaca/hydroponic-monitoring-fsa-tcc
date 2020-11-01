@@ -26,10 +26,10 @@ namespace Hydroponics
         public IConfiguration Configuration { get; }
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllersWithViews().AddNewtonsoftJson(opt =>
+            services.AddControllersWithViews().AddNewtonsoftJson(options =>
             {
-                opt.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
-                opt.SerializerSettings.NullValueHandling = NullValueHandling.Ignore;
+                options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+                options.SerializerSettings.NullValueHandling = NullValueHandling.Ignore;
             });
             services.Configure<FormOptions>(options =>
             {
@@ -53,12 +53,12 @@ namespace Hydroponics
                 options.AddPolicy (PermissaoEntreOrigens,
                     builder => builder.AllowAnyOrigin ().AllowAnyMethod ().AllowAnyHeader ());
             });
-            services.AddSwaggerGen(c =>
+            services.AddSwaggerGen(options =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "API", Version = "v1" });
+                options.SwaggerDoc("v1", new OpenApiInfo { Title = "API", Version = "v1" });
                 var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
                 var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
-                c.IncludeXmlComments(xmlPath);
+                options.IncludeXmlComments(xmlPath);
             });
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
         }
@@ -84,9 +84,9 @@ namespace Hydroponics
                 endpoints.MapControllers();
             });
             app.UseSwagger();
-            app.UseSwaggerUI(c =>
+            app.UseSwaggerUI(options =>
             {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "API V1");
+                options.SwaggerEndpoint("/swagger/v1/swagger.json", "API V1");
                 // https://localhost:5001/swagger/index.html
             });
         }

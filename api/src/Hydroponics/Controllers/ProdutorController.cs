@@ -6,6 +6,7 @@ using Hydroponics.Useful;
 using Hydroponics.ViewModel;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System;
 
 namespace Hydroponics.Controllers
 {
@@ -14,7 +15,7 @@ namespace Hydroponics.Controllers
     [Produces("application/json")]
     public class ProdutorController : ControllerBase
     {
-        ProdutorRepositorio repository = new ProdutorRepositorio();
+        ProdutorRepository repository = new ProdutorRepository();
         Cryptography encrypt = new Cryptography();
         Email sendEmail = new Email();
         UploadImage image = new UploadImage();
@@ -29,11 +30,11 @@ namespace Hydroponics.Controllers
         {
             try
             {
-                var idDoProdutor = HttpContext.User.Claims.First(a => a.Type == "id").Value;
-                var pdt = await repository.GetById(int.Parse(idDoProdutor));
-                return Ok(pdt);
+                var idProdutor = HttpContext.User.Claims.First(a => a.Type == "id").Value;
+                var produtor = await repository.GetById(int.Parse(idProdutor));
+                return Ok(produtor);
             }
-            catch (System.Exception e)
+            catch (Exception e)
             {
                 return StatusCode(500, e);
             }
@@ -51,19 +52,20 @@ namespace Hydroponics.Controllers
         {
             try
             {
-                var listUser = await repository.GetList();
-                foreach (var item in listUser)
+                var listProdutor = await repository.GetList();
+                foreach (var item in listProdutor)
                 {
                     if (produtor.Email == item.Email)
                     {
                         return BadRequest("Este email já possui um cadastro.");
                     }
                 }
-                var senhaEncrypt = encrypt.Encrypt(produtor.Senha);
-                produtor.Senha = senhaEncrypt;
-                return Ok(await repository.Post(produtor));
+                var EncryptPass = encrypt.Encrypt(produtor.Senha);
+                produtor.Senha = EncryptPass;
+                await repository.Post(produtor);
+                return Ok("Seu cadastro foi efetuado com sucesso!");
             }
-            catch (System.Exception e)
+            catch (Exception e)
             {
                 return StatusCode(500, e);
             }
@@ -72,24 +74,24 @@ namespace Hydroponics.Controllers
         /// <summary>
         /// Método para atualizar a senha do usuário.
         /// </summary>
-        /// <param name = "model" > Envia uma senha.</param>
+        /// <param name = "password" > Envia uma senha.</param>
         /// <returns>Retorna um valor vazio ou erro 500.</returns>
 
         [Authorize]
         [HttpPatch]
-        public async Task<IActionResult> ChangePassword([FromBody] updatePasswordViewModel model)
+        public async Task<IActionResult> ChangePassword([FromBody] updatePasswordViewModel password)
         {
             try
             {
-                var idDoProdutor = HttpContext.User.Claims.First(a => a.Type == "id").Value;
-                var pdt = await repository.GetById(int.Parse(idDoProdutor));
-                pdt.Senha = model.Senha;
-                var senhaEncrypt = encrypt.Encrypt(model.Senha);
-                pdt.Senha = senhaEncrypt;
-                await repository.Put(pdt);
+                var idProdutor = HttpContext.User.Claims.First(a => a.Type == "id").Value;
+                var produtor = await repository.GetById(int.Parse(idProdutor));
+                produtor.Senha = password.Senha;
+                var EncryptPass = encrypt.Encrypt(password.Senha);
+                produtor.Senha = EncryptPass;
+                await repository.Put(produtor);
                 return Ok();
             }
-            catch (System.Exception e)
+            catch (Exception e)
             {
                 return StatusCode(500, e);
             }
@@ -105,14 +107,14 @@ namespace Hydroponics.Controllers
         {
             try
             {
-                var idDoProdutor = HttpContext.User.Claims.First(a => a.Type == "id").Value;
-                var pdt = await repository.GetById(int.Parse(idDoProdutor));
-                var arquivo = Request.Form.Files[0];
-                pdt.Imagem = image.Upload(arquivo, "Resourses/images");
-                await repository.Put(pdt);
+                var idProdutor = HttpContext.User.Claims.First(a => a.Type == "id").Value;
+                var produtor = await repository.GetById(int.Parse(idProdutor));
+                var file = Request.Form.Files[0];
+                produtor.Imagem = image.Upload(file, "Resourses/images");
+                await repository.Put(produtor);
                 return Ok();
             }
-            catch (System.Exception e)
+            catch (Exception e)
             {
                 return StatusCode(500, e);
             }
@@ -121,35 +123,35 @@ namespace Hydroponics.Controllers
         /// <summary>
         /// Método para enviar um email com uma nova senha para o usuário que à esqueceu.
         /// </summary>
-        /// <param name = "verificacao" > Envia um email.</param>
+        /// <param name = "email" > Envia um email.</param>
         /// <returns>Retorna um valor vazio ou erro 500.</returns>
 
         [AllowAnonymous]
         [HttpPatch("forgotPassword")]
-        public async Task<IActionResult> PostForgotPassword([FromBody] ForgotPasswordViewModel verificacao)
+        public async Task<IActionResult> PostPassword([FromBody] ForgotPasswordViewModel email)
         {
             try
             {
                 IActionResult response = Unauthorized("Dados inválidos.");
-                var pdt = AutenticacaoEmail(verificacao);
-                if (pdt != null)
+                var produtor = AutenticacaoEmail(email);
+                if (produtor != null)
                 {
-                    string novaSenha = "CIFV@Y#" + pdt.Email.Length.ToString();
-                    var senhaEncrypy = encrypt.Encrypt(novaSenha);
-                    pdt.Senha = senhaEncrypy;
-                    await repository.Put(pdt);
-                    string email = pdt.Email;
-                    string titulo = "Alteração de senha Hydroponics";
+                    string newPass = "CIFV@Y#" + produtor.Email.Length.ToString();
+                    var EncryptPass = encrypt.Encrypt(newPass);
+                    produtor.Senha = EncryptPass;
+                    await repository.Put(produtor);
+                    string ProdutorEmail = produtor.Email;
+                    string title = "Alteração de senha Hydroponics";
                     string body = $"<h1>Alteração de senha Hydroponics</h1>" +
                                   $"<br>" +
                                   $"<br>" +
-                                  $"<p>Prezado(a) {pdt.Nome},</p>" +
+                                  $"<p>Prezado(a) {produtor.Nome},</p>" +
                                   $"<br>" +
                                   $"<p>Atendendo ao seu pedido, segue abaixo a sua nova senha." +
-                                  $"<p>Nova senha: {novaSenha}</p>" +
+                                  $"<p>Nova senha: {newPass}</p>" +
                                   $"<br>" +
                                   $"<p><strong>ATENÇÂO:<strong> Está é uma senha provisória, favor altera-la após o seu login.</p>";
-                    sendEmail.EnvioEmail(email, titulo, body);
+                    sendEmail.EnvioEmail(ProdutorEmail, title, body);
                     return Ok();
                 }
                 else
@@ -157,16 +159,16 @@ namespace Hydroponics.Controllers
                     return response;
                 }
             }
-            catch (System.Exception e)
+            catch (Exception e)
             {
                 return StatusCode(500, e);
             }
         }
 
-        private Produtor AutenticacaoEmail(ForgotPasswordViewModel verificacao)
+        private Produtor AutenticacaoEmail(ForgotPasswordViewModel email)
         {
-            Produtor usuario = repository.VerificacaoEmail(verificacao);
-            return usuario;
+            Produtor produtor = repository.EmailCheck(email);
+            return produtor;
         }
     }
 }

@@ -8,7 +8,7 @@ namespace Hydroponics.Interfaces
     public interface IProdutorRepository
     {
         Task<Produtor> Post(Produtor produtor);
-        Produtor VerificacaoEmail(ForgotPasswordViewModel verificacao);
+        Produtor EmailCheck(ForgotPasswordViewModel email);
         Task<Produtor> Put(Produtor produtor);
         Task<Produtor> GetById(int id);
         Task<List<Produtor>> GetList();

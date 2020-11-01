@@ -10,8 +10,8 @@ namespace Hydroponics.Repositories
         hydroponicsContext context = new hydroponicsContext();
         public Produtor Login(LoginViewModel login)
         {
-            Produtor usuario = context.Produtor.FirstOrDefault(u => u.Email == login.Email && u.Senha == login.Senha);
-            return usuario;
+            Produtor produtor = context.Produtor.FirstOrDefault(u => u.Email == login.Email && u.Senha == login.Senha);
+            return produtor;
         }
     }
 }

@@ -22,23 +22,23 @@ namespace Hydroponics.Controllers
     {
         LoginRepositorio loginRepositorio = new LoginRepositorio();
         Cryptography encrypt = new Cryptography();
-        private IConfiguration configuracao;
+        private IConfiguration configuration;
         public LoginController(IConfiguration config)
         {
-            configuracao = config;
+            configuration = config;
         }
-        private string GenerateJSONWebToken(Produtor userInfo)
+        private string GenerateJSONWebToken(Produtor produtorInfo)
         {
-            var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuracao["Jwt:key"]));
+            var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["Jwt:key"]));
             var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
             var claims = new[]
             {
-                new Claim (JwtRegisteredClaimNames.Email, userInfo.Email),
+                new Claim (JwtRegisteredClaimNames.Email, produtorInfo.Email),
                 new Claim (JwtRegisteredClaimNames.Jti, Guid.NewGuid ().ToString ()),
-                new Claim ("id", userInfo.IdProdutor.ToString())
+                new Claim ("id", produtorInfo.IdProdutor.ToString())
             };
-            var token = new JwtSecurityToken(configuracao["Jwt:Issuer"],
-                configuracao["Jwt:Issuer"], claims,
+            var token = new JwtSecurityToken(configuration["Jwt:Issuer"],
+                configuration["Jwt:Issuer"], claims,
                 expires: DateTime.Now.AddMinutes(120),
                 signingCredentials: credentials);
             return new JwtSecurityTokenHandler().WriteToken(token);
@@ -47,8 +47,8 @@ namespace Hydroponics.Controllers
         {
             var senhaEncrypt = encrypt.Encrypt(login.Senha);
             login.Senha = senhaEncrypt;
-            Produtor usuario = loginRepositorio.Login(login);
-            return usuario;
+            Produtor produtor = loginRepositorio.Login(login);
+            return produtor;
         }
         /// <summary>
         /// Método para logar no sistema.
@@ -62,15 +62,15 @@ namespace Hydroponics.Controllers
             try
             {
                 IActionResult response = Unauthorized("Usuário ou senha incorreto.");
-                var user = Autenticacao(login);
-                if (user != null)
+                var produtor = Autenticacao(login);
+                if (produtor != null)
                 {
-                    var tokenString = GenerateJSONWebToken(user);
+                    var tokenString = GenerateJSONWebToken(produtor);
                     response = Ok(new { token = tokenString });
                 }
                 return response;
             }
-            catch (System.Exception e)
+            catch (Exception e)
             {
                 return StatusCode(500, e);
             }

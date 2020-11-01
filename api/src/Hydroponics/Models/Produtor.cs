@@ -5,16 +5,16 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Hydroponics.Models
 {
-    public partial class Usuario
+    public partial class Produtor
     {
-        public Usuario()
+        public Produtor()
         {
             Estufa = new HashSet<Estufa>();
         }
 
         [Key]
-        [Column("idUsuario")]
-        public int IdUsuario { get; set; }
+        [Column("idProdutor")]
+        public int IdProdutor { get; set; }
         [Required]
         [Column("nome")]
         [StringLength(70)]
@@ -30,7 +30,7 @@ namespace Hydroponics.Models
         [Column("imagem", TypeName = "text")]
         public string Imagem { get; set; }
 
-        [InverseProperty("IdUsuarioNavigation")]
+        [InverseProperty("IdProdutorNavigation")]
         public virtual ICollection<Estufa> Estufa { get; set; }
     }
 }

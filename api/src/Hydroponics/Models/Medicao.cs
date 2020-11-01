@@ -8,12 +8,8 @@ namespace Hydroponics.Models
     public partial class Medicao
     {
         [Key]
-        [Column("id")]
-        public int Id { get; set; }
-        [Required]
-        [Column("dispositivo")]
-        [StringLength(50)]
-        public string Dispositivo { get; set; }
+        [Column("idMedicao")]
+        public int IdMedicao { get; set; }
         [Column("dataMedicao", TypeName = "datetime")]
         public DateTime? DataMedicao { get; set; }
         [Column("sensorTempBanc")]
@@ -24,5 +20,11 @@ namespace Hydroponics.Models
         public double SensorPh { get; set; }
         [Column("sensorEc")]
         public double SensorEc { get; set; }
+        [Column("idDispositivo")]
+        public int? IdDispositivo { get; set; }
+
+        [ForeignKey(nameof(IdDispositivo))]
+        [InverseProperty(nameof(Dispositivo.Medicao))]
+        public virtual Dispositivo IdDispositivoNavigation { get; set; }
     }
 }

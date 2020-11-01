@@ -5,15 +5,13 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Hydroponics.Models
 {
-    public partial class BancadaVirtual
+    public partial class Plantacao
     {
         [Key]
-        [Column("idBancadaVirtual")]
-        public int IdBancadaVirtual { get; set; }
-        [Required]
-        [Column("nome")]
-        [StringLength(50)]
-        public string Nome { get; set; }
+        [Column("idPlantacao")]
+        public int IdPlantacao { get; set; }
+        [Column("observacoes", TypeName = "text")]
+        public string Observacoes { get; set; }
         [Required]
         [Column("semeio")]
         [StringLength(50)]
@@ -22,8 +20,6 @@ namespace Hydroponics.Models
         public DateTime? DataInicio { get; set; }
         [Column("dataFim", TypeName = "datetime")]
         public DateTime DataFim { get; set; }
-        [Column("statusBancada")]
-        public bool? StatusBancada { get; set; }
         public double TempBancMax { get; set; }
         public double TempBancMin { get; set; }
         public double TempSolMax { get; set; }
@@ -32,15 +28,11 @@ namespace Hydroponics.Models
         public double PhMin { get; set; }
         public double EcMax { get; set; }
         public double EcMin { get; set; }
-        [Required]
-        [Column("dispositivo")]
-        [StringLength(50)]
-        public string Dispositivo { get; set; }
-        [Column("idBancadaFisica")]
-        public int? IdBancadaFisica { get; set; }
+        [Column("idBancada")]
+        public int? IdBancada { get; set; }
 
-        [ForeignKey(nameof(IdBancadaFisica))]
-        [InverseProperty(nameof(BancadaFisica.BancadaVirtual))]
-        public virtual BancadaFisica IdBancadaFisicaNavigation { get; set; }
+        [ForeignKey(nameof(IdBancada))]
+        [InverseProperty(nameof(Bancada.Plantacao))]
+        public virtual Bancada IdBancadaNavigation { get; set; }
     }
 }

@@ -15,11 +15,12 @@ namespace Hydroponics.Models
         {
         }
 
-        public virtual DbSet<BancadaFisica> BancadaFisica { get; set; }
-        public virtual DbSet<BancadaVirtual> BancadaVirtual { get; set; }
+        public virtual DbSet<Bancada> Bancada { get; set; }
+        public virtual DbSet<Dispositivo> Dispositivo { get; set; }
         public virtual DbSet<Estufa> Estufa { get; set; }
         public virtual DbSet<Medicao> Medicao { get; set; }
-        public virtual DbSet<Usuario> Usuario { get; set; }
+        public virtual DbSet<Plantacao> Plantacao { get; set; }
+        public virtual DbSet<Produtor> Produtor { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -31,10 +32,10 @@ namespace Hydroponics.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<BancadaFisica>(entity =>
+            modelBuilder.Entity<Bancada>(entity =>
             {
-                entity.HasKey(e => e.IdBancadaFisica)
-                    .HasName("PK__BancadaF__302F22F96ABE9196");
+                entity.HasKey(e => e.IdBancada)
+                    .HasName("PK__Bancada__8F08FF23F7B26424");
 
                 entity.Property(e => e.DataInicio).HasDefaultValueSql("(getdate())");
 
@@ -42,59 +43,76 @@ namespace Hydroponics.Models
 
                 entity.Property(e => e.Nome).IsUnicode(false);
 
+                entity.HasOne(d => d.IdDispositivoNavigation)
+                    .WithMany(p => p.Bancada)
+                    .HasForeignKey(d => d.IdDispositivo)
+                    .HasConstraintName("FK__Bancada__idDispo__3F115E1A");
+
                 entity.HasOne(d => d.IdEstufaNavigation)
-                    .WithMany(p => p.BancadaFisica)
+                    .WithMany(p => p.Bancada)
                     .HasForeignKey(d => d.IdEstufa)
-                    .HasConstraintName("FK__BancadaFi__idEst__7A672E12");
+                    .HasConstraintName("FK__Bancada__idEstuf__3E1D39E1");
             });
 
-            modelBuilder.Entity<BancadaVirtual>(entity =>
+            modelBuilder.Entity<Dispositivo>(entity =>
             {
-                entity.HasKey(e => e.IdBancadaVirtual)
-                    .HasName("PK__BancadaV__53E8FBF5C8808B45");
+                entity.HasKey(e => e.IdDispositivo)
+                    .HasName("PK__Disposit__49D7618158185C8E");
 
-                entity.Property(e => e.DataInicio).HasDefaultValueSql("(getdate())");
-
-                entity.Property(e => e.Dispositivo).IsUnicode(false);
+                entity.Property(e => e.EndMac).IsUnicode(false);
 
                 entity.Property(e => e.Nome).IsUnicode(false);
-
-                entity.Property(e => e.Semeio).IsUnicode(false);
-
-                entity.Property(e => e.StatusBancada).HasDefaultValueSql("((1))");
-
-                entity.HasOne(d => d.IdBancadaFisicaNavigation)
-                    .WithMany(p => p.BancadaVirtual)
-                    .HasForeignKey(d => d.IdBancadaFisica)
-                    .HasConstraintName("FK__BancadaVi__idBan__7F2BE32F");
             });
 
             modelBuilder.Entity<Estufa>(entity =>
             {
                 entity.HasKey(e => e.IdEstufa)
-                    .HasName("PK__Estufa__99E11D6B25D85581");
+                    .HasName("PK__Estufa__99E11D6BBE246315");
 
                 entity.Property(e => e.DataInicio).HasDefaultValueSql("(getdate())");
 
+                entity.Property(e => e.Localizacao).IsUnicode(false);
+
                 entity.Property(e => e.Nome).IsUnicode(false);
 
-                entity.HasOne(d => d.IdUsuarioNavigation)
+                entity.HasOne(d => d.IdProdutorNavigation)
                     .WithMany(p => p.Estufa)
-                    .HasForeignKey(d => d.IdUsuario)
-                    .HasConstraintName("FK__Estufa__idUsuari__76969D2E");
+                    .HasForeignKey(d => d.IdProdutor)
+                    .HasConstraintName("FK__Estufa__idProdut__3493CFA7");
             });
 
             modelBuilder.Entity<Medicao>(entity =>
             {
-                entity.Property(e => e.DataMedicao).HasDefaultValueSql("(getdate())");
+                entity.HasKey(e => e.IdMedicao)
+                    .HasName("PK__Medicao__BCF0E70E22D00422");
 
-                entity.Property(e => e.Dispositivo).IsUnicode(false);
+                entity.Property(e => e.DataMedicao).HasDefaultValueSql("(sysdatetime())");
+
+                entity.HasOne(d => d.IdDispositivoNavigation)
+                    .WithMany(p => p.Medicao)
+                    .HasForeignKey(d => d.IdDispositivo)
+                    .HasConstraintName("FK__Medicao__idDispo__3A4CA8FD");
             });
 
-            modelBuilder.Entity<Usuario>(entity =>
+            modelBuilder.Entity<Plantacao>(entity =>
             {
-                entity.HasKey(e => e.IdUsuario)
-                    .HasName("PK__Usuario__645723A618AD12DD");
+                entity.HasKey(e => e.IdPlantacao)
+                    .HasName("PK__Plantaca__D051241027991B0E");
+
+                entity.Property(e => e.DataInicio).HasDefaultValueSql("(getdate())");
+
+                entity.Property(e => e.Semeio).IsUnicode(false);
+
+                entity.HasOne(d => d.IdBancadaNavigation)
+                    .WithMany(p => p.Plantacao)
+                    .HasForeignKey(d => d.IdBancada)
+                    .HasConstraintName("FK__Plantacao__idBan__42E1EEFE");
+            });
+
+            modelBuilder.Entity<Produtor>(entity =>
+            {
+                entity.HasKey(e => e.IdProdutor)
+                    .HasName("PK__Produtor__3BD5716122127022");
 
                 entity.Property(e => e.Email).IsUnicode(false);
 

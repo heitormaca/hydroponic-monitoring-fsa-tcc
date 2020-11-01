@@ -5,16 +5,16 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Hydroponics.Models
 {
-    public partial class BancadaFisica
+    public partial class Bancada
     {
-        public BancadaFisica()
+        public Bancada()
         {
-            BancadaVirtual = new HashSet<BancadaVirtual>();
+            Plantacao = new HashSet<Plantacao>();
         }
 
         [Key]
-        [Column("idBancadaFisica")]
-        public int IdBancadaFisica { get; set; }
+        [Column("idBancada")]
+        public int IdBancada { get; set; }
         [Required]
         [Column("nome")]
         [StringLength(50)]
@@ -26,11 +26,16 @@ namespace Hydroponics.Models
         public string Localizacao { get; set; }
         [Column("idEstufa")]
         public int? IdEstufa { get; set; }
+        [Column("idDispositivo")]
+        public int? IdDispositivo { get; set; }
 
+        [ForeignKey(nameof(IdDispositivo))]
+        [InverseProperty(nameof(Dispositivo.Bancada))]
+        public virtual Dispositivo IdDispositivoNavigation { get; set; }
         [ForeignKey(nameof(IdEstufa))]
-        [InverseProperty(nameof(Estufa.BancadaFisica))]
+        [InverseProperty(nameof(Estufa.Bancada))]
         public virtual Estufa IdEstufaNavigation { get; set; }
-        [InverseProperty("IdBancadaFisicaNavigation")]
-        public virtual ICollection<BancadaVirtual> BancadaVirtual { get; set; }
+        [InverseProperty("IdBancadaNavigation")]
+        public virtual ICollection<Plantacao> Plantacao { get; set; }
     }
 }

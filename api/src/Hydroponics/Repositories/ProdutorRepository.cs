@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Hydroponics.Repositories
 {
-    public class ProdutorRepositorio : IProdutorRepository
+    public class ProdutorRepository : IProdutorRepository
     {
         hydroponicsContext context = new hydroponicsContext();
         public async Task<Produtor> Post(Produtor produtor)
@@ -17,9 +17,9 @@ namespace Hydroponics.Repositories
             await context.SaveChangesAsync();
             return produtor;
         }
-        public Produtor VerificacaoEmail(ForgotPasswordViewModel verificacao)
+        public Produtor EmailCheck(ForgotPasswordViewModel email)
         {
-            Produtor produtor = context.Produtor.FirstOrDefault(u => u.Email == verificacao.Email);
+            Produtor produtor = context.Produtor.FirstOrDefault(u => u.Email == email.Email);
             return produtor;
         }
         public async Task<Produtor> Put(Produtor produtor)

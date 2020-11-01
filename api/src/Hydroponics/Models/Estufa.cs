@@ -9,7 +9,7 @@ namespace Hydroponics.Models
     {
         public Estufa()
         {
-            BancadaFisica = new HashSet<BancadaFisica>();
+            Bancada = new HashSet<Bancada>();
         }
 
         [Key]
@@ -21,13 +21,16 @@ namespace Hydroponics.Models
         public string Nome { get; set; }
         [Column("dataInicio", TypeName = "datetime")]
         public DateTime? DataInicio { get; set; }
-        [Column("idUsuario")]
-        public int? IdUsuario { get; set; }
+        [Column("localizacao")]
+        [StringLength(50)]
+        public string Localizacao { get; set; }
+        [Column("idProdutor")]
+        public int? IdProdutor { get; set; }
 
-        [ForeignKey(nameof(IdUsuario))]
-        [InverseProperty(nameof(Usuario.Estufa))]
-        public virtual Usuario IdUsuarioNavigation { get; set; }
+        [ForeignKey(nameof(IdProdutor))]
+        [InverseProperty(nameof(Produtor.Estufa))]
+        public virtual Produtor IdProdutorNavigation { get; set; }
         [InverseProperty("IdEstufaNavigation")]
-        public virtual ICollection<BancadaFisica> BancadaFisica { get; set; }
+        public virtual ICollection<Bancada> Bancada { get; set; }
     }
 }
