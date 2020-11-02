@@ -10,11 +10,11 @@ namespace Hydroponics.Repositories
 {
     public class ProdutorRepository : IProdutorRepository
     {
+        private readonly hydroponicsContext context;
         public ProdutorRepository(hydroponicsContext context)
         {
             this.context = context;
         }
-        private readonly hydroponicsContext context;
         public async Task<Produtor> Post(Produtor produtor)
         {
             await context.Produtor.AddAsync(produtor);

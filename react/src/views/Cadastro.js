@@ -22,8 +22,8 @@ class Cadastro extends Component {
 
     const body = { nome: this.state.nome, email: this.state.email, senha: this.state.senha, checkSenha: this.state.checkSenha};
 
-    // Axios.post('https://hydroponics-api.azurewebsites.net/api/Usuario', body)
-    Axios.post('http://localhost:5000/api/Usuario', body)
+    Axios.post('https://hydroponics-api.azurewebsites.net/api/Produtor', body)
+    // Axios.post('http://localhost:5000/api/Usuario', body)
       .then(response => {
         if (response.status === 200) {
         }

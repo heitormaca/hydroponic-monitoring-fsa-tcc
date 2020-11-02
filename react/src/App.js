@@ -5,14 +5,14 @@ import './App.scss';
 const loading = () => <div className="animated fadeIn pt-3 text-center">Loading...</div>;
 
 // Containers
-const DefaultLayout = React.lazy(() => import('./containers/DefaultLayout/DefaultLayout'));
+const DefaultLayout = React.lazy(() => import('./containers/DefaultLayout'));
 
 // Pages
-const EsqueciSenha = React.lazy(() => import('./views/Pages/Out/EsqueciSenha/EsqueciSenha'));
-const Login = React.lazy(() => import('./views/Pages/Out/Login/Login'));
-const Cadastro = React.lazy(() => import('./views/Pages/Out/Cadastro/Cadastro'));
-const Page404 = React.lazy(() => import('./views/Pages/Out/Page404/Page404'));
-const Page500 = React.lazy(() => import('./views/Pages/Out/Page500/Page500'));
+const EsqueciSenha = React.lazy(() => import('./views/EsqueciSenha'));
+const Login = React.lazy(() => import('./views/Login'));
+const Cadastro = React.lazy(() => import('./views/Cadastro'));
+const Page404 = React.lazy(() => import('./views/Page404'));
+const Page500 = React.lazy(() => import('./views/Page500'));
 
 class App extends Component {
 
@@ -21,7 +21,7 @@ class App extends Component {
       <HashRouter>
           <React.Suspense fallback={loading()}>
             <Switch>
-              <Route exact path="/esquecisenha" name="Esqueci a Senha" render={props => <EsqueciSenha {...props}/>} />
+              <Route exact path="/esqueci-senha" name="Esqueci a Senha" render={props => <EsqueciSenha {...props}/>} />
               <Route exact path="/login" name="Login" render={props => <Login {...props}/>} />
               <Route exact path="/cadastro" name="Cadastro" render={props => <Cadastro {...props}/>} />
               <Route exact path="/404" name="Page 404" render={props => <Page404 {...props}/>} />

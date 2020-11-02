@@ -15,6 +15,10 @@ namespace Hydroponics.Controllers
     [Produces("application/json")]
     public class ProdutorController : ControllerBase
     {
+        private readonly ProdutorRepository repository;
+        private readonly Cryptography encrypt;
+        private readonly Email email;
+        private readonly UploadImage image;
         public ProdutorController(ProdutorRepository repository, Cryptography encrypt, Email email, UploadImage image)
         {
             this.repository = repository;
@@ -22,10 +26,11 @@ namespace Hydroponics.Controllers
             this.email = email;
             this.image = image;
         }
-        private readonly ProdutorRepository repository;
-        private readonly Cryptography encrypt;
-        private readonly Email email;
-        private readonly UploadImage image;
+        private Produtor Authentication(ForgotPasswordViewModel _email)
+        {
+            Produtor produtor = repository.EmailCheck(_email);
+            return produtor;
+        }
 
         /// <summary>
         /// Método para buscar os dados do usuário logado.
@@ -50,7 +55,7 @@ namespace Hydroponics.Controllers
         /// <summary>
         /// Método para cadastrar um usuário no sistema.
         /// </summary>
-        /// <param name = "produtor" > Envia um nome, email e senha.</param>
+        /// <param name = "produtor" >Envia um nome, email e senha.</param>
         /// <returns>Retorna o usuário cadastrado ou erro 500.</returns>
         [AllowAnonymous]
         [HttpPost]
@@ -80,7 +85,7 @@ namespace Hydroponics.Controllers
         /// <summary>
         /// Método para atualizar a senha do usuário.
         /// </summary>
-        /// <param name = "password" > Envia uma senha.</param>
+        /// <param name = "password" >Envia uma senha.</param>
         /// <returns>Retorna um valor vazio ou erro 500.</returns>
         [Authorize]
         [HttpPatch]
@@ -94,7 +99,7 @@ namespace Hydroponics.Controllers
                 var EncryptPass = encrypt.Encrypt(password.Senha);
                 produtor.Senha = EncryptPass;
                 await repository.Put(produtor);
-                return Ok();
+                return Ok("Sua senha foi alterada com sucesso!");
             }
             catch (Exception e)
             {
@@ -128,7 +133,7 @@ namespace Hydroponics.Controllers
         /// <summary>
         /// Método para enviar um email com uma nova senha para o usuário que à esqueceu.
         /// </summary>
-        /// <param name = "_email" > Envia um email.</param>
+        /// <param name = "_email" >Envia um email.</param>
         /// <returns>Retorna um valor vazio ou erro 500.</returns>
         [AllowAnonymous]
         [HttpPatch("forgotPassword")]
@@ -167,12 +172,6 @@ namespace Hydroponics.Controllers
             {
                 return StatusCode(500, e);
             }
-        }
-
-        private Produtor Authentication(ForgotPasswordViewModel _email)
-        {
-            Produtor produtor = repository.EmailCheck(_email);
-            return produtor;
         }
     }
 }

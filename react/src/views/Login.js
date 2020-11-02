@@ -92,7 +92,7 @@ class Login extends Component {
                           }
                         </Col>
                         <Col xs="6" className="text-right">
-                          <Link to={'/esquecisenha'}><Button color="link" className="px-0">Esqueceu a senha?</Button></Link>
+                          <Link to={'/esqueci-senha'}><Button color="link" className="px-0">Esqueceu a senha?</Button></Link>
                         </Col>
                           
                       </Row>

@@ -19,62 +19,58 @@ class ListaBancadas extends Component {
                     <tr>
                       <th>Número</th>
                       <th>Nome</th>
-                      <th>Tipo de semeio</th>
                       <th>Data de Criação</th>
+                      <th>Localização</th>
                       <th>Estufa</th>
-                      <th>Status</th>
+                      <th>Dispositivo</th>
+                      <th>Plantações</th>
                     </tr>
                   </thead>
                   <tbody>
-                  <tr>
+                    <tr>
                       <td>0001</td>
                       <td><Link to="/bancadas/bancada">Bancada 01</Link></td>
-                      <td>Alface</td>
                       <td>01/10/2020</td>
+                      <td>Setor A5</td>
                       <td>Estufa 01</td>
-                      <td>
-                        <Badge color="success">ATIVO</Badge>
-                      </td>
+                      <td>Dispositivo 01</td>
+                      <td>0</td>
                     </tr>
                     <tr>
                       <td>0002</td>
-                      <td><Link to="#">Bancada 02</Link></td>
-                      <td>Repolho</td>
-                      <td>12/06/2019</td>
-                      <td>Estufa 01</td>
-                      <td>
-                        <Badge color="danger">FINALIZADO</Badge>
-                      </td>
+                      <td>Bancada 02</td>
+                      <td>05/10/2020</td>
+                      <td>Setor B2</td>
+                      <td>Estufa 02</td>
+                      <td>Dispositivo 02</td>
+                      <td>2</td>
                     </tr>
                     <tr>
                       <td>0003</td>
-                      <td><Link to="#">Bancada 03</Link></td>
-                      <td>Tomate</td>
-                      <td>14/06/2019</td>
-                      <td>Estufa 01</td>
-                      <td>
-                        <Badge color="secondary">INATIVO</Badge>
-                      </td>
+                      <td>Bancada 03</td>
+                      <td>08/10/2020</td>
+                      <td>Setor C4</td>
+                      <td>Estufa 03</td>
+                      <td>Dispositivo 03</td>
+                      <td>2</td>
                     </tr>
                     <tr>
                       <td>0004</td>
-                      <td><Link to="#">Bancada 04</Link></td>
-                      <td>Brócolis</td>
-                      <td>14/06/2019</td>
+                      <td>Bancada 04</td>
+                      <td>10/10/2020</td>
+                      <td>Setor B3</td>
                       <td>Estufa 02</td>
-                      <td>
-                        <Badge color="danger">FINALIZADO</Badge>
-                      </td>
+                      <td>Dispositivo 04</td>
+                      <td>0</td>
                     </tr>
                     <tr>
                       <td>0005</td>
-                      <td><Link to="#">Bancada 05</Link></td>
-                      <td>Melão</td>
-                      <td>16/06/2019</td>
+                      <td>Bancada 05</td>
+                      <td>12/10/2020</td>
+                      <td>Setor C1</td>
                       <td>Estufa 03</td>
-                      <td>
-                        <Badge color="success">ATIVO</Badge>
-                      </td>
+                      <td>Dispositivo 05</td>
+                      <td>0</td>
                     </tr>
                   </tbody>
                 </Table>

@@ -1,15 +1,17 @@
 using System;
+using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Reflection;
 using System.Text;
 using Hydroponics.Models;
 using Hydroponics.Repositories;
 using Hydroponics.Useful;
-using Hydroponics.ViewModel;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http.Features;
+using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -23,20 +25,41 @@ namespace Hydroponics
 {
     public class Startup
     {
+        readonly string PermissaoEntreOrigens = "_PermissaoEntreOrigens";
+        private readonly IConfiguration config;
         public Startup(IConfiguration config)
         {
             this.config = config;
         }
-        private readonly IConfiguration config;
-        readonly string PermissaoEntreOrigens = "_PermissaoEntreOrigens";
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddSingleton<LoginRepository>();
-            services.AddSingleton<ProdutorRepository>();
-            services.AddSingleton<Cryptography>();
-            services.AddSingleton<Email>();
-            services.AddSingleton<UploadImage>();
-            services.AddSingleton<ForgotPasswordViewModel>();
+            CultureInfo[] supportedCultures = new[]
+            {
+                new CultureInfo("pt-br"),
+                new CultureInfo("en")
+            };
+            services.Configure<FormOptions>(options =>
+            {
+                options.MemoryBufferThreshold = Int32.MaxValue;
+            });
+            services.Configure<RequestLocalizationOptions>(options =>
+            {
+                options.DefaultRequestCulture = new RequestCulture("pt-br");
+                options.SupportedCultures = supportedCultures;
+                options.SupportedUICultures = supportedCultures;
+                options.RequestCultureProviders = new List<IRequestCultureProvider>
+                {
+                    new QueryStringRequestCultureProvider(),
+                    new CookieRequestCultureProvider()
+                };
+            });
+            services.AddTransient<LoginRepository>();
+            services.AddTransient<ProdutorRepository>();
+            services.AddTransient<EstufaRepository>();
+            services.AddTransient<BancadaRepository>();
+            services.AddTransient<Cryptography>();
+            services.AddTransient<Email>();
+            services.AddTransient<UploadImage>();
             services.AddDbContext<hydroponicsContext>(options =>
                 options.UseSqlServer(config.GetConnectionString("Default"))
             );
@@ -44,10 +67,6 @@ namespace Hydroponics
             {
                 options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
                 options.SerializerSettings.NullValueHandling = NullValueHandling.Ignore;
-            });
-            services.Configure<FormOptions>(options =>
-            {
-                options.MemoryBufferThreshold = Int32.MaxValue;
             });
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)  
             .AddJwtBearer(options =>  
@@ -82,6 +101,8 @@ namespace Hydroponics
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseRequestLocalization();
 
             app.UseCors (builder => builder.AllowAnyOrigin ().AllowAnyMethod ().AllowAnyHeader ());
 

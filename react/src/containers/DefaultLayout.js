@@ -2,9 +2,9 @@ import React, { Component, Suspense } from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
 import * as router from 'react-router-dom';
 import { Container } from 'reactstrap';
-import navigation from '../../_nav';
-import routes from '../../routes';
-import { usuarioAutenticado } from '../../services/auth';
+import navigation from '../_nav';
+import routes from '../routes';
+import { usuarioAutenticado } from '../services/auth';
 import {
   AppFooter,
   AppHeader,
@@ -17,8 +17,8 @@ import {
   AppSidebarNav2 as AppSidebarNav,
 } from '@coreui/react';
 
-const DefaultFooter = React.lazy(() => import('../DefaultFooter/DefaultFooter'));
-const DefaultHeader = React.lazy(() => import('../DefaultHeader/DefaultHeader'));
+const DefaultFooter = React.lazy(() => import('./DefaultFooter'));
+const DefaultHeader = React.lazy(() => import('./DefaultHeader'));
 
 class DefaultLayout extends Component {
 

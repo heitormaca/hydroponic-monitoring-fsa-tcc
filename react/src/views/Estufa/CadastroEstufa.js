@@ -25,10 +25,19 @@ class CadastroEstufa extends Component {
           <CardBody>
             <Form action="" method="post">
               <FormGroup row className="my-0">
-                <Col xs="12">
-                  <Label htmlFor="nf-name">Nome</Label>
-                  <Input type="text" id="nf-name" name="nf-name" placeholder="Ex: Estufa-01" />
-                  <FormText className="help-block">Insira o nome da estufa</FormText>
+                <Col xs="6">
+                  <FormGroup>
+                    <Label htmlFor="nf-name">Nome</Label>
+                    <Input type="text" id="nf-name" name="nf-name" placeholder="Ex: Estufa-01" />
+                    <FormText className="help-block">Insira o nome da estufa</FormText>
+                  </FormGroup>
+                </Col>
+                <Col xs="6">
+                  <FormGroup>
+                    <Label htmlFor="nf-location">Localização</Label>
+                    <Input type="text" id="nf-location" name="nf-location" placeholder="Ex: Setor A" />
+                    <FormText className="help-block">Insira a localização da sua estufa.</FormText>
+                  </FormGroup>
                 </Col>
               </FormGroup>
             </Form>

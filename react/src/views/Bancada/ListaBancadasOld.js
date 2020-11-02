@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Badge, Card, CardBody, CardHeader, Col, Row, Table } from 'reactstrap';
 import { Link } from 'react-router-dom';
 
-class Estufa extends Component {
+class ListaBancadas extends Component {
 
   render() {
     return (
@@ -11,10 +11,10 @@ class Estufa extends Component {
           <Col>
             <Card>
               <CardHeader>
-                <strong>Lista de bancada</strong>
+                <strong>Lista de bancadas</strong>
               </CardHeader>
               <CardBody>
-              <Table hover bordered striped responsive size="sm">
+                <Table hover bordered striped responsive size="sm">
                   <thead>
                     <tr>
                       <th>Número</th>
@@ -28,9 +28,9 @@ class Estufa extends Component {
                   <tbody>
                     <tr>
                       <td>0001</td>
-                      <td><Link to="/estufas/bancada">Bancada 01</Link></td>
+                      <td><Link to="/bancadas/bancada">Bancada 01</Link></td>
                       <td>Alface</td>
-                      <td>12/06/2019</td>
+                      <td>01/10/2020</td>
                       <td>Estufa 01</td>
                       <td>
                         <Badge color="success">ATIVO</Badge>
@@ -56,15 +56,35 @@ class Estufa extends Component {
                         <Badge color="secondary">INATIVO</Badge>
                       </td>
                     </tr>
+                    <tr>
+                      <td>0004</td>
+                      <td><Link to="#">Bancada 04</Link></td>
+                      <td>Brócolis</td>
+                      <td>14/06/2019</td>
+                      <td>Estufa 02</td>
+                      <td>
+                        <Badge color="danger">FINALIZADO</Badge>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>0005</td>
+                      <td><Link to="#">Bancada 05</Link></td>
+                      <td>Melão</td>
+                      <td>16/06/2019</td>
+                      <td>Estufa 03</td>
+                      <td>
+                        <Badge color="success">ATIVO</Badge>
+                      </td>
+                    </tr>
                   </tbody>
                 </Table>
               </CardBody>
             </Card>
           </Col>
-        </Row>    
+        </Row>
       </div>
     );
   }
 }
 
-export default Estufa;
+export default ListaBancadas;

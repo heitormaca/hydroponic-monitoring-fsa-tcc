@@ -20,15 +20,15 @@ namespace Hydroponics.Controllers
 
     public class LoginController : ControllerBase
     {
+        private readonly IConfiguration config;
+        private readonly LoginRepository repository;
+        private readonly Cryptography encrypt;
         public LoginController(LoginRepository repository, Cryptography encrypt, IConfiguration config)
         {
             this.repository = repository;
             this.encrypt = encrypt;
             this.config = config;
         }
-        private readonly IConfiguration config;
-        private readonly LoginRepository repository;
-        private readonly Cryptography encrypt;
 
         private string GenerateJSONWebToken(Produtor produtorInfo)
         {
