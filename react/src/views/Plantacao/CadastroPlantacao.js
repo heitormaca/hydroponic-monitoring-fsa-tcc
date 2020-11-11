@@ -19,30 +19,30 @@ class CadastroBancada extends Component {
       <div>
         <Card>
           <CardHeader>
-            <strong>Cadastro de bancada</strong>
+            <strong>Cadastro de plantação</strong>
           </CardHeader>
           <CardBody>
             <Form action="" method="post">
               <FormGroup row className="my-0">
               <Col xs="6">
                   <FormGroup>
-                    <Label htmlFor="select">Estufa</Label>
+                    <Label htmlFor="select">Bancada</Label>
                     <Input type="select" name="select" id="select">
                       <option value="0">Selecione uma opção</option>
-                      <option value="1">Estufa 01</option>
-                      <option value="2">Estufa 02</option>
-                      <option value="3">Estufa 03</option>
-                      <option value="3">Estufa 04</option>
-                      <option value="3">Estufa 05</option>
+                      <option value="1">Bancada 01</option>
+                      <option value="2">Bancada 02</option>
+                      <option value="3">Bancada 03</option>
+                      <option value="3">Bancada 04</option>
+                      <option value="3">Bancada 05</option>
                     </Input>
-                    <FormText className="help-block">Escolha a estufa que deseja vincular à sua bancada</FormText> 
+                    <FormText className="help-block">Escolha a bancada que deseja vincular à sua plantação</FormText> 
                   </FormGroup>
                 </Col>
                 <Col xs="6">
                   <FormGroup>
-                    <Label>Nome da bancada</Label>
-                    <Input type="text" id="nf-name" name="nf-name" placeholder="Ex: Bancada-01"/>
-                    <FormText className="help-block">Insira o nome da bancada</FormText>  
+                    <Label>Nome da plantação</Label>
+                    <Input type="text" id="nf-name" name="nf-name" placeholder="Ex: Plantação-01"/>
+                    <FormText className="help-block">Insira o nome da plantação</FormText>  
                   </FormGroup>
                 </Col>
               </FormGroup>
@@ -58,7 +58,7 @@ class CadastroBancada extends Component {
                   <FormGroup>
                     <Label htmlFor="date-input">Data de finalização</Label>
                     <Input type="date" id="date-input-f" name="date-input-f" placeholder="date" />
-                    <FormText className="help-block">Insira a data prevista para a finalização da bancada</FormText>  
+                    <FormText className="help-block">Insira a data prevista para a finalização da plantação</FormText>  
                   </FormGroup>
                 </Col>
               </FormGroup>

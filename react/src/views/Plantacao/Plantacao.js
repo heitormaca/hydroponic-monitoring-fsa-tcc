@@ -309,7 +309,9 @@ const mainChartOpts2 = {
   },
 };
 
-class Dashboard extends Component {
+
+
+class Bancada extends Component {
 
   constructor(props) {
     super(props);
@@ -340,11 +342,11 @@ class Dashboard extends Component {
   render() {
     return (
       <div>
-        {/* <Row>
+        <Row>
           <Col xs="12">
             <Card>
               <CardHeader>
-                <strong>Bancada</strong>
+                <strong>Plantação</strong>
               </CardHeader>
               <CardBody>
               <Table hover bordered striped responsive size="sm">
@@ -354,20 +356,18 @@ class Dashboard extends Component {
                       <th>Nome</th>
                       <th>Tipo de semeio</th>
                       <th>Data de Criação</th>
-                      <th>Estufa</th>
-                      <th>Status</th>
+                      <th>Data de Término</th>
+                      <th>Bancada</th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr>
                       <td>0001</td>
-                      <td>Bancada 01</td>
+                      <td>Plantação 01</td>
                       <td>Alface</td>
-                      <td>12/06/2019</td>
-                      <td>Estufa 01</td>
-                      <td>
-                        <Badge color="success">ATIVO</Badge>
-                      </td>
+                      <td>01/06/2020</td>
+                      <td>01/09/2020</td>
+                      <td>Bancada 01</td>
                     </tr>
                   </tbody>
                 </Table>
@@ -462,10 +462,10 @@ class Dashboard extends Component {
               </CardBody>
             </Card>
           </Col>
-        </Row> */}
+        </Row>
       </div>
     );
   }
 }
 
-export default Dashboard;
+export default Bancada;

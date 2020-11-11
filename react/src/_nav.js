@@ -10,7 +10,7 @@ export default {
     },
     {
       name: 'Estufa',
-      url: '',
+      url: '/estufa',
       icon: 'icon-home',
       children: [
         {
@@ -27,7 +27,7 @@ export default {
     },
     {
       name: 'Bancada',
-      url: '',
+      url: '/bancada',
       icon: 'icon-drop',
       children: [
         {
@@ -38,6 +38,23 @@ export default {
         {
           name: 'Cadastro',
           url: '/bancada/cadastro-bancada',
+          icon: 'icon-note',
+        },
+      ],
+    },
+    {
+      name: 'Plantação',
+      url: '/plantacao',
+      icon: 'fa fa-leaf',
+      children: [
+        {
+          name: 'Lista',
+          url: '/plantacao/lista-plantacoes',
+          icon: 'icon-list',
+        },
+        {
+          name: 'Cadastro',
+          url: '/plantacao/cadastro-plantacao',
           icon: 'icon-note',
         },
       ],

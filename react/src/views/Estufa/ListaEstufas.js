@@ -27,10 +27,10 @@ class ListaEstufa extends Component {
                   <tbody>
                     <tr>
                       <td>0001</td>
-                      <td><Link to="/estufas/estufa">Estufa 01</Link></td>
+                      <td><Link to="/estufa/lista-estufa-bancadas">Estufa 01</Link></td>
                       <td>01/10/2020</td>
                       <td>Setor A</td>
-                      <td>0</td>
+                      <td>1</td>
                     </tr>
                     <tr>
                       <td>0002</td>

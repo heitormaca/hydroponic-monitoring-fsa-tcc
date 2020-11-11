@@ -29,12 +29,12 @@ class ListaBancadas extends Component {
                   <tbody>
                     <tr>
                       <td>0001</td>
-                      <td><Link to="/bancadas/bancada">Bancada 01</Link></td>
+                      <td><Link to="/bancada/lista-bancada-plantacoes">Bancada 01</Link></td>
                       <td>01/10/2020</td>
                       <td>Setor A5</td>
                       <td>Estufa 01</td>
                       <td>Dispositivo 01</td>
-                      <td>0</td>
+                      <td>2</td>
                     </tr>
                     <tr>
                       <td>0002</td>
@@ -43,7 +43,7 @@ class ListaBancadas extends Component {
                       <td>Setor B2</td>
                       <td>Estufa 02</td>
                       <td>Dispositivo 02</td>
-                      <td>2</td>
+                      <td>1</td>
                     </tr>
                     <tr>
                       <td>0003</td>

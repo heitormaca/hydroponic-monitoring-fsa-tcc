@@ -11,7 +11,7 @@ class ListaBancadas extends Component {
           <Col>
             <Card>
               <CardHeader>
-                <strong>Lista de bancadas da estufa: Estufa 01</strong>
+                <strong>Lista de plantações da bancada: Bancada 01</strong>
               </CardHeader>
               <CardBody>
                 <Table hover bordered striped responsive size="sm">
@@ -19,22 +19,28 @@ class ListaBancadas extends Component {
                     <tr>
                       <th>Número</th>
                       <th>Nome</th>
+                      <th>Tipo de semeio</th>
                       <th>Data de Criação</th>
-                      <th>Localização</th>
-                      <th>Estufa</th>
-                      <th>Dispositivo</th>
-                      <th>Plantações</th>
+                      <th>Data de Término</th>
+                      <th>Bancada</th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr>
                       <td>0001</td>
+                      <td>Plantação 01</td>
+                      <td>Alface</td>
+                      <td>01/06/2020</td>
+                      <td>01/09/2020</td>
                       <td>Bancada 01</td>
-                      <td>01/10/2020</td>
-                      <td>Setor A5</td>
-                      <td>Estufa 01</td>
-                      <td>Dispositivo 01</td>
-                      <td>2</td>
+                    </tr>
+                    <tr>
+                      <td>0002</td>
+                      <td>Plantação 02</td>
+                      <td>Repolho</td>
+                      <td>02/09/2020</td>
+                      <td>04/11/2020</td>
+                      <td>Bancada 01</td>
                     </tr>
                   </tbody>
                 </Table>

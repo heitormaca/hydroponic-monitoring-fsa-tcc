@@ -34,7 +34,7 @@ class DefaultHeader extends Component {
             <DropdownMenu right>
               <DropdownItem header tag="div" className="text-center"><strong>Conta</strong></DropdownItem>
               <Link to={'/conta/perfil'}><DropdownItem><i className="fa fa-user"></i> Perfil</DropdownItem></Link>
-              <Link to={'/conta/alterarsenha'}><DropdownItem><i className="fa fa-lock"></i> Alterar senha</DropdownItem></Link>
+              <Link to={'/conta/alterar-senha'}><DropdownItem><i className="fa fa-lock"></i> Alterar senha</DropdownItem></Link>
               <Link to={'/login'}><DropdownItem><i className="fa fa-power-off"></i> Sair</DropdownItem></Link>
             </DropdownMenu>
           </UncontrolledDropdown>

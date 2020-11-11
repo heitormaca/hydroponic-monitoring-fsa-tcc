@@ -23,7 +23,7 @@ namespace Hydroponics.Controllers
         /// Método para cadastrar uma estufa.
         /// </summary>
         /// <param name="estufa">Envia um nome.</param>
-        /// <returns>Retorna a estufa cadastrada ou erro 500.</returns>
+        /// <returns>Retorna mensagem de sucesso ou erro 500.</returns>
         // [Authorize]
         [HttpPost]
         public async Task<IActionResult> Post(Estufa estufa)
@@ -33,7 +33,7 @@ namespace Hydroponics.Controllers
                 await repository.Post(estufa);
                 return Ok("Cadastro efetuado com sucesso!");
             }
-            catch (System.Exception e)
+            catch (Exception e)
             {
                 return StatusCode(500, e);
             }
