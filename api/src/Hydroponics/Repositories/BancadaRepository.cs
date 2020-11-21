@@ -9,11 +9,11 @@ namespace Hydroponics.Repositories
 {
     public class BancadaRepository : IBancadaRepository
     {
-        public BancadaRepository(hydroponicsContext context)
+        public BancadaRepository(HydroponicsContext context)
         {
             this.context = context;
         }
-        private readonly hydroponicsContext context;
+        private readonly HydroponicsContext context;
 
         public async Task<Bancada> GetById(int id)
         {

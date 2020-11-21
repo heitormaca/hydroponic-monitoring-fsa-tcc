@@ -10,8 +10,8 @@ namespace Hydroponics.Repositories
 {
     public class EstufaRepository : IEstufaRepository
     {
-        private readonly hydroponicsContext context;
-        public EstufaRepository(hydroponicsContext context)
+        private readonly HydroponicsContext context;
+        public EstufaRepository(HydroponicsContext context)
         {
             this.context = context;
         }

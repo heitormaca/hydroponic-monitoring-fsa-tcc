@@ -10,8 +10,8 @@ namespace Hydroponics.Repositories
 {
     public class ProdutorRepository : IProdutorRepository
     {
-        private readonly hydroponicsContext context;
-        public ProdutorRepository(hydroponicsContext context)
+        private readonly HydroponicsContext context;
+        public ProdutorRepository(HydroponicsContext context)
         {
             this.context = context;
         }

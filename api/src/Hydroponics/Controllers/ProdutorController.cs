@@ -7,6 +7,11 @@ using Hydroponics.ViewModel;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
+using Microsoft.Extensions.Configuration;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
+using System.Security.Claims;
+using System.IdentityModel.Tokens.Jwt;
 
 namespace Hydroponics.Controllers
 {
@@ -26,7 +31,7 @@ namespace Hydroponics.Controllers
             this.email = email;
             this.image = image;
         }
-        private Produtor Authentication(ForgotPasswordViewModel _email)
+        private Produtor EmailAuthentication(ForgotPasswordViewModel _email)
         {
             Produtor produtor = repository.EmailCheck(_email);
             return produtor;
@@ -89,7 +94,7 @@ namespace Hydroponics.Controllers
         /// <returns>Retorna um valor vazio ou erro 500.</returns>
         [Authorize]
         [HttpPatch]
-        public async Task<IActionResult> ChangePassword([FromBody] updatePasswordViewModel password)
+        public async Task<IActionResult> ChangePassword([FromBody] UpdatePasswordViewModel password)
         {
             try
             {
@@ -142,7 +147,7 @@ namespace Hydroponics.Controllers
             try
             {
                 IActionResult response = Unauthorized("Dados inválidos.");
-                var produtor = Authentication(_email);
+                var produtor = EmailAuthentication(_email);
                 if (produtor != null)
                 {
                     string newPass = "CIFV@Y#" + produtor.Email.Length.ToString();

@@ -11,7 +11,5 @@ namespace Hydroponics.ViewModel
         [Required]
         [StringLength(20)]
         public string Senha { get; set; }
-
-
     }
 }

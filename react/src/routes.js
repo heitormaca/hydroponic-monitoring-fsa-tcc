@@ -20,7 +20,7 @@ const routes = [
   { path: '/conta/alterar-senha', name: 'Alterar Senha', component: AlterarSenha },
   { path: '/estufa', exact: true, name: 'Lista de Estufas', component: ListaEstufas },
   { path: '/estufa/lista-estufas', exact: true, name: 'Lista de Estufas', component: ListaEstufas },
-  { path: '/estufa/lista-estufa-bancadas', name: 'Lista de Bancadas na Estufa', component: ListaEstufaBancadas },
+  { path: '/estufa/lista-estufa-bancadas/:estufaId', name: 'Lista de Bancadas na Estufa', component: ListaEstufaBancadas },
   { path: '/estufa/cadastro-estufa', name: 'Cadastro de Estufa', component: CadastroEstufa },
   { path: '/bancada', exact: true, name: 'Lista de Bancadas', component: ListaBancadas },
   { path: '/bancada/lista-bancadas', name: 'Lista de Bancadas', component: ListaBancadas },

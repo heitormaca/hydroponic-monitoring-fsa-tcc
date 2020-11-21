@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { HashRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import './App.scss';
 
 const loading = () => <div className="animated fadeIn pt-3 text-center">Loading...</div>;
@@ -18,7 +18,7 @@ class App extends Component {
 
   render() {
     return (
-      <HashRouter>
+      <BrowserRouter>
           <React.Suspense fallback={loading()}>
             <Switch>
               <Route exact path="/esqueci-senha" name="Esqueci a Senha" render={props => <EsqueciSenha {...props}/>} />
@@ -29,7 +29,7 @@ class App extends Component {
               <Route path="/" name="Home" render={props => <DefaultLayout {...props}/>} />
             </Switch>
           </React.Suspense>
-      </HashRouter>
+      </BrowserRouter>
     );
   }
 }

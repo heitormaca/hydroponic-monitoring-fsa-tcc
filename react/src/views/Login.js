@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import Axios from 'axios';
 import { Button, Card, CardBody, CardGroup, Col, Container, Form, Input, InputGroup, InputGroupAddon, InputGroupText, Row } from 'reactstrap';
 import { Link } from 'react-router-dom';
+import axiosInstance from '../utils/request';
 
 class Login extends Component {
   state = {
@@ -18,16 +18,17 @@ class Login extends Component {
 
     const body = { email: this.state.email, senha: this.state.senha };
 
-    Axios.post('http://hydroponics-api.azurewebsites.net/api/Login', body)
+    axiosInstance.post('Login', body, { headers: {} })
       .then(async (data) => {
         if (data.status === 200) {
           localStorage.setItem('autenticarlogin', data.data.token)
+          axiosInstance.defaults.headers['Authorization'] = `Bearer ${localStorage.getItem('autenticarlogin')}`
           await this.setState({ isLoading: false });
           this.props.history.push('/dashboard')
         }
       })
       .catch(erro => {
-        this.setState({ erroMensagem: 'E-mail ou senha inválidos!'})
+        this.setState({ erroMensagem: 'E-mail ou senha inválidos!' })
         this.setState({ isLoading: false });
       });
   }
@@ -79,7 +80,7 @@ class Login extends Component {
                       </InputGroup>
                       <Row>
                         <Col xs="12">
-                          <p style={{ color : 'red' }}>{this.state.erroMensagem}</p>
+                          <p style={{ color: 'red' }}>{this.state.erroMensagem}</p>
                         </Col>
                         <Col xs="6">
                           {
@@ -94,7 +95,7 @@ class Login extends Component {
                         <Col xs="6" className="text-right">
                           <Link to={'/esqueci-senha'}><Button color="link" className="px-0">Esqueceu a senha?</Button></Link>
                         </Col>
-                          
+
                       </Row>
                     </Form>
                   </CardBody>

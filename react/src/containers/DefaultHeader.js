@@ -13,6 +13,10 @@ const propTypes = {
 const defaultProps = {};
 
 class DefaultHeader extends Component {
+  handleLogoutClick = () => {
+    localStorage.clear();
+  }
+
   render() {
 
     // eslint-disable-next-line
@@ -35,7 +39,7 @@ class DefaultHeader extends Component {
               <DropdownItem header tag="div" className="text-center"><strong>Conta</strong></DropdownItem>
               <Link to={'/conta/perfil'}><DropdownItem><i className="fa fa-user"></i> Perfil</DropdownItem></Link>
               <Link to={'/conta/alterar-senha'}><DropdownItem><i className="fa fa-lock"></i> Alterar senha</DropdownItem></Link>
-              <Link to={'/login'}><DropdownItem><i className="fa fa-power-off"></i> Sair</DropdownItem></Link>
+              <Link to={'/login'} onClick={this.handleLogoutClick}><DropdownItem><i className="fa fa-power-off"></i> Sair</DropdownItem></Link>
             </DropdownMenu>
           </UncontrolledDropdown>
         </Nav>

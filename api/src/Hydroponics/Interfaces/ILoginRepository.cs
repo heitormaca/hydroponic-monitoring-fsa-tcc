@@ -1,10 +1,11 @@
 using Hydroponics.Models;
 using Hydroponics.ViewModel;
+using System.Threading.Tasks;
 
 namespace Hydroponics.Interfaces
 {
     public interface ILoginRepository
     {
-        Produtor Login(LoginViewModel login);
+        Task<Produtor> Login(LoginViewModel login);
     }
 }

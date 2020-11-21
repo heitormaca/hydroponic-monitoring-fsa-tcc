@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Hydroponics.ViewModel
 {
-    public class updatePasswordViewModel
+    public class UpdatePasswordViewModel
     {
         [Required]
         [StringLength (255, MinimumLength = 5)]

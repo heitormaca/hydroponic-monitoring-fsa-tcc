@@ -10,6 +10,7 @@ using Hydroponics.Repositories;
 using Hydroponics.Useful;
 using Hydroponics.ViewModel;
 using Hydroponics.Models;
+using System.Threading.Tasks;
 
 namespace Hydroponics.Controllers
 {
@@ -46,11 +47,11 @@ namespace Hydroponics.Controllers
                 signingCredentials: credentials);
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
-        private Produtor Autenticacao(LoginViewModel login)
+        private async Task<Produtor> Autenticacao(LoginViewModel login)
         {
             var senhaEncrypt = encrypt.Encrypt(login.Senha);
             login.Senha = senhaEncrypt;
-            Produtor produtor = repository.Login(login);
+            Produtor produtor = await repository.Login(login);
             return produtor;
         }
         /// <summary>
@@ -60,16 +61,16 @@ namespace Hydroponics.Controllers
         /// <returns>Retorna o token de acesso.</returns>
         [AllowAnonymous]
         [HttpPost]
-        public IActionResult PostLogin([FromBody] LoginViewModel login)
+        public async Task<IActionResult> PostLogin([FromBody] LoginViewModel login)
         {
             try
             {
                 IActionResult response = Unauthorized("Usuário ou senha incorreto.");
-                var produtor = Autenticacao(login);
+                var produtor = await Autenticacao(login);
                 if (produtor != null)
                 {
                     var tokenString = GenerateJSONWebToken(produtor);
-                    response = Ok(new { token = tokenString });
+                    response = Ok( new { token = tokenString });
                 }
                 return response;
             }

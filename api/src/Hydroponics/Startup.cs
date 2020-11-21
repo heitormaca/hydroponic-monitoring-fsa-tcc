@@ -60,7 +60,7 @@ namespace Hydroponics
             services.AddTransient<Cryptography>();
             services.AddTransient<Email>();
             services.AddTransient<UploadImage>();
-            services.AddDbContext<hydroponicsContext>(options =>
+            services.AddDbContext<HydroponicsContext>(options =>
                 options.UseSqlServer(config.GetConnectionString("Default"))
             );
             services.AddControllersWithViews().AddNewtonsoftJson(options =>

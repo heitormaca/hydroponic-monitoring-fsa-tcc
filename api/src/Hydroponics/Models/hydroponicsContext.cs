@@ -4,13 +4,13 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace Hydroponics.Models
 {
-    public partial class hydroponicsContext : DbContext
+    public partial class HydroponicsContext : DbContext
     {
-        public hydroponicsContext()
+        public HydroponicsContext()
         {
         }
 
-        public hydroponicsContext(DbContextOptions<hydroponicsContext> options)
+        public HydroponicsContext(DbContextOptions<HydroponicsContext> options)
             : base(options)
         {
         }
