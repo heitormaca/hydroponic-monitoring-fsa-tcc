@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Hydroponics.ViewModel
 {
-    //viewmodel de "saida" não precisa ser completa.
     public class EstufaWithQtdViewModel
     {
         public int IdEstufa { get; set; }

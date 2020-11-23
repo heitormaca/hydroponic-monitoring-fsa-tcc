@@ -21,10 +21,9 @@ namespace Hydroponics.Repositories
             await context.SaveChangesAsync();
             return produtor;
         }
-        public Produtor EmailCheck(ForgotPasswordViewModel email)
+        public async Task<Produtor> EmailCheck(ForgotPasswordViewModel email)
         {
-            Produtor produtor = context.Produtor.FirstOrDefault(u => u.Email == email.Email);
-            return produtor;
+            return await context.Produtor.FirstOrDefaultAsync(u => u.Email == email.Email);    
         }
         public async Task<Produtor> Put(Produtor produtor)
         {
@@ -32,13 +31,30 @@ namespace Hydroponics.Repositories
             await context.SaveChangesAsync();
             return produtor;
         }
-        public async Task<Produtor> GetById(int id)
-        {
-            return await context.Produtor.FirstOrDefaultAsync(a => a.IdProdutor == id);
-        }
         public async Task<List<Produtor>> GetList()
         {
             return await context.Produtor.ToListAsync();
+        }
+
+        public async Task<ProdutorDataViewModel> GetById(int id)
+        {
+            return await context.Produtor.Select(d => new ProdutorDataViewModel
+            {
+                IdProdutor = d.IdProdutor,
+                Nome = d.Nome,
+                Email = d.Email,
+                Imagem = d.Imagem
+            }).FirstOrDefaultAsync(d => d.IdProdutor == id);
+        }
+
+        public async Task<Produtor> Login(LoginViewModel login)
+        {
+            return await context.Produtor.FirstOrDefaultAsync(a => a.Email == login.Email && a.Senha == login.Senha);
+        }
+
+        public async Task<Produtor> GetAllById(int id)
+        {
+            return await context.Produtor.FirstOrDefaultAsync(a => a.IdProdutor == id);
         }
     }
 }
