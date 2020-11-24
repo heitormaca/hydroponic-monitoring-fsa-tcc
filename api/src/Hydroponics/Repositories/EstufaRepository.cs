@@ -35,9 +35,5 @@ namespace Hydroponics.Repositories
             await context.SaveChangesAsync();
             return estufa;
         }
-        public async Task<Estufa> GetById(int id)
-        {
-            return await context.Estufa.FirstOrDefaultAsync(x => x.IdEstufa == id);
-        }
     }
 }

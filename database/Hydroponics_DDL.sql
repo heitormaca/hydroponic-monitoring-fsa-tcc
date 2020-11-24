@@ -53,3 +53,18 @@ CREATE TABLE Plantacao(
 	idBancada INT FOREIGN KEY REFERENCES Bancada(idBancada)
 );
 
+
+Use Hydroponics;
+select * from Bancada;
+delete from Estufa;
+
+Insert into Estufa (nome,localizacao,idProdutor)
+values ('Estufa 02', 'SETOR B',7); 
+
+
+
+Insert into Bancada (nome,localizacao,idEstufa,idDispositivo)
+values ('Bancada 06', 'SETOR B3',7,6); 
+
+Insert into Dispositivo (nome,endMac)
+values ('Dispositivo06','012345678X');

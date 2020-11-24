@@ -62,19 +62,19 @@ namespace Hydroponics.Controllers
         /// </summary>
         /// <param name="id">Envia o id da bancada.</param>
         /// <returns>Retorna uma bancada específica ou erro 500.</returns>
-        [Authorize]
-        [HttpGet("{id}")]
-        public async Task<IActionResult> Get(int id)
-        {
-            try
-            {
-                return Ok(await repository.GetById(id));
-            }
-            catch (System.Exception e)
-            {
-                return StatusCode(500, e);
-            }
-        }
+        //[Authorize]
+        //[HttpGet("{id}")]
+        //public async Task<IActionResult> Get(int id)
+        //{
+        //    try
+        //    {
+        //        return Ok(await repository.GetById(id));
+        //    }
+        //    catch (System.Exception e)
+        //    {
+        //        return StatusCode(500, e);
+        //    }
+        //}
 
     }
 }

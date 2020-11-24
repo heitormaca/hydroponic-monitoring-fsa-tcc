@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Hydroponics.Models;
+using Hydroponics.ViewModel;
 
 namespace Hydroponics.Interfaces
 {
@@ -8,8 +9,6 @@ namespace Hydroponics.Interfaces
     {
         Task<Bancada> Post(Bancada bancada);
         Task<List<Bancada>> GetList();
-        Task<List<Bancada>> GetList(int id);
-
-        Task<Bancada> GetById(int id);
+        Task<List<ListBancadasByIdViewModel>> GetList(int id);
     }
 }

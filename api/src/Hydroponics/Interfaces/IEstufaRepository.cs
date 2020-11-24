@@ -9,6 +9,5 @@ namespace Hydroponics.Interfaces
     {
         Task<Estufa> Post(Estufa estufa);
         Task<List<EstufaWithQtdViewModel>> GetList();
-        Task<Estufa> GetById(int id);
     }
 }

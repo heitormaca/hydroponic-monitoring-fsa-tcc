@@ -25,7 +25,7 @@ namespace Hydroponics.Models
         [StringLength(50)]
         public string Localizacao { get; set; }
         [Column("idEstufa")]
-        public int? IdEstufa { get; set; }
+        public int?  IdEstufa { get; set; }
         [Column("idDispositivo")]
         public int? IdDispositivo { get; set; }
 
