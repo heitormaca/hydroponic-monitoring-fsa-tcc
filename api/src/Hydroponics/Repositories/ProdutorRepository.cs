@@ -21,7 +21,7 @@ namespace Hydroponics.Repositories
             await context.SaveChangesAsync();
             return produtor;
         }
-        public async Task<Produtor> EmailCheck(ForgotPasswordViewModel email)
+        public async Task<Produtor> EmailCheck(sendPassViewModel email)
         {
             return await context.Produtor.FirstOrDefaultAsync(u => u.Email == email.Email);    
         }

@@ -8,6 +8,7 @@ namespace Hydroponics.Interfaces
     public interface IEstufaRepository
     {
         Task<Estufa> Post(Estufa estufa);
-        Task<List<EstufaWithQtdViewModel>> GetList();
+        Task<List<EstufaListViewModel>> GetList();
+        Task<EstufaViewModel> GetById(int id);
     }
 }

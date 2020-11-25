@@ -26,17 +26,24 @@ namespace Hydroponics.Repositories
             return await context.Bancada.ToListAsync();
         }
 
-        public async Task<List<ListBancadasByIdViewModel>> GetList(int id)
+        public async Task<List<ListBancadasByIdViewModel>> GetList(int? id)
         {
-            return await context.Bancada.Select(d => new ListBancadasByIdViewModel
-            { 
+            var query = context.Bancada.AsQueryable();
+
+            if (id.HasValue)
+            {
+                query = query.Where(d => d.IdEstufa == id.Value);
+            }
+
+            return await query.Select(d => new ListBancadasByIdViewModel
+            {
                 IdBancada = d.IdBancada,
-                IdEstufa = (int)d.IdEstufa,
+                IdEstufa = d.IdEstufa.Value,
                 nome = d.Nome,
                 DataInicio = d.DataInicio,
                 Localizacao = d.Localizacao,
-                IdDispositivo = (int)d.IdDispositivo
-            }).Where(x => x.IdEstufa == id).ToListAsync();
+                IdDispositivo = d.IdDispositivo.Value
+            }).ToListAsync();
         }
 
         public async Task<Bancada> Post(Bancada bancada)

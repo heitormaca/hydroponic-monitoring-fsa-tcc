@@ -11,6 +11,7 @@ const ListaEstufa = () => {
       try {
         // 'buscar estufas'
         const response = await axiosInstance.get(`Estufa`);
+        //console.log(response)
 
         // 'modifico o estado das estufas, setEstufas(listagem)
         setEstufas(response.data);

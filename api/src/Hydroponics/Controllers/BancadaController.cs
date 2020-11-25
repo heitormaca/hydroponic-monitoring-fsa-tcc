@@ -48,8 +48,7 @@ namespace Hydroponics.Controllers
         {
             try
             {
-                if (idEstufa.HasValue) return Ok(await repository.GetList(idEstufa.Value));
-                else return Ok(await repository.GetList());
+                return Ok(await repository.GetList(idEstufa));
             }
             catch (System.Exception e)
             {

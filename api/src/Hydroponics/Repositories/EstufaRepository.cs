@@ -15,11 +15,34 @@ namespace Hydroponics.Repositories
         {
             this.context = context;
         }
-        public async Task<List<EstufaWithQtdViewModel>> GetList()
+
+        public async Task<EstufaViewModel> GetById(int id)
+        {
+            return await context.Estufa
+                .Include(d => d.Bancada)
+                .Select(d => new EstufaViewModel
+                {
+                    IdEstufa = d.IdEstufa,
+                    Nome = d.Nome,
+                    Bancadas = d.Bancada.Select(b => new EstufaBancadasViewModel
+                    {
+                        IdBancada = b.IdBancada,
+                        Nome = b.Nome,
+                        DataInicio = b.DataInicio,
+                        Localizacao = b.Localizacao,
+                        nomeEstufa = b.IdEstufaNavigation.Nome,
+                        nomeDispositivo = b.IdDispositivoNavigation.Nome,
+                        QtdPlantacao = b.Plantacao.Count
+                    }).ToList()
+                })
+                .FirstOrDefaultAsync(d => d.IdEstufa == id);
+        }
+
+        public async Task<List<EstufaListViewModel>> GetList()
         {
             return await context.Estufa
                 .Include(a => a.Bancada)
-                .Select(b => new EstufaWithQtdViewModel
+                .Select(b => new EstufaListViewModel
                 {
                     IdEstufa = b.IdEstufa, 
                     Nome = b.Nome,

@@ -4,7 +4,7 @@ import { Link, useRouteMatch } from 'react-router-dom';
 import axiosInstance from '../../utils/request';
 
 const ListaEstufaBancadas = () => {
-  const { estufaId } = useRouteMatch();
+  const { estufaId } = useRouteMatch().params;
 
   const [estufa, setEstufa] = useState(null)
 
@@ -29,7 +29,7 @@ const ListaEstufaBancadas = () => {
     <Col>
       <Card>
         <CardHeader>
-          <strong>Lista de bancadas da estufa: {estufa.nome}</strong>
+          <strong>Lista de bancadas da estufa: {estufa?.nome}</strong>
         </CardHeader>
         <CardBody>
           <Table hover bordered striped responsive size="sm">
@@ -44,17 +44,19 @@ const ListaEstufaBancadas = () => {
                 <th>Plantações</th>
               </tr>
             </thead>
-            <tbody>
-              <tr>
-                <td>0001</td>
-                <td>Bancada 01</td>
-                <td>01/10/2020</td>
-                <td>Setor A5</td>
-                <td>Estufa 01</td>
-                <td>Dispositivo 01</td>
-                <td>2</td>
-              </tr>
-            </tbody>
+            {estufa.map(estufa => (
+              <tbody key={estufa.idEstufa}>
+                <tr>
+                  <td>{estufa.idBancada}</td>
+                  <td>{estufa.nome}</td>
+                  <td>{estufa.dataInicio}</td>
+                  <td>{estufa.localizacao}</td>
+                  <td>{estufa.nomeEstufa}</td>
+                  <td>{estufa.nomeDispositivo}</td>
+                  <td>{estufa.qtdPlantacao}</td>
+                </tr>
+              </tbody>
+            ))}
           </Table>
         </CardBody>
       </Card>

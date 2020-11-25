@@ -9,6 +9,6 @@ namespace Hydroponics.Interfaces
     {
         Task<Bancada> Post(Bancada bancada);
         Task<List<Bancada>> GetList();
-        Task<List<ListBancadasByIdViewModel>> GetList(int id);
+        Task<List<ListBancadasByIdViewModel>> GetList(int? id);
     }
 }

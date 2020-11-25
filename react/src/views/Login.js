@@ -18,7 +18,7 @@ class Login extends Component {
 
     const body = { email: this.state.email, senha: this.state.senha };
 
-    axiosInstance.post('Login', body, { headers: {} })
+    axiosInstance.post('Produtor/Login', body, { headers: {} })
       .then(async (data) => {
         if (data.status === 200) {
           localStorage.setItem('autenticarlogin', data.data.token)

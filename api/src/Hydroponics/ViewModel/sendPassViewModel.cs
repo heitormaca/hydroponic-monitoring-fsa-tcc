@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Hydroponics.ViewModel
 {
-    public class ForgotPasswordViewModel
+    public class sendPassViewModel
     {
         [Required]
         [StringLength (70)]
