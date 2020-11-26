@@ -33,7 +33,7 @@ namespace Hydroponics.Controllers
             this.email = email;
             this.image = image;
         }
-        private async Task<Produtor> EmailAuthorization(sendPassViewModel _email)
+        private async Task<Produtor> EmailAuthorization(SendPassViewModel _email)
         {
             return await repository.EmailCheck(_email);   
         }
@@ -193,7 +193,7 @@ namespace Hydroponics.Controllers
         /// <returns>Retorna uma mensagem de sucesso ou erro 500.</returns>
         [AllowAnonymous]
         [HttpPatch("forgotPassword")]
-        public async Task<IActionResult> PostPassword([FromBody] sendPassViewModel _email)
+        public async Task<IActionResult> PostPassword([FromBody] SendPassViewModel _email)
         {
             try
             {

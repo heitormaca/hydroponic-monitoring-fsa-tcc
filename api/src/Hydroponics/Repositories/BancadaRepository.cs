@@ -16,34 +16,40 @@ namespace Hydroponics.Repositories
         }
         private readonly HydroponicsContext context;
 
-        public async Task<Bancada> GetById(int id)
+        public async Task<BancadaViewModel> GetById(int id)
         {
-            return await context.Bancada.FirstOrDefaultAsync(a => a.IdBancada == id);
+            return await context.Bancada
+                .Include(d => d.IdBancada)
+                .Select(d => new BancadaViewModel
+                {
+                    IdBancada = d.IdBancada,
+                    Nome = d.Nome,
+                    Plantacoes = d.Plantacao.Select(b => new BancadaPlantacoesViewModel
+                    {
+                        IdPlantacao = b.IdPlantacao,
+                        Semeio = b.Semeio,
+                        DataInicio = b.DataInicio,
+                        DataFim = b.DataFim,
+                        NomeBancada = b.IdBancadaNavigation.Nome
+                    }).ToList()
+                }).FirstOrDefaultAsync(d => d.IdBancada == id);
         }
 
-        public async Task<List<Bancada>> GetList()
+        public async Task<List<BancadaListViewModel>> GetList()
         {
-            return await context.Bancada.ToListAsync();
-        }
-
-        public async Task<List<ListBancadasByIdViewModel>> GetList(int? id)
-        {
-            var query = context.Bancada.AsQueryable();
-
-            if (id.HasValue)
-            {
-                query = query.Where(d => d.IdEstufa == id.Value);
-            }
-
-            return await query.Select(d => new ListBancadasByIdViewModel
-            {
-                IdBancada = d.IdBancada,
-                IdEstufa = d.IdEstufa.Value,
-                nome = d.Nome,
-                DataInicio = d.DataInicio,
-                Localizacao = d.Localizacao,
-                IdDispositivo = d.IdDispositivo.Value
-            }).ToListAsync();
+            return await context.Bancada
+                .Include(a => a.Plantacao)
+                .Select(b => new BancadaListViewModel
+                {
+                    IdBancada = b.IdBancada,
+                    Nome = b.Nome,
+                    DataInicio = b.DataInicio,
+                    Localizacao = b.Localizacao,
+                    NomeEstufa = b.IdEstufaNavigation.Nome,
+                    NomeDispositivo = b.IdDispositivoNavigation.Nome,
+                    QtdPlantacao = b.Plantacao.Count
+                })
+                .ToListAsync();
         }
 
         public async Task<Bancada> Post(Bancada bancada)

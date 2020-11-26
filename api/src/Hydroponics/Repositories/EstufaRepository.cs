@@ -30,8 +30,8 @@ namespace Hydroponics.Repositories
                         Nome = b.Nome,
                         DataInicio = b.DataInicio,
                         Localizacao = b.Localizacao,
-                        nomeEstufa = b.IdEstufaNavigation.Nome,
-                        nomeDispositivo = b.IdDispositivoNavigation.Nome,
+                        NomeEstufa = b.IdEstufaNavigation.Nome,
+                        NomeDispositivo = b.IdDispositivoNavigation.Nome,
                         QtdPlantacao = b.Plantacao.Count
                     }).ToList()
                 })
@@ -52,6 +52,7 @@ namespace Hydroponics.Repositories
                 })
                 .ToListAsync();
         }
+
         public async Task<Estufa> Post(Estufa estufa)
         {
             await context.Estufa.AddAsync(estufa);

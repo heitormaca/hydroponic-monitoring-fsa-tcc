@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Hydroponics.ViewModel
 {
-    public class sendPassViewModel
+    public class SendPassViewModel
     {
         [Required]
         [StringLength (70)]

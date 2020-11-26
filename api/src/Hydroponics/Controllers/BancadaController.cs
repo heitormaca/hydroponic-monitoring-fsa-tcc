@@ -1,3 +1,4 @@
+using System;
 using System.Threading.Tasks;
 using Hydroponics.Models;
 using Hydroponics.Repositories;
@@ -29,9 +30,10 @@ namespace Hydroponics.Controllers
         {
             try
             {
-                return Ok(await repository.Post(bancada));
+                await repository.Post(bancada);
+                return Ok("Cadastro efetuado com sucesso!");
             }
-            catch (System.Exception e)
+            catch (Exception e)
             {
                 return StatusCode(500, e);
             }
@@ -40,17 +42,16 @@ namespace Hydroponics.Controllers
         /// <summary>
         /// Método para listar as bancadas cadastradas por uma estufa específica.
         /// </summary>
-        /// <param name="idEstufa">Envia opcionalmente o id da estufa.</param>
         /// <returns>Retorna a lista das estufas cadastradas por uma estufa específica ou erro 500.</returns>
         [Authorize]
         [HttpGet]
-        public async Task<IActionResult> GetList([FromQuery]int? idEstufa)
+        public async Task<IActionResult> GetList()
         {
             try
             {
-                return Ok(await repository.GetList(idEstufa));
+                return Ok(await repository.GetList());
             }
-            catch (System.Exception e)
+            catch (Exception e)
             {
                 return StatusCode(500, e);
             }
@@ -61,19 +62,19 @@ namespace Hydroponics.Controllers
         /// </summary>
         /// <param name="id">Envia o id da bancada.</param>
         /// <returns>Retorna uma bancada específica ou erro 500.</returns>
-        //[Authorize]
-        //[HttpGet("{id}")]
-        //public async Task<IActionResult> Get(int id)
-        //{
-        //    try
-        //    {
-        //        return Ok(await repository.GetById(id));
-        //    }
-        //    catch (System.Exception e)
-        //    {
-        //        return StatusCode(500, e);
-        //    }
-        //}
+        [Authorize]
+        [HttpGet("{id}")]
+        public async Task<IActionResult> Get(int id)
+        {
+            try
+            {
+                return Ok(await repository.GetById(id));
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, e);
+            }
+        }
 
     }
 }

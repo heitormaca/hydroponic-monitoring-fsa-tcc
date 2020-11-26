@@ -1,8 +1,7 @@
 ﻿using System;
-
 namespace Hydroponics.ViewModel
 {
-    public class EstufaBancadasViewModel
+    public class BancadaListViewModel
     {
         public int IdBancada { get; set; }
         public string Nome { get; set; }

@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using Hydroponics.Models;
 using Hydroponics.Repositories;
@@ -14,6 +13,7 @@ namespace Hydroponics.Controllers
     public class EstufaController : ControllerBase
     {
         private readonly EstufaRepository repository;
+
         public EstufaController(EstufaRepository repository)
         {
             this.repository = repository;
