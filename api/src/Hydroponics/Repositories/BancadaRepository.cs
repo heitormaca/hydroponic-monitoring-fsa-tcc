@@ -19,7 +19,8 @@ namespace Hydroponics.Repositories
         public async Task<BancadaViewModel> GetById(int id)
         {
             return await context.Bancada
-                .Include(d => d.IdBancada)
+                .Include(d => d.Plantacao)
+                    .ThenInclude(d => d.IdBancadaNavigation)
                 .Select(d => new BancadaViewModel
                 {
                     IdBancada = d.IdBancada,

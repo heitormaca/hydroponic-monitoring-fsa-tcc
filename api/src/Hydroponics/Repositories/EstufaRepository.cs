@@ -20,6 +20,9 @@ namespace Hydroponics.Repositories
         {
             return await context.Estufa
                 .Include(d => d.Bancada)
+                    .ThenInclude(d => d.IdDispositivoNavigation)
+                .Include(d => d.Bancada)
+                    .ThenInclude(d => d.IdEstufaNavigation)
                 .Select(d => new EstufaViewModel
                 {
                     IdEstufa = d.IdEstufa,
