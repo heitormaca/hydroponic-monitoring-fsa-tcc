@@ -42,7 +42,6 @@ namespace Hydroponics.Controllers
         /// <summary>
         /// Método para retornar dois tipos de listas para as Estufas.
         /// </summary>
-        /// <param name="idEstufa">Envia opcionalmente um idEstufa</param>
         /// <returns>Retorna a lista das estufas cadastradas, ou a lista de bancadas do Id da estufa indicada, ou erro 500.</returns>
         [Authorize]
         [HttpGet]
