@@ -53,6 +53,9 @@ namespace Hydroponics
                     new CookieRequestCultureProvider()
                 };
             });
+            services.AddTransient<GraphicRepository>();
+            services.AddTransient<MedicaoRepository>();
+            services.AddTransient<DispositivoRepository>();
             services.AddTransient<PlantacaoRepository>();
             services.AddTransient<ProdutorRepository>();
             services.AddTransient<EstufaRepository>();

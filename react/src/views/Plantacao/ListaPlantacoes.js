@@ -1,80 +1,61 @@
-import React, { Component } from 'react';
-import { Badge, Card, CardBody, CardHeader, Col, Row, Table } from 'reactstrap';
+import React, { useEffect, useState } from 'react';
+import { Card, CardBody, CardHeader, Col, Row, Table } from 'reactstrap';
 import { Link } from 'react-router-dom';
+import moment from 'moment';
+import axiosInstance from '../../utils/request';
 
-class ListaBancadas extends Component {
+const ListaPlantacoes = () => {
+  const [plantacoes, setPlantacoes] = useState([]);
 
-  render() {
-    return (
-      <div>
-        <Row>
-          <Col>
-            <Card>
-              <CardHeader>
-                <strong>Lista de plantações</strong>
-              </CardHeader>
-              <CardBody>
-                <Table hover bordered striped responsive size="sm">
-                  <thead>
-                    <tr>
-                      <th>Número</th>
-                      <th>Nome</th>
-                      <th>Tipo de semeio</th>
-                      <th>Data de Criação</th>
-                      <th>Data de Término</th>
-                      <th>Bancada</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>0001</td>
-                      <td><Link to="/plantacao/plantacao-item">Plantação 01</Link></td>
-                      <td>Alface</td>
-                      <td>01/06/2020</td>
-                      <td>01/09/2020</td>
-                      <td>Bancada 01</td>
-                    </tr>
-                    <tr>
-                      <td>0002</td>
-                      <td>Plantação 02</td>
-                      <td>Repolho</td>
-                      <td>02/09/2020</td>
-                      <td>04/11/2020</td>
-                      <td>Bancada 01</td>
-                    </tr>
-                    <tr>
-                      <td>0003</td>
-                      <td>Plantação 03</td>
-                      <td>Tomate</td>
-                      <td>06/04/2020</td>
-                      <td>08/06/2020</td>
-                      <td>Bancada 02</td>
-                    </tr>
-                    <tr>
-                      <td>0004</td>
-                      <td>Plantação 04</td>
-                      <td>Brócolis</td>
-                      <td>15/03/2020</td>
-                      <td>18/05/2020</td>
-                      <td>Bancada 03</td>
-                    </tr>
-                    <tr>
-                      <td>0005</td>
-                      <td>Plantação 05</td>
-                      <td>Melão</td>
-                      <td>21/07/2020</td>
-                      <td>27/10/2020</td>
-                      <td>Bancada 03</td>
-                    </tr>
-                  </tbody>
-                </Table>
-              </CardBody>
-            </Card>
-          </Col>
-        </Row>
-      </div>
-    );
-  }
+  useEffect(() => {
+    const getPlantacoes = async () => {
+      try {
+        // 'buscar plantações'
+        const response = await axiosInstance.get(`Plantacao`);
+
+        // 'modifico o estado das plantações, setPLantacoes(listagem)
+        setPlantacoes(response.data);
+
+      } catch (err) {
+        console.error('erro', err)
+      }
+    }
+    getPlantacoes();
+  }, [])
+
+  return <Row>
+    <Col>
+      <Card>
+        <CardHeader>
+          <strong>Lista de plantações</strong>
+        </CardHeader>
+        <CardBody>
+          <Table hover bordered striped responsive size="sm">
+            <thead>
+              <tr>
+                <th>Número</th>
+                <th>Tipo de semeio</th>
+                <th>Data de Criação</th>
+                <th>Data de Término</th>
+                <th>Bancada</th>
+              </tr>
+            </thead>
+            {plantacoes.map(plantacao => (
+              <tbody>
+                <tr>
+                  <td>{plantacao.idPlantacao}</td>
+                  <td><Link to={`/plantacao/plantacao-item/${plantacao.idPlantacao}`}>{plantacao.semeio}</Link></td>
+                  <td>{moment(plantacao.dataInicio).format("DD/MM/YYYY")}</td>
+                  <td>{moment(plantacao.dataFim).format("DD/MM/YYYY")}</td>
+                  <td>{plantacao.nomeBancada}</td>
+                </tr>
+              </tbody>
+            ))}
+          </Table>
+        </CardBody>
+      </Card>
+    </Col>
+  </Row>
 }
 
-export default ListaBancadas;
+export default ListaPlantacoes;

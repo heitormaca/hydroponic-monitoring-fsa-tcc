@@ -1,56 +1,62 @@
-import React, { Component } from 'react';
-import { Badge, Card, CardBody, CardHeader, Col, Row, Table } from 'reactstrap';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Card, CardBody, CardHeader, Col, Row, Table } from 'reactstrap';
+import { useRouteMatch } from 'react-router-dom';
+import moment from 'moment';
+import axiosInstance from '../../utils/request';
 
-class ListaBancadas extends Component {
+const ListaBancadaPlantacoes = () => {
+  const { bancadaId } = useRouteMatch().params;
 
-  render() {
-    return (
-      <div>
-        <Row>
-          <Col>
-            <Card>
-              <CardHeader>
-                <strong>Lista de plantações da bancada: Bancada 01</strong>
-              </CardHeader>
-              <CardBody>
-                <Table hover bordered striped responsive size="sm">
-                  <thead>
-                    <tr>
-                      <th>Número</th>
-                      <th>Nome</th>
-                      <th>Tipo de semeio</th>
-                      <th>Data de Criação</th>
-                      <th>Data de Término</th>
-                      <th>Bancada</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>0001</td>
-                      <td>Plantação 01</td>
-                      <td>Alface</td>
-                      <td>01/06/2020</td>
-                      <td>01/09/2020</td>
-                      <td>Bancada 01</td>
-                    </tr>
-                    <tr>
-                      <td>0002</td>
-                      <td>Plantação 02</td>
-                      <td>Repolho</td>
-                      <td>02/09/2020</td>
-                      <td>04/11/2020</td>
-                      <td>Bancada 01</td>
-                    </tr>
-                  </tbody>
-                </Table>
-              </CardBody>
-            </Card>
-          </Col>
-        </Row>
-      </div>
-    );
-  }
+  const [bancada, setBancada] = useState(null)
+
+  useEffect(() => {
+    const getBancada = async () => {
+      try {
+        // 'buscar bancadas'
+        const response = await axiosInstance.get(`Bancada/${bancadaId}`);
+
+        // 'modifico o estado das bancadas, setBancadas(listagem)'
+        setBancada(response.data);
+      } catch (err) {
+        console.error('erro', err)
+      }
+    }
+    getBancada();
+  }, [])
+
+  return <Row>
+    <Col>
+      <Card>
+        <CardHeader>
+          <strong>Lista de plantações da bancada: {bancada?.nome}</strong>
+        </CardHeader>
+        <CardBody>
+          <Table hover bordered striped responsive size="sm">
+            <thead>
+              <tr>
+                <th>Número</th>
+                <th>Tipo de semeio</th>
+                <th>Data de Criação</th>
+                <th>Data de Término</th>
+                <th>Bancada</th>
+              </tr>
+            </thead>
+            {bancada?.plantacoes?.map(plantacao => (
+              <tbody key={plantacao.idPlantacao}>
+                <tr>
+                  <td>{plantacao.idPlantacao}</td>
+                  <td>{plantacao.semeio}</td>
+                  <td>{moment(plantacao.dataInicio).format("DD/MM/YYYY")}</td>
+                  <td>{moment(plantacao.dataFim).format("DD/MM/YYYY")}</td>
+                  <td>{plantacao.nomeBancada}</td>
+                </tr>
+              </tbody>
+            ))}
+          </Table>
+        </CardBody>
+      </Card>
+    </Col>
+  </Row>
 }
 
-export default ListaBancadas;
+export default ListaBancadaPlantacoes;

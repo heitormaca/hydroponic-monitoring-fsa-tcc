@@ -78,7 +78,7 @@ namespace Hydroponics.Models
                 entity.HasKey(e => e.IdMedicao)
                     .HasName("PK__Medicao__BCF0E70E22D00422");
 
-                entity.Property(e => e.DataMedicao).HasDefaultValueSql("(sysdatetime())");
+                entity.Property(e => e.DataMedicao).HasDefaultValueSql("(getdate()at time zone 'E. South America Standard Time')");
 
                 entity.HasOne(d => d.IdDispositivoNavigation)
                     .WithMany(p => p.Medicao)

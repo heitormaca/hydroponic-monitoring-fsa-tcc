@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -11,7 +10,7 @@ namespace Hydroponics.Models
         [Column("idMedicao")]
         public int IdMedicao { get; set; }
         [Column("dataMedicao", TypeName = "datetime")]
-        public DateTime? DataMedicao { get; set; }
+        public DateTime DataMedicao { get; set; }
         [Column("sensorTempBanc")]
         public double SensorTempBanc { get; set; }
         [Column("sensorTempSol")]

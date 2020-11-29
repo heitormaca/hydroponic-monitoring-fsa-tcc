@@ -1,6 +1,7 @@
-import React, { Component, useState, useEffect } from 'react';
-import { Badge, Card, CardBody, CardHeader, Col, Row, Table } from 'reactstrap';
-import { Link, useRouteMatch } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Card, CardBody, CardHeader, Col, Row, Table } from 'reactstrap';
+import { useRouteMatch } from 'react-router-dom';
+import moment from 'moment';
 import axiosInstance from '../../utils/request';
 
 const ListaEstufaBancadas = () => {
@@ -17,13 +18,11 @@ const ListaEstufaBancadas = () => {
         // 'modifico o estado das estufas, setEstufas(listagem)
         setEstufa(response.data);
       } catch (err) {
-        console.error('deu erro', err)
+        console.error('erro', err)
       }
     }
     getEstufa();
   }, [])
-
-  console.log(estufa)
 
   return <Row>
     <Col>
@@ -44,16 +43,16 @@ const ListaEstufaBancadas = () => {
                 <th>Plantações</th>
               </tr>
             </thead>
-            {estufa.map(estufa => (
-              <tbody key={estufa.idEstufa}>
+            {estufa?.bancadas?.map(bancada => (
+              <tbody key={bancada.idBancada}>
                 <tr>
-                  <td>{estufa.idBancada}</td>
-                  <td>{estufa.nome}</td>
-                  <td>{estufa.dataInicio}</td>
-                  <td>{estufa.localizacao}</td>
-                  <td>{estufa.nomeEstufa}</td>
-                  <td>{estufa.nomeDispositivo}</td>
-                  <td>{estufa.qtdPlantacao}</td>
+                  <td>{bancada.idBancada}</td>
+                  <td>{bancada.nome}</td>
+                  <td>{moment(bancada.dataInicio).format("DD/MM/YYYY")}</td>
+                  <td>{bancada.localizacao}</td>
+                  <td>{bancada.nomeEstufa}</td>
+                  <td>{bancada.nomeDispositivo}</td>
+                  <td>{bancada.qtdPlantacao}</td>
                 </tr>
               </tbody>
             ))}
@@ -63,50 +62,5 @@ const ListaEstufaBancadas = () => {
     </Col>
   </Row>
 }
-
-// class ListaBancadas extends Component {
-
-//   render() {
-//     return (
-//       <div>
-//         <Row>
-//           <Col>
-//             <Card>
-//               <CardHeader>
-//                 <strong>Lista de bancadas da estufa: Estufa 01</strong>
-//               </CardHeader>
-//               <CardBody>
-//                 <Table hover bordered striped responsive size="sm">
-//                   <thead>
-//                     <tr>
-//                       <th>Número</th>
-//                       <th>Nome</th>
-//                       <th>Data de Criação</th>
-//                       <th>Localização</th>
-//                       <th>Estufa</th>
-//                       <th>Dispositivo</th>
-//                       <th>Plantações</th>
-//                     </tr>
-//                   </thead>
-//                   <tbody>
-//                     <tr>
-//                       <td>0001</td>
-//                       <td>Bancada 01</td>
-//                       <td>01/10/2020</td>
-//                       <td>Setor A5</td>
-//                       <td>Estufa 01</td>
-//                       <td>Dispositivo 01</td>
-//                       <td>2</td>
-//                     </tr>
-//                   </tbody>
-//                 </Table>
-//               </CardBody>
-//             </Card>
-//           </Col>
-//         </Row>
-//       </div>
-//     );
-//   }
-// }
 
 export default ListaEstufaBancadas;

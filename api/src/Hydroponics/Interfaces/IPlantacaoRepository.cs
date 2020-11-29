@@ -8,7 +8,7 @@ namespace Hydroponics.Interfaces
     public interface IPlantacaoRepository
     {
         Task<Plantacao> Post(Plantacao plantacao);
-        //Task<PlantacaoViewModel> GetById(int id);
-        //Task<List<PlantacaoViewModel>> GetList();
+        Task<PlantacaoViewModel> GetById(int id);
+        Task<List<PlantacaoViewModel>> GetList();
     }
 }
