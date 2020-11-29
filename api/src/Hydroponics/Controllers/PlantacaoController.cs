@@ -21,10 +21,10 @@ namespace Hydroponics.Controllers
             this.graphicRepository = graphicRepository;
         }
         /// <summary>
-        /// Método para cadastrar um conjunto de dados dos sensores.
+        /// Método para cadastrar uma plantação.
         /// </summary>
-        /// <param name="plantacao">Envia um sensorTempBanc, sensorTempSol, sensorPh, sensorEc e id_bancada.</param>
-        /// <returns>Retorna a estufa cadastrada ou erro 500.</returns>
+        /// <param name="plantacao"></param>
+        /// <returns>Retorna uma mensagem de sucesso ou erro 500.</returns>
         [Authorize]
         [HttpPost]
         public async Task<IActionResult> Post(Plantacao plantacao)
@@ -41,9 +41,9 @@ namespace Hydroponics.Controllers
         }
 
         /// <summary>
-        /// Método para retornar dois tipos de listas para as Estufas.
+        /// Método para listar plantações.
         /// </summary>
-        /// <returns>Retorna a lista das estufas cadastradas, ou a lista de bancadas do Id da estufa indicada, ou erro 500.</returns>
+        /// <returns>Retorna a lista das plantações cadastradas ou erro 500.</returns>
         [Authorize]
         [HttpGet]
         public async Task<IActionResult> GetList()
@@ -59,10 +59,10 @@ namespace Hydroponics.Controllers
         }
 
         /// <summary>
-        /// Método para buscar uma estufa especifica.
+        /// Método para buscar uma plantação especifica.
         /// </summary>
-        /// <param name="id">Envia o id da estufa.</param>
-        /// <returns>Retorna uma estufa específica ou erro 500.</returns>
+        /// <param name="id"></param>
+        /// <returns>Retorna uma plantação específica ou erro 500.</returns>
         [Authorize]
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(int id)
@@ -78,10 +78,10 @@ namespace Hydroponics.Controllers
         }
 
         /// <summary>
-        /// Método para buscar uma estufa especifica.
+        /// Método para listar os dados das medições de uma plantação específica.
         /// </summary>
-        /// <param name="id">Envia o id da estufa.</param>
-        /// <returns>Retorna uma estufa específica ou erro 500.</returns>
+        /// <param name="id"></param>
+        /// <returns>Retorna os dados das medições de uma plantação específica ou erro 500.</returns>
         [Authorize]
         [HttpGet("{id}/graphics")]
         public async Task<IActionResult> Graphics(int id)

@@ -22,8 +22,8 @@ namespace Hydroponics.Controllers
         /// <summary>
         /// Método para cadastrar uma estufa.
         /// </summary>
-        /// <param name="estufa">Envia um nome.</param>
-        /// <returns>Retorna mensagem de sucesso ou erro 500.</returns>
+        /// <param name="estufa"></param>
+        /// <returns>Retorna uma mensagem de sucesso ou erro 500.</returns>
         [Authorize]
         [HttpPost]
         public async Task<IActionResult> Post(Estufa estufa)
@@ -40,9 +40,9 @@ namespace Hydroponics.Controllers
         }
 
         /// <summary>
-        /// Método para retornar dois tipos de listas para as Estufas.
+        /// Método para listar estufas.
         /// </summary>
-        /// <returns>Retorna a lista das estufas cadastradas, ou a lista de bancadas do Id da estufa indicada, ou erro 500.</returns>
+        /// <returns>Retorna a lista das estufas cadastradas ou erro 500.</returns>
         [Authorize]
         [HttpGet]
         public async Task<IActionResult> GetList()
@@ -58,10 +58,10 @@ namespace Hydroponics.Controllers
         }
 
         /// <summary>
-        /// Método para buscar uma estufa especifica.
+        /// Método para listar bancadas vinculadas a uma estufa especifica.
         /// </summary>
-        /// <param name="id">Envia o id da estufa.</param>
-        /// <returns>Retorna uma estufa específica ou erro 500.</returns>
+        /// <param name="id"></param>
+        /// <returns>Retorna a lista de bancadas vinculadas a uma estufa específica ou erro 500.</returns>
         [Authorize]
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(int id)

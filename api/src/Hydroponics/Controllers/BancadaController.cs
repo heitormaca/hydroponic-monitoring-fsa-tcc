@@ -22,8 +22,8 @@ namespace Hydroponics.Controllers
         /// <summary>
         /// Método para cadastrar uma bancada.
         /// </summary>
-        /// <param name="bancada">Envia um nome, semeio, dataFim, sensorTempBancMax, sensorTempBancMin, sensorTempSolMax, sensorTempSolMin, sensorTempPhMAx, sensorTempPhMin, sensorTempEcMax, sensorTempEcMin e id_estufa.</param>
-        /// <returns>Retorna a bancada cadastrada.</returns>
+        /// <param name="bancada"></param>
+        /// <returns>Retorna uma mensagem de sucerro ou erro 500.</returns>
         [Authorize]
         [HttpPost]
         public async Task<IActionResult> Post(Bancada bancada)
@@ -40,9 +40,9 @@ namespace Hydroponics.Controllers
         }
 
         /// <summary>
-        /// Método para listar as bancadas cadastradas por uma estufa específica.
+        /// Método para listar bancadas.
         /// </summary>
-        /// <returns>Retorna a lista das estufas cadastradas por uma estufa específica ou erro 500.</returns>
+        /// <returns>Retorna a lista das bancadas cadastradas ou erro 500.</returns>
         [Authorize]
         [HttpGet]
         public async Task<IActionResult> GetList()
@@ -58,10 +58,10 @@ namespace Hydroponics.Controllers
         }
 
         /// <summary>
-        /// Método para buscar uma bancada especifica.
+        /// Método para listar plantações vinculadas a uma bancada especifica.
         /// </summary>
-        /// <param name="id">Envia o id da bancada.</param>
-        /// <returns>Retorna uma bancada específica ou erro 500.</returns>
+        /// <param name="id"></param>
+        /// <returns>Retorna a lista de plantações vinculadas a uma bancada específica ou erro 500.</returns>
         [Authorize]
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(int id)

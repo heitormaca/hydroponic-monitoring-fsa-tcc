@@ -64,7 +64,7 @@ namespace Hydroponics.Controllers
         /// <summary>
         /// Método para logar no sistema.
         /// </summary>
-        /// <param name="login">Envia um email e uma senha.</param>
+        /// <param name="login"></param>
         /// <returns>Retorna o token de acesso.</returns>
         [AllowAnonymous]
         [HttpPost("login")]
@@ -111,7 +111,7 @@ namespace Hydroponics.Controllers
         /// <summary>
         /// Método para cadastrar um usuário no sistema.
         /// </summary>
-        /// <param name = "produtor" >Envia um nome, email e senha.</param>
+        /// <param name = "produtor"></param>
         /// <returns>Retorna uma mensagem de sucesso ou erro 500.</returns>
         [AllowAnonymous]
         [HttpPost]
@@ -141,8 +141,8 @@ namespace Hydroponics.Controllers
         /// <summary>
         /// Método para atualizar a senha do usuário.
         /// </summary>
-        /// <param name = "password" >Envia uma senha.</param>
-        /// <returns>Uma mensagem de sucesso ou erro 500.</returns>
+        /// <param name = "password"></param>
+        /// <returns>Retorna uma mensagem de sucesso ou erro 500.</returns>
         [Authorize]
         [HttpPatch]
         public async Task<IActionResult> ChangePassword([FromBody] UpdatePassViewModel password)
@@ -189,7 +189,7 @@ namespace Hydroponics.Controllers
         /// <summary>
         /// Método para enviar um email com uma nova senha para o usuário que à esqueceu.
         /// </summary>
-        /// <param name = "_email" >Envia um email.</param>
+        /// <param name = "_email"></param>
         /// <returns>Retorna uma mensagem de sucesso ou erro 500.</returns>
         [AllowAnonymous]
         [HttpPatch("forgotPassword")]

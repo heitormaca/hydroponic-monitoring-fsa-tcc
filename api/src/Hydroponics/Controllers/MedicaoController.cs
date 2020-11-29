@@ -20,11 +20,10 @@ namespace Hydroponics.Controllers
         }
 
         /// <summary>
-        /// Método para cadastrar uma medição.
+        /// Método para cadastrar uma medição de um dispositivo específico.
         /// </summary>
-        /// <param name="medicao">Envia um nome.</param>
-        /// <returns>Retorna mensagem de sucesso ou erro 500.</returns>
-        [Authorize]
+        /// <param name="medicao"></param>
+        /// <returns>Retorna os dados da medição de um dispositivo específico ou erro 500.</returns>
         [HttpPost]
         public async Task<IActionResult> Post(Medicao medicao)
         {

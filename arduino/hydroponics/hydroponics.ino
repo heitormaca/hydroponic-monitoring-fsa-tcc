@@ -70,8 +70,11 @@ void loop() {
 
 String valor = "";
 StaticJsonDocument<80> doc;
-doc["valor"] = String(float(random(0,10000))/1000, 2);
-doc["valor2"] = String(float(random(0,10000))/100, 2);
+doc["SensorTempBanc"] = String(float(random(0,10000))/1000, 2);
+doc["SensorTempSol"] = String(float(random(0,10000))/100, 2);
+doc["SensorPh"] = String(float(random(0,10000))/100, 2);
+doc["SensorEc"] = String(float(random(0,10000))/100, 2);
+doc["IdDispositivo"] = 1; 
 serializeJson(doc, valor);
 
       
