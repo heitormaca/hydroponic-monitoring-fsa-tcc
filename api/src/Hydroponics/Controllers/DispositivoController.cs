@@ -39,9 +39,9 @@ namespace Hydroponics.Controllers
         }
 
         /// <summary>
-        /// Método para listar dispositivos.
+        /// Método para listar dispositivos que não são vinculados a uma bancada.
         /// </summary>
-        /// <returns>Retorna a lista dos dispositivos cadastrados ou erro 500.</returns>
+        /// <returns>Retorna a lista dos dispositivos que não são vinculados a uma bancada ou erro 500.</returns>
         [Authorize]
         [HttpGet]
         public async Task<IActionResult> GetList([FromQuery] bool? naoMostrarVinculadas)
