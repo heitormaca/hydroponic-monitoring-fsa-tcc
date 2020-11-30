@@ -22,7 +22,7 @@ const ListaEstufaBancadas = () => {
       }
     }
     getEstufa();
-  }, [])
+  }, [estufaId])
 
   return <Row>
     <Col>

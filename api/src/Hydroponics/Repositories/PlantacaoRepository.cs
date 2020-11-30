@@ -27,9 +27,16 @@ namespace Hydroponics.Repositories
                     Semeio = d.Semeio,
                     DataInicio = d.DataInicio,
                     DataFim = d.DataFim,
-                    NomeBancada = d.IdBancadaNavigation.Nome
+                    NomeBancada = d.IdBancadaNavigation.Nome,
+                    TempBancMax = d.TempBancMax,
+                    TempBancMin = d.TempBancMin,
+                    TempSolMax = d.TempSolMax,
+                    TempSolMin = d.TempSolMin,
+                    PhMax = d.PhMax,
+                    PhMin = d.PhMin,
+                    EcMax = d.EcMax,
+                    EcMin = d.EcMin,
                 }).FirstOrDefaultAsync(d => d.IdPlantacao == id);
-
         }
 
         public async Task<List<PlantacaoViewModel>> GetList()

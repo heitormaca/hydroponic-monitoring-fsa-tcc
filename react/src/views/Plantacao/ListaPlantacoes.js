@@ -40,17 +40,17 @@ const ListaPlantacoes = () => {
                 <th>Bancada</th>
               </tr>
             </thead>
-            {plantacoes.map(plantacao => (
-              <tbody>
-                <tr>
+            <tbody>
+              {plantacoes.map(plantacao => (
+                <tr key={plantacao.idPlantacao}>
                   <td>{plantacao.idPlantacao}</td>
                   <td><Link to={`/plantacao/plantacao-item/${plantacao.idPlantacao}`}>{plantacao.semeio}</Link></td>
                   <td>{moment(plantacao.dataInicio).format("DD/MM/YYYY")}</td>
                   <td>{moment(plantacao.dataFim).format("DD/MM/YYYY")}</td>
                   <td>{plantacao.nomeBancada}</td>
                 </tr>
-              </tbody>
-            ))}
+              ))}
+            </tbody>
           </Table>
         </CardBody>
       </Card>

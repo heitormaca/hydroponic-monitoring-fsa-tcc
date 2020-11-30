@@ -21,7 +21,6 @@ class Cadastro extends Component {
       }
 
       const body = { nome: this.state.nome, email: this.state.email, senha: this.state.senha, checkSenha: this.state.checkSenha };
-
       const response = await axiosInstance.post('Produtor', body);
 
       if (response.status === 200) {
@@ -119,34 +118,16 @@ class Cadastro extends Component {
                         onChange={this.atualizaStateCampo.bind(this)}
                       />
                     </InputGroup>
-                    <Button
-                      color="success"
-                      block
-                      className="btn btn-primary"
-                      data-toggle="modal"
-                      data-target="#ExemploModalCentralizado"
-                    >
+                    <Button color="success" block className="btn btn-primary" data-toggle="modal" data-target="#ExemploModalCentralizado">
                       Cadastrar
                     </Button>
                   </Form>
-                  <Modal isOpen={this.state.modalAberto} toggle={this.toggleModal}>
+                  <Modal isOpen={this.state.modalAberto} toggle={this.toggleModal} centered>
                     <ModalBody>Cadastro efetuado com sucesso</ModalBody>
                     <ModalFooter>
                       <Button color="primary" onClick={this.prosseguirCadastro}>Prosseguir</Button>
                     </ModalFooter>
                   </Modal>
-                  {/* <div className="modal fade" id="ExemploModalCentralizado" tabIndex="-1" role="dialog" aria-labelledby="TituloModalCentralizado" aria-hidden="true">
-                    <div className="modal-dialog modal-dialog-centered" role="document">
-                      <div className="modal-content">
-                        <div className="modal-header">
-                          <h5 className="modal-title" id="TituloModalCentralizado">Cadastro efetuado com sucesso.</h5>
-                        </div>
-                        <div className="modal-footer">
-                          <button type="button" className="btn btn-primary text center">Prosseguir</button>
-                        </div>
-                      </div>
-                    </div>
-                  </div> */}
                 </CardBody>
                 <Alert isOpen={this.state.showError} color="danger" toggle={this.state.dismissError}>
                   {this.state.erro}

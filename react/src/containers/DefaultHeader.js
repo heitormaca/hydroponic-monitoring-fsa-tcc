@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { UncontrolledDropdown, DropdownItem, DropdownMenu, DropdownToggle, Nav, NavItem } from 'reactstrap';
+import { UncontrolledDropdown, DropdownItem, DropdownMenu, DropdownToggle, Nav } from 'reactstrap';
 import PropTypes from 'prop-types';
 import { AppNavbarBrand, AppSidebarToggler } from '@coreui/react';
 import logo from '../assets/img/brand/logo.svg'

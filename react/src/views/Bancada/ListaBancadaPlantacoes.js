@@ -6,7 +6,6 @@ import axiosInstance from '../../utils/request';
 
 const ListaBancadaPlantacoes = () => {
   const { bancadaId } = useRouteMatch().params;
-
   const [bancada, setBancada] = useState(null)
 
   useEffect(() => {
@@ -22,7 +21,7 @@ const ListaBancadaPlantacoes = () => {
       }
     }
     getBancada();
-  }, [])
+  }, [bancadaId])
 
   return <Row>
     <Col>

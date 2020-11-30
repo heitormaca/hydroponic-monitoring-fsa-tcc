@@ -36,6 +36,7 @@
     "react-router-dom": "^5.2.0",
     "react-test-renderer": "^16.14.0",
     "reactstrap": "^8.7.0",
+    "recharts": "^1.8.5",
     "simple-line-icons": "^2.5.5"
   },
   "devDependencies": {
