@@ -1,32 +1,12 @@
 #include <ArduinoJson.h>
-
-/*
-  Rui Santos
-  Complete project details at Complete project details at https://RandomNerdTutorials.com/esp32-http-get-post-arduino/
-
-  Permission is hereby granted, free of charge, to any person obtaining a copy
-  of this software and associated documentation files.
-
-  The above copyright notice and this permission notice shall be included in all
-  copies or substantial portions of the Software.
-*/
-
 #include <WiFi.h>
 #include <HTTPClient.h>
 
 const char* ssid = "HEITOR";
 const char* password = "Familiams+2020";
-
-//Your Domain name with URL path or IP address with path
-const char* serverName = "http://hydroponics-api.azurewebsites.net/Medicao";
+const char* serverName = "http://hydroponics-api.azurewebsites.net/api/Medicao";
 int httpResponseCode=0;
-
-// the following variables are unsigned longs because the time, measured in
-// milliseconds, will quickly become a bigger number than can be stored in an int.
 unsigned long lastTime = 0;
-// Timer set to 10 minutes (600000)
-//unsigned long timerDelay = 600000;
-// Set timer to 5 seconds (5000)
 unsigned long timerDelay = 5000;
 
 void setup() {
@@ -41,62 +21,43 @@ void setup() {
   Serial.println("");
   Serial.print("Connected to WiFi network with IP Address: ");
   Serial.println(WiFi.localIP());
- 
   Serial.println("Timer set to 5 seconds (timerDelay variable), it will take 5 seconds before publishing the first reading.");
 }
 
-
-
 void loop() {
-
-//  if (Serial.available()) {timerDelay = Serial.parseInt();Serial.println(timerDelay);}
-  //Send an HTTP POST request every 10 minutes
   if ((millis() - lastTime) > timerDelay) {
-    //Check WiFi connection status
     do{
-
     if(WiFi.status()== WL_CONNECTED){
       HTTPClient http;
- 
-      // Your Domain name with URL path or IP address with path
       http.begin(serverName);
-
-      // Specify content-type header
       http.addHeader("Content-Type", "application/json");
-      // Data to send with HTTP POST
-      // String httpRequestData = "api_key=tPmAT5Ab3j7F9&sensor=BME280&value1=24.25&value2=49.54&value3=1005.14";           
-      // Send HTTP POST request
-      // int httpResponseCode = http.POST(httpRequestData);
-
       String valor = "";
-      StaticJsonDocument<80> doc;
-      doc["SensorTempBanc"] = String(float(random(0,10000))/1000, 2);
-      doc["SensorTempSol"] = String(float(random(0,10000))/100, 2);
-      doc["SensorPh"] = String(float(random(0,10000))/100, 2);
-      doc["SensorEc"] = String(float(random(0,10000))/100, 2);
-      doc["IdDispositivo"] = 1; 
+//      const size_t capacity = JSON_OBJECT_SIZE(5);
+//      DynamicJsonDocument doc(capacity);
+//      doc["SensorTempBanc"] = String(float(random(0,10000))/1000, 2);
+//      doc["SensorPh"] = String(float(random(0,10000))/100, 2);
+//      doc["SensorTempSol"] = String(float(random(0,10000))/100, 2);
+//      doc["SensorEc"] = String(float(random(0,10000))/100, 2);
+//      doc["IdDispositivo"] = 1; 
+      const size_t capacity = JSON_OBJECT_SIZE(7);
+      DynamicJsonDocument doc(capacity);
+      doc["SensorTempBanc"] = String(float(random(0,5001))/100, 2);
+      doc["SensorTempSol"] = String(float(random(0,5001))/100, 2);
+      doc["SensorPh"] = String(float(random(0,1401))/100, 2);
+      doc["SensorEc"] = String(float(random(0,501))/100, 2);
+      doc["IdDispositivo"] = 1;
       serializeJson(doc, valor);
-
-      
-      // If you need an HTTP request with a content type: application/json, use the following:
-      http.addHeader("Content-Type", "application/json");
-      httpResponseCode = http.POST(valor);  /// 70ms para fazer request 200 e 20seg quando dá erro -1
-
-      // If you need an HTTP request with a content type: text/plain
-     // http.addHeader("Content-Type", "text/plain");
-     // int httpResponseCode = http.POST("Hello, World!");
-     
+      Serial.println(valor);
+      httpResponseCode = http.POST(valor);
       Serial.print("HTTP Response code: ");
       Serial.println(httpResponseCode);
-        
-      // Free resources
       http.end(); 
     }
      else {
       Serial.println("WiFi Disconnected");
       WiFi.begin(ssid, password);}
-      
-    }while(httpResponseCode!=200);  
-    lastTime = millis();
+      delay(5000);
+    } while(httpResponseCode!=200);  
+      lastTime = millis();
     }  
   }
