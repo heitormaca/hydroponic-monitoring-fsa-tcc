@@ -25,9 +25,16 @@ namespace Hydroponics.Repositories
                 }).FirstOrDefaultAsync(d => d.IdDispositivo == id);
         }
 
-        public async Task<List<DispositivoViewModel>> GetList()
+        public async Task<List<DispositivoViewModel>> GetList(bool? naoMostrarVinculadas)
         {
-            return await context.Dispositivo
+            var query = context.Dispositivo.Include(d => d.Bancada).AsQueryable();
+
+            if (naoMostrarVinculadas.HasValue && naoMostrarVinculadas.Value)
+            {
+                query = query.Where(d => d.Bancada.Count <= 0);
+            }
+
+            return await query
                 .Select(d => new DispositivoViewModel
                 {
                     IdDispositivo = d.IdDispositivo,

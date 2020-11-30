@@ -44,11 +44,11 @@ namespace Hydroponics.Controllers
         /// <returns>Retorna a lista dos dispositivos cadastrados ou erro 500.</returns>
         [Authorize]
         [HttpGet]
-        public async Task<IActionResult> GetList()
+        public async Task<IActionResult> GetList([FromQuery] bool? naoMostrarVinculadas)
         {
             try
             {
-                return Ok(await repository.GetList());
+                return Ok(await repository.GetList(naoMostrarVinculadas));
             }
             catch (Exception e)
             {

@@ -14,11 +14,11 @@
 #include <WiFi.h>
 #include <HTTPClient.h>
 
-const char* ssid = "ANDERSON 2.4";
-const char* password = "12345678";
+const char* ssid = "HEITOR";
+const char* password = "Familiams+2020";
 
 //Your Domain name with URL path or IP address with path
-const char* serverName = "http://192.168.15.15:3000/";
+const char* serverName = "http://hydroponics-api.azurewebsites.net/Medicao";
 int httpResponseCode=0;
 
 // the following variables are unsigned longs because the time, measured in
@@ -62,20 +62,20 @@ void loop() {
       http.begin(serverName);
 
       // Specify content-type header
-      // http.addHeader("Content-Type", "application/x-www-form-urlencoded");
+      http.addHeader("Content-Type", "application/json");
       // Data to send with HTTP POST
       // String httpRequestData = "api_key=tPmAT5Ab3j7F9&sensor=BME280&value1=24.25&value2=49.54&value3=1005.14";           
       // Send HTTP POST request
       // int httpResponseCode = http.POST(httpRequestData);
 
-String valor = "";
-StaticJsonDocument<80> doc;
-doc["SensorTempBanc"] = String(float(random(0,10000))/1000, 2);
-doc["SensorTempSol"] = String(float(random(0,10000))/100, 2);
-doc["SensorPh"] = String(float(random(0,10000))/100, 2);
-doc["SensorEc"] = String(float(random(0,10000))/100, 2);
-doc["IdDispositivo"] = 1; 
-serializeJson(doc, valor);
+      String valor = "";
+      StaticJsonDocument<80> doc;
+      doc["SensorTempBanc"] = String(float(random(0,10000))/1000, 2);
+      doc["SensorTempSol"] = String(float(random(0,10000))/100, 2);
+      doc["SensorPh"] = String(float(random(0,10000))/100, 2);
+      doc["SensorEc"] = String(float(random(0,10000))/100, 2);
+      doc["IdDispositivo"] = 1; 
+      serializeJson(doc, valor);
 
       
       // If you need an HTTP request with a content type: application/json, use the following:

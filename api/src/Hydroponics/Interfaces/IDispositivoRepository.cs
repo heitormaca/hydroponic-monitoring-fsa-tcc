@@ -8,7 +8,7 @@ namespace Hydroponics.Interfaces
     public interface IDispositivoRepository
     {
         Task<Dispositivo> Post(Dispositivo dispositivo);
-        Task<List<DispositivoViewModel>> GetList();
+        Task<List<DispositivoViewModel>> GetList(bool? naoMostrarVinculadas);
         Task<DispositivoViewModel> GetById(int id);
 
     }

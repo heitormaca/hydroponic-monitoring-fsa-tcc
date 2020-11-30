@@ -21,7 +21,7 @@ CREATE TABLE Dispositivo(
 );
 CREATE TABLE Medicao(
 	idMedicao INT IDENTITY PRIMARY KEY NOT NULL,
-	dataMedicao DATETIME DEFAULT SYSDATETIME(),
+	dataMedicao DATETIME2 DEFAULT getdate()at time zone 'E. South America Standard Time',
 	sensorTempBanc FLOAT NOT NULL,
 	sensorTempSol FLOAT NOT NULL,
 	sensorPh FLOAT NOT NULL,
